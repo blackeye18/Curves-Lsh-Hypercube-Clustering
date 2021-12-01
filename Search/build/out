@@ -1,600 +1,600 @@
 Query: 1
-Nearest neighbour-1: acad
-distanceHypercube: 381.792
+Nearest neighbour-1: acrs
+distanceHypercube: 384.814
 distanceTrue: 379.52
-tLSH: 4.5214e-05
-tTrue: 0.014447
+tLSH: 4.15803e-05
+tTrue: 0.014927
 Query: 2
-Nearest neighbour-1: abtx
-distanceHypercube: 364.421
-distanceTrue: 354.968
-tLSH: 4.1214e-05
-tTrue: 0.014256
-Query: 3
-Nearest neighbour-1: abr_c
-distanceHypercube: 412.473
-distanceTrue: 407.255
-tLSH: 3.8214e-05
-tTrue: 0.015341
-Query: 4
-Nearest neighbour-1: acxm
-distanceHypercube: 395.747
-distanceTrue: 390.784
-tLSH: 3.9214e-05
-tTrue: 0.01416
-Query: 5
-Nearest neighbour-1: aby
-distanceHypercube: 410.537
-distanceTrue: 395.945
-tLSH: 3.7214e-05
-tTrue: 0.012055
-Query: 6
-Nearest neighbour-1: aaon
-distanceHypercube: 375.337
-distanceTrue: 368.097
-tLSH: 3.6214e-05
-tTrue: 0.012667
-Query: 7
-Nearest neighbour-1: acxm
-distanceHypercube: 376.362
-distanceTrue: 368.431
-tLSH: 3.6214e-05
-tTrue: 0.01293
-Query: 8
-Nearest neighbour-1: ab
-distanceHypercube: 423.415
-distanceTrue: 416.707
-tLSH: 3.7214e-05
-tTrue: 0.012496
-Query: 9
-Nearest neighbour-1: acad
-distanceHypercube: 373.486
-distanceTrue: 366.031
-tLSH: 4.9214e-05
-tTrue: 0.012729
-Query: 10
-Nearest neighbour-1: aaxn
-distanceHypercube: 402.571
-distanceTrue: 394.775
-tLSH: 3.9214e-05
-tTrue: 0.012301
-Query: 11
-Nearest neighbour-1: aaxn
-distanceHypercube: 389.596
-distanceTrue: 379.392
-tLSH: 3.9214e-05
-tTrue: 0.012537
-Query: 12
-Nearest neighbour-1: abr_a
-distanceHypercube: 391.712
-distanceTrue: 387.475
-tLSH: 5.0214e-05
-tTrue: 0.012518
-Query: 13
-Nearest neighbour-1: acxm
-distanceHypercube: 388.598
-distanceTrue: 380.823
-tLSH: 3.5214e-05
-tTrue: 0.012428
-Query: 14
-Nearest neighbour-1: aby
-distanceHypercube: 399.248
-distanceTrue: 384.24
-tLSH: 3.5214e-05
-tTrue: 0.012437
-Query: 15
-Nearest neighbour-1: aaon
-distanceHypercube: 364.388
-distanceTrue: 354.497
-tLSH: 3.4214e-05
-tTrue: 0.01229
-Query: 16
-Nearest neighbour-1: acxm
-distanceHypercube: 386.332
-distanceTrue: 379.173
-tLSH: 3.4214e-05
-tTrue: 0.012229
-Query: 17
 Nearest neighbour-1: ac
-distanceHypercube: 368.35
+distanceHypercube: 360.144
+distanceTrue: 354.968
+tLSH: 3.25803e-05
+tTrue: 0.014035
+Query: 3
+Nearest neighbour-1: abr_a
+distanceHypercube: 412.163
+distanceTrue: 407.255
+tLSH: 3.45803e-05
+tTrue: 0.015331
+Query: 4
+Nearest neighbour-1: acglp
+distanceHypercube: 395.505
+distanceTrue: 390.784
+tLSH: 3.35803e-05
+tTrue: 0.014416
+Query: 5
+Nearest neighbour-1: adx
+distanceHypercube: 425.845
+distanceTrue: 395.945
+tLSH: 3.25803e-05
+tTrue: 0.012002
+Query: 6
+Nearest neighbour-1: acsi
+distanceHypercube: 371.372
+distanceTrue: 368.097
+tLSH: 3.25803e-05
+tTrue: 0.01195
+Query: 7
+Nearest neighbour-1: acrs
+distanceHypercube: 374.741
+distanceTrue: 368.431
+tLSH: 3.35803e-05
+tTrue: 0.012949
+Query: 8
+Nearest neighbour-1: acglp
+distanceHypercube: 423.723
+distanceTrue: 416.707
+tLSH: 3.25803e-05
+tTrue: 0.012348
+Query: 9
+Nearest neighbour-1: abr_a
+distanceHypercube: 378.53
+distanceTrue: 366.031
+tLSH: 3.35803e-05
+tTrue: 0.012278
+Query: 10
+Nearest neighbour-1: abr_a
+distanceHypercube: 400.527
+distanceTrue: 394.775
+tLSH: 3.35803e-05
+tTrue: 0.011998
+Query: 11
+Nearest neighbour-1: acglp
+distanceHypercube: 387.372
+distanceTrue: 379.392
+tLSH: 3.15803e-05
+tTrue: 0.012113
+Query: 12
+Nearest neighbour-1: acrs
+distanceHypercube: 391.312
+distanceTrue: 387.475
+tLSH: 3.35803e-05
+tTrue: 0.01249
+Query: 13
+Nearest neighbour-1: abr_a
+distanceHypercube: 387.203
+distanceTrue: 380.823
+tLSH: 3.35803e-05
+tTrue: 0.012249
+Query: 14
+Nearest neighbour-1: abr_c
+distanceHypercube: 390.868
+distanceTrue: 384.24
+tLSH: 3.15803e-05
+tTrue: 0.011965
+Query: 15
+Nearest neighbour-1: ac
+distanceHypercube: 361.532
+distanceTrue: 354.497
+tLSH: 3.15803e-05
+tTrue: 0.012618
+Query: 16
+Nearest neighbour-1: aciw
+distanceHypercube: 389.564
+distanceTrue: 379.173
+tLSH: 3.25803e-05
+tTrue: 0.011981
+Query: 17
+Nearest neighbour-1: acad
+distanceHypercube: 362.923
 distanceTrue: 360.29
-tLSH: 3.4214e-05
-tTrue: 0.01347
+tLSH: 4.05803e-05
+tTrue: 0.012404
 Query: 18
-Nearest neighbour-1: ael
-distanceHypercube: 377.282
+Nearest neighbour-1: acglp
+distanceHypercube: 380.691
 distanceTrue: 370.607
-tLSH: 3.5214e-05
-tTrue: 0.012448
+tLSH: 3.15803e-05
+tTrue: 0.012905
 Query: 19
-Nearest neighbour-1: aaxn
-distanceHypercube: 367.209
+Nearest neighbour-1: acad
+distanceHypercube: 353.19
 distanceTrue: 348.325
-tLSH: 9.3214e-05
-tTrue: 0.012421
+tLSH: 3.15803e-05
+tTrue: 0.013153
 Query: 20
-Nearest neighbour-1: acnb
-distanceHypercube: 380.136
+Nearest neighbour-1: acrs
+distanceHypercube: 382.313
 distanceTrue: 375.281
-tLSH: 4.5214e-05
-tTrue: 0.013863
+tLSH: 3.25803e-05
+tTrue: 0.013651
 Query: 21
-Nearest neighbour-1: aby
-distanceHypercube: 426.387
+Nearest neighbour-1: adx
+distanceHypercube: 439.486
 distanceTrue: 414.301
-tLSH: 5.3214e-05
-tTrue: 0.012371
+tLSH: 3.15803e-05
+tTrue: 0.012802
 Query: 22
-Nearest neighbour-1: aby
-distanceHypercube: 427.828
+Nearest neighbour-1: acglp
+distanceHypercube: 424.931
 distanceTrue: 417.863
-tLSH: 3.8214e-05
-tTrue: 0.012359
+tLSH: 3.15803e-05
+tTrue: 0.01242
 Query: 23
 Nearest neighbour-1: abr_c
 distanceHypercube: 411.339
 distanceTrue: 406.857
-tLSH: 5.2214e-05
-tTrue: 0.01189
+tLSH: 3.35803e-05
+tTrue: 0.012173
 Query: 24
-Nearest neighbour-1: acy
-distanceHypercube: 443.298
+Nearest neighbour-1: aciw
+distanceHypercube: 428.531
 distanceTrue: 424.751
-tLSH: 3.3214e-05
-tTrue: 0.011903
+tLSH: 3.25803e-05
+tTrue: 0.011766
 Query: 25
-Nearest neighbour-1: acglp
-distanceHypercube: 403.084
+Nearest neighbour-1: acrs
+distanceHypercube: 400.763
 distanceTrue: 400.099
-tLSH: 3.3214e-05
-tTrue: 0.011743
+tLSH: 3.25803e-05
+tTrue: 0.011813
 Query: 26
-Nearest neighbour-1: acy
-distanceHypercube: 426.612
+Nearest neighbour-1: adx
+distanceHypercube: 420.551
 distanceTrue: 397.769
-tLSH: 3.2214e-05
-tTrue: 0.012179
+tLSH: 3.25803e-05
+tTrue: 0.011707
 Query: 27
-Nearest neighbour-1: abr_c
-distanceHypercube: 421.299
+Nearest neighbour-1: adx
+distanceHypercube: 438.873
 distanceTrue: 418.186
-tLSH: 3.4214e-05
-tTrue: 0.011928
+tLSH: 3.35803e-05
+tTrue: 0.011785
 Query: 28
-Nearest neighbour-1: acxm
-distanceHypercube: 417.037
+Nearest neighbour-1: acrs
+distanceHypercube: 415.032
 distanceTrue: 412.005
-tLSH: 3.2214e-05
-tTrue: 0.011749
+tLSH: 3.45803e-05
+tTrue: 0.011664
 Query: 29
-Nearest neighbour-1: abr_a
-distanceHypercube: 420.109
+Nearest neighbour-1: aciw
+distanceHypercube: 422.026
 distanceTrue: 418.571
-tLSH: 3.4214e-05
-tTrue: 0.012002
+tLSH: 3.25803e-05
+tTrue: 0.011667
 Query: 30
-Nearest neighbour-1: aaxn
-distanceHypercube: 438.36
+Nearest neighbour-1: aciw
+distanceHypercube: 438.837
 distanceTrue: 433.815
-tLSH: 3.4214e-05
-tTrue: 0.015593
+tLSH: 3.35803e-05
+tTrue: 0.014091
 Query: 31
-Nearest neighbour-1: abr_a
-distanceHypercube: 401.618
+Nearest neighbour-1: aciw
+distanceHypercube: 406.122
 distanceTrue: 396.35
-tLSH: 3.5214e-05
-tTrue: 0.016864
+tLSH: 6.45803e-05
+tTrue: 0.012446
 Query: 32
-Nearest neighbour-1: aby
-distanceHypercube: 413.579
+Nearest neighbour-1: abr_a
+distanceHypercube: 407.568
 distanceTrue: 403.78
-tLSH: 3.4214e-05
-tTrue: 0.013551
+tLSH: 4.35803e-05
+tTrue: 0.014451
 Query: 33
-Nearest neighbour-1: ael
-distanceHypercube: 392.158
+Nearest neighbour-1: adx
+distanceHypercube: 413.956
 distanceTrue: 384.972
-tLSH: 3.4214e-05
-tTrue: 0.013403
+tLSH: 3.25803e-05
+tTrue: 0.011759
 Query: 34
-Nearest neighbour-1: acxm
-distanceHypercube: 408.835
+Nearest neighbour-1: abr_b
+distanceHypercube: 406.451
 distanceTrue: 402.704
-tLSH: 3.3214e-05
-tTrue: 0.013122
+tLSH: 3.35803e-05
+tTrue: 0.012275
 Query: 35
-Nearest neighbour-1: ael
-distanceHypercube: 388.628
+Nearest neighbour-1: acnb
+distanceHypercube: 389.427
 distanceTrue: 385.536
-tLSH: 3.3214e-05
-tTrue: 0.012795
+tLSH: 3.15803e-05
+tTrue: 0.011941
 Query: 36
-Nearest neighbour-1: acxm
-distanceHypercube: 371.33
+Nearest neighbour-1: acrs
+distanceHypercube: 368.856
 distanceTrue: 357.578
-tLSH: 4.4214e-05
-tTrue: 0.012804
+tLSH: 3.25803e-05
+tTrue: 0.011811
 Query: 37
 Nearest neighbour-1: ac
 distanceHypercube: 360.184
 distanceTrue: 353.928
-tLSH: 3.3214e-05
-tTrue: 0.012776
+tLSH: 3.15803e-05
+tTrue: 0.011643
 Query: 38
-Nearest neighbour-1: acxm
-distanceHypercube: 398.892
+Nearest neighbour-1: aby
+distanceHypercube: 407.236
 distanceTrue: 386.55
-tLSH: 3.3214e-05
-tTrue: 0.012978
+tLSH: 3.35803e-05
+tTrue: 0.011839
 Query: 39
-Nearest neighbour-1: acnb
-distanceHypercube: 393.335
+Nearest neighbour-1: acrs
+distanceHypercube: 391.873
 distanceTrue: 389.156
-tLSH: 3.4214e-05
-tTrue: 0.012605
+tLSH: 3.35803e-05
+tTrue: 0.011708
 Query: 40
-Nearest neighbour-1: abr_c
-distanceHypercube: 428.522
+Nearest neighbour-1: ab
+distanceHypercube: 428.27
 distanceTrue: 423.149
-tLSH: 3.4214e-05
-tTrue: 0.01266
+tLSH: 3.35803e-05
+tTrue: 0.012549
 Query: 41
-Nearest neighbour-1: acy
-distanceHypercube: 417.8
+Nearest neighbour-1: acsi
+distanceHypercube: 378.081
 distanceTrue: 375.505
-tLSH: 3.2214e-05
-tTrue: 0.013472
+tLSH: 3.15803e-05
+tTrue: 0.012323
 Query: 42
-Nearest neighbour-1: abr_a
-distanceHypercube: 407.934
+Nearest neighbour-1: acrs
+distanceHypercube: 406.88
 distanceTrue: 404.332
-tLSH: 3.5214e-05
-tTrue: 0.013654
+tLSH: 3.25803e-05
+tTrue: 0.01179
 Query: 43
-Nearest neighbour-1: adsw
-distanceHypercube: 411.829
+Nearest neighbour-1: aciw
+distanceHypercube: 414.392
 distanceTrue: 405.44
-tLSH: 3.2214e-05
-tTrue: 0.01231
+tLSH: 3.15803e-05
+tTrue: 0.012558
 Query: 44
-Nearest neighbour-1: acxm
-distanceHypercube: 370.077
+Nearest neighbour-1: acrs
+distanceHypercube: 366.531
 distanceTrue: 358.567
-tLSH: 3.2214e-05
-tTrue: 0.012195
+tLSH: 3.25803e-05
+tTrue: 0.012465
 Query: 45
-Nearest neighbour-1: aaxn
-distanceHypercube: 429.296
+Nearest neighbour-1: acsi
+distanceHypercube: 428.916
 distanceTrue: 419.682
-tLSH: 3.4214e-05
-tTrue: 0.012218
+tLSH: 3.15803e-05
+tTrue: 0.011851
 Query: 46
-Nearest neighbour-1: adtn
-distanceHypercube: 427.587
+Nearest neighbour-1: abr_a
+distanceHypercube: 427.224
 distanceTrue: 421.6
-tLSH: 3.2214e-05
-tTrue: 0.011971
+tLSH: 3.25803e-05
+tTrue: 0.011977
 Query: 47
-Nearest neighbour-1: ab
-distanceHypercube: 423.311
+Nearest neighbour-1: abr_b
+distanceHypercube: 424.457
 distanceTrue: 413.976
-tLSH: 3.2214e-05
-tTrue: 0.011872
+tLSH: 3.25803e-05
+tTrue: 0.011803
 Query: 48
-Nearest neighbour-1: ae
-distanceHypercube: 343.002
-distanceTrue: 332.596
-tLSH: 3.2214e-05
-tTrue: 0.011745
-Query: 49
-Nearest neighbour-1: aby
-distanceHypercube: 411.009
-distanceTrue: 403.223
-tLSH: 3.2214e-05
-tTrue: 0.011982
-Query: 50
-Nearest neighbour-1: acglp
-distanceHypercube: 423.496
-distanceTrue: 420.92
-tLSH: 3.2214e-05
-tTrue: 0.012149
-Query: 51
-Nearest neighbour-1: acy
-distanceHypercube: 442.327
-distanceTrue: 415.898
-tLSH: 3.4214e-05
-tTrue: 0.01282
-Query: 52
-Nearest neighbour-1: adtn
-distanceHypercube: 406.047
-distanceTrue: 398.66
-tLSH: 3.3214e-05
-tTrue: 0.0127
-Query: 53
-Nearest neighbour-1: aby
-distanceHypercube: 413.246
-distanceTrue: 406.255
-tLSH: 3.4214e-05
-tTrue: 0.012529
-Query: 54
-Nearest neighbour-1: acy
-distanceHypercube: 444.614
-distanceTrue: 413.51
-tLSH: 4.4214e-05
-tTrue: 0.012457
-Query: 55
-Nearest neighbour-1: abr_a
-distanceHypercube: 431.69
-distanceTrue: 424.212
-tLSH: 3.7214e-05
-tTrue: 0.013426
-Query: 56
-Nearest neighbour-1: adtn
-distanceHypercube: 434.726
-distanceTrue: 432.139
-tLSH: 3.3214e-05
-tTrue: 0.01274
-Query: 57
-Nearest neighbour-1: acxm
-distanceHypercube: 395.113
-distanceTrue: 381.11
-tLSH: 3.5214e-05
-tTrue: 0.012739
-Query: 58
-Nearest neighbour-1: ael
-distanceHypercube: 397.39
-distanceTrue: 392.011
-tLSH: 3.4214e-05
-tTrue: 0.014925
-Query: 59
-Nearest neighbour-1: abr_a
-distanceHypercube: 383.696
-distanceTrue: 379.003
-tLSH: 3.6214e-05
-tTrue: 0.014722
-Query: 60
-Nearest neighbour-1: ach
-distanceHypercube: 460.989
-distanceTrue: 457.786
-tLSH: 3.5214e-05
-tTrue: 0.014907
-Query: 61
-Nearest neighbour-1: acad
-distanceHypercube: 393.485
-distanceTrue: 385.007
-tLSH: 3.6214e-05
-tTrue: 0.015938
-Query: 62
-Nearest neighbour-1: ab
-distanceHypercube: 440.016
-distanceTrue: 437.22
-tLSH: 3.5214e-05
-tTrue: 0.016354
-Query: 63
-Nearest neighbour-1: abb
-distanceHypercube: 433.379
-distanceTrue: 426.585
-tLSH: 3.5214e-05
-tTrue: 0.014747
-Query: 64
-Nearest neighbour-1: acxm
-distanceHypercube: 422.606
-distanceTrue: 416.033
-tLSH: 3.5214e-05
-tTrue: 0.014523
-Query: 65
-Nearest neighbour-1: ach
-distanceHypercube: 417.429
-distanceTrue: 403.849
-tLSH: 3.4214e-05
-tTrue: 0.016991
-Query: 66
-Nearest neighbour-1: adtn
-distanceHypercube: 419.893
-distanceTrue: 414.65
-tLSH: 3.2214e-05
-tTrue: 0.016292
-Query: 67
-Nearest neighbour-1: ab
-distanceHypercube: 424.295
-distanceTrue: 416.138
-tLSH: 3.2214e-05
-tTrue: 0.015225
-Query: 68
-Nearest neighbour-1: abr_a
-distanceHypercube: 425.139
-distanceTrue: 420.488
-tLSH: 4.5214e-05
-tTrue: 0.015943
-Query: 69
-Nearest neighbour-1: aaxn
-distanceHypercube: 431.366
-distanceTrue: 424.197
-tLSH: 3.4214e-05
-tTrue: 0.014343
-Query: 70
-Nearest neighbour-1: acxm
-distanceHypercube: 395.483
-distanceTrue: 388.501
-tLSH: 3.2214e-05
-tTrue: 0.012568
-Query: 71
-Nearest neighbour-1: adtn
-distanceHypercube: 447.075
-distanceTrue: 444.006
-tLSH: 3.4214e-05
-tTrue: 0.013905
-Query: 72
-Nearest neighbour-1: acxm
-distanceHypercube: 413.491
-distanceTrue: 397.048
-tLSH: 3.3214e-05
-tTrue: 0.012982
-Query: 73
-Nearest neighbour-1: acxm
-distanceHypercube: 390.838
-distanceTrue: 386.08
-tLSH: 3.3214e-05
-tTrue: 0.014284
-Query: 74
-Nearest neighbour-1: acad
-distanceHypercube: 388.17
-distanceTrue: 380.223
-tLSH: 3.3214e-05
-tTrue: 0.015196
-Query: 75
 Nearest neighbour-1: aaon
-distanceHypercube: 384.103
-distanceTrue: 376.512
-tLSH: 3.2214e-05
-tTrue: 0.016036
-Query: 76
-Nearest neighbour-1: abr_a
-distanceHypercube: 389.334
-distanceTrue: 383.032
-tLSH: 3.4214e-05
-tTrue: 0.015801
-Query: 77
-Nearest neighbour-1: aaxn
-distanceHypercube: 421.543
-distanceTrue: 416.928
-tLSH: 3.5214e-05
-tTrue: 0.01556
-Query: 78
-Nearest neighbour-1: acy
-distanceHypercube: 422.457
-distanceTrue: 379.865
-tLSH: 3.2214e-05
-tTrue: 0.015431
-Query: 79
-Nearest neighbour-1: aby
-distanceHypercube: 421.764
-distanceTrue: 413.719
-tLSH: 3.2214e-05
-tTrue: 0.014909
-Query: 80
-Nearest neighbour-1: ach
-distanceHypercube: 448.979
-distanceTrue: 441.71
-tLSH: 3.4214e-05
-tTrue: 0.017261
-Query: 81
+distanceHypercube: 334.626
+distanceTrue: 332.596
+tLSH: 3.15803e-05
+tTrue: 0.011824
+Query: 49
 Nearest neighbour-1: abr_c
-distanceHypercube: 417.447
-distanceTrue: 408.805
-tLSH: 3.4214e-05
-tTrue: 0.01535
-Query: 82
-Nearest neighbour-1: abr_c
-distanceHypercube: 393.043
-distanceTrue: 386.192
-tLSH: 3.5214e-05
-tTrue: 0.015667
-Query: 83
-Nearest neighbour-1: acy
-distanceHypercube: 419.085
-distanceTrue: 366.64
-tLSH: 7.0214e-05
-tTrue: 0.015355
-Query: 84
-Nearest neighbour-1: abr_a
-distanceHypercube: 418.295
-distanceTrue: 411.176
-tLSH: 3.6214e-05
-tTrue: 0.015098
-Query: 85
-Nearest neighbour-1: ael
-distanceHypercube: 393.656
-distanceTrue: 389.26
-tLSH: 3.6214e-05
-tTrue: 0.015209
-Query: 86
-Nearest neighbour-1: acor
-distanceHypercube: 420.764
-distanceTrue: 399.541
-tLSH: 3.6214e-05
-tTrue: 0.015594
-Query: 87
-Nearest neighbour-1: acy
-distanceHypercube: 441.051
-distanceTrue: 396.763
-tLSH: 3.4214e-05
-tTrue: 0.016682
-Query: 88
-Nearest neighbour-1: abr_a
-distanceHypercube: 436.715
-distanceTrue: 421.137
-tLSH: 3.5214e-05
-tTrue: 0.015001
-Query: 89
+distanceHypercube: 406.606
+distanceTrue: 403.223
+tLSH: 3.05803e-05
+tTrue: 0.011729
+Query: 50
+Nearest neighbour-1: acsi
+distanceHypercube: 424.607
+distanceTrue: 420.92
+tLSH: 4.05803e-05
+tTrue: 0.011681
+Query: 51
+Nearest neighbour-1: adx
+distanceHypercube: 435.827
+distanceTrue: 415.898
+tLSH: 3.15803e-05
+tTrue: 0.013957
+Query: 52
+Nearest neighbour-1: ab
+distanceHypercube: 404.448
+distanceTrue: 398.66
+tLSH: 3.25803e-05
+tTrue: 0.012799
+Query: 53
+Nearest neighbour-1: aciw
+distanceHypercube: 410.991
+distanceTrue: 406.255
+tLSH: 3.05803e-05
+tTrue: 0.011293
+Query: 54
+Nearest neighbour-1: adx
+distanceHypercube: 437.827
+distanceTrue: 413.51
+tLSH: 3.15803e-05
+tTrue: 0.01183
+Query: 55
 Nearest neighbour-1: acglp
-distanceHypercube: 427.19
-distanceTrue: 417.494
-tLSH: 3.5214e-05
-tTrue: 0.015646
-Query: 90
-Nearest neighbour-1: adtn
-distanceHypercube: 434.415
-distanceTrue: 428.161
-tLSH: 3.3214e-05
-tTrue: 0.015552
-Query: 91
-Nearest neighbour-1: aaxn
-distanceHypercube: 422.278
-distanceTrue: 418.307
-tLSH: 4.4214e-05
-tTrue: 0.016955
-Query: 92
-Nearest neighbour-1: aby
-distanceHypercube: 425.153
-distanceTrue: 413.644
-tLSH: 3.6214e-05
-tTrue: 0.015225
-Query: 93
-Nearest neighbour-1: aby
-distanceHypercube: 405.096
-distanceTrue: 396.285
-tLSH: 3.5214e-05
-tTrue: 0.015696
-Query: 94
-Nearest neighbour-1: aby
-distanceHypercube: 423.931
-distanceTrue: 415.886
-tLSH: 3.5214e-05
-tTrue: 0.015076
-Query: 95
-Nearest neighbour-1: aaxn
-distanceHypercube: 440.684
-distanceTrue: 432.786
-tLSH: 3.5214e-05
-tTrue: 0.015105
-Query: 96
+distanceHypercube: 430.885
+distanceTrue: 424.212
+tLSH: 3.15803e-05
+tTrue: 0.011677
+Query: 56
+Nearest neighbour-1: acsi
+distanceHypercube: 442.685
+distanceTrue: 432.139
+tLSH: 3.15803e-05
+tTrue: 0.011592
+Query: 57
 Nearest neighbour-1: abr_c
-distanceHypercube: 385.135
+distanceHypercube: 391.716
+distanceTrue: 381.11
+tLSH: 3.15803e-05
+tTrue: 0.011635
+Query: 58
+Nearest neighbour-1: acrs
+distanceHypercube: 397.732
+distanceTrue: 392.011
+tLSH: 3.25803e-05
+tTrue: 0.011531
+Query: 59
+Nearest neighbour-1: acrs
+distanceHypercube: 382.074
+distanceTrue: 379.003
+tLSH: 3.25803e-05
+tTrue: 0.011605
+Query: 60
+Nearest neighbour-1: abx
+distanceHypercube: 462.319
+distanceTrue: 457.786
+tLSH: 3.25803e-05
+tTrue: 0.011635
+Query: 61
+Nearest neighbour-1: adx
+distanceHypercube: 416.715
+distanceTrue: 385.007
+tLSH: 3.15803e-05
+tTrue: 0.011596
+Query: 62
+Nearest neighbour-1: acsi
+distanceHypercube: 446.033
+distanceTrue: 437.22
+tLSH: 3.15803e-05
+tTrue: 0.011543
+Query: 63
+Nearest neighbour-1: aciw
+distanceHypercube: 432.537
+distanceTrue: 426.585
+tLSH: 3.15803e-05
+tTrue: 0.011594
+Query: 64
+Nearest neighbour-1: acglp
+distanceHypercube: 420.641
+distanceTrue: 416.033
+tLSH: 3.15803e-05
+tTrue: 0.011501
+Query: 65
+Nearest neighbour-1: abb
+distanceHypercube: 418.42
+distanceTrue: 403.849
+tLSH: 3.15803e-05
+tTrue: 0.011597
+Query: 66
+Nearest neighbour-1: aciw
+distanceHypercube: 420.558
+distanceTrue: 414.65
+tLSH: 3.25803e-05
+tTrue: 0.013382
+Query: 67
+Nearest neighbour-1: abb
+distanceHypercube: 425.833
+distanceTrue: 416.138
+tLSH: 3.25803e-05
+tTrue: 0.013437
+Query: 68
+Nearest neighbour-1: aby
+distanceHypercube: 428.548
+distanceTrue: 420.488
+tLSH: 3.35803e-05
+tTrue: 0.013389
+Query: 69
+Nearest neighbour-1: abr_c
+distanceHypercube: 431.985
+distanceTrue: 424.197
+tLSH: 3.25803e-05
+tTrue: 0.01324
+Query: 70
+Nearest neighbour-1: acsi
+distanceHypercube: 390.413
+distanceTrue: 388.501
+tLSH: 3.25803e-05
+tTrue: 0.021844
+Query: 71
+Nearest neighbour-1: ab
+distanceHypercube: 449.394
+distanceTrue: 444.006
+tLSH: 3.35803e-05
+tTrue: 0.023046
+Query: 72
+Nearest neighbour-1: aby
+distanceHypercube: 419.883
+distanceTrue: 397.048
+tLSH: 7.05803e-05
+tTrue: 0.016303
+Query: 73
+Nearest neighbour-1: acglp
+distanceHypercube: 389.657
+distanceTrue: 386.08
+tLSH: 4.95803e-05
+tTrue: 0.015041
+Query: 74
+Nearest neighbour-1: aciw
+distanceHypercube: 389.736
+distanceTrue: 380.223
+tLSH: 3.35803e-05
+tTrue: 0.015649
+Query: 75
+Nearest neighbour-1: abr_a
+distanceHypercube: 382.861
+distanceTrue: 376.512
+tLSH: 3.45803e-05
+tTrue: 0.015225
+Query: 76
+Nearest neighbour-1: acrs
+distanceHypercube: 386.341
+distanceTrue: 383.032
+tLSH: 3.45803e-05
+tTrue: 0.017484
+Query: 77
+Nearest neighbour-1: abr_c
+distanceHypercube: 422.294
+distanceTrue: 416.928
+tLSH: 3.25803e-05
+tTrue: 0.01753
+Query: 78
+Nearest neighbour-1: aciw
+distanceHypercube: 387.753
+distanceTrue: 379.865
+tLSH: 3.25803e-05
+tTrue: 0.017051
+Query: 79
+Nearest neighbour-1: adx
+distanceHypercube: 434.179
+distanceTrue: 413.719
+tLSH: 3.35803e-05
+tTrue: 0.021724
+Query: 80
+Nearest neighbour-1: abr_b
+distanceHypercube: 454.363
+distanceTrue: 441.71
+tLSH: 3.45803e-05
+tTrue: 0.019048
+Query: 81
+Nearest neighbour-1: aby
+distanceHypercube: 422.245
+distanceTrue: 408.805
+tLSH: 3.45803e-05
+tTrue: 0.019884
+Query: 82
+Nearest neighbour-1: acrs
+distanceHypercube: 390.563
+distanceTrue: 386.192
+tLSH: 3.65803e-05
+tTrue: 0.017006
+Query: 83
+Nearest neighbour-1: abr_a
+distanceHypercube: 374.804
+distanceTrue: 366.64
+tLSH: 4.25803e-05
+tTrue: 0.020194
+Query: 84
+Nearest neighbour-1: aciw
+distanceHypercube: 417.447
+distanceTrue: 411.176
+tLSH: 3.25803e-05
+tTrue: 0.01321
+Query: 85
+Nearest neighbour-1: abr_c
+distanceHypercube: 394.475
+distanceTrue: 389.26
+tLSH: 3.25803e-05
+tTrue: 0.012605
+Query: 86
+Nearest neighbour-1: adx
+distanceHypercube: 438.538
+distanceTrue: 399.541
+tLSH: 3.25803e-05
+tTrue: 0.01259
+Query: 87
+Nearest neighbour-1: aciw
+distanceHypercube: 410.361
+distanceTrue: 396.763
+tLSH: 3.25803e-05
+tTrue: 0.013015
+Query: 88
+Nearest neighbour-1: aaxn
+distanceHypercube: 434.093
+distanceTrue: 421.137
+tLSH: 3.35803e-05
+tTrue: 0.01259
+Query: 89
+Nearest neighbour-1: aaxn
+distanceHypercube: 425.659
+distanceTrue: 417.494
+tLSH: 3.35803e-05
+tTrue: 0.012795
+Query: 90
+Nearest neighbour-1: aciw
+distanceHypercube: 435.76
+distanceTrue: 428.161
+tLSH: 3.25803e-05
+tTrue: 0.012404
+Query: 91
+Nearest neighbour-1: adx
+distanceHypercube: 438.891
+distanceTrue: 418.307
+tLSH: 3.25803e-05
+tTrue: 0.012624
+Query: 92
+Nearest neighbour-1: ab
+distanceHypercube: 422.373
+distanceTrue: 413.644
+tLSH: 3.45803e-05
+tTrue: 0.012665
+Query: 93
+Nearest neighbour-1: adx
+distanceHypercube: 419.068
+distanceTrue: 396.285
+tLSH: 3.25803e-05
+tTrue: 0.012936
+Query: 94
+Nearest neighbour-1: adx
+distanceHypercube: 436.114
+distanceTrue: 415.886
+tLSH: 3.35803e-05
+tTrue: 0.012605
+Query: 95
+Nearest neighbour-1: aciw
+distanceHypercube: 436.663
+distanceTrue: 432.786
+tLSH: 3.25803e-05
+tTrue: 0.012919
+Query: 96
+Nearest neighbour-1: abr_a
+distanceHypercube: 385.292
 distanceTrue: 382.512
-tLSH: 3.6214e-05
-tTrue: 0.0139
+tLSH: 3.35803e-05
+tTrue: 0.01283
 Query: 97
-Nearest neighbour-1: ael
-distanceHypercube: 400.939
+Nearest neighbour-1: adx
+distanceHypercube: 426.754
 distanceTrue: 396.282
-tLSH: 3.5214e-05
-tTrue: 0.013866
+tLSH: 3.35803e-05
+tTrue: 0.012516
 Query: 98
-Nearest neighbour-1: ael
-distanceHypercube: 375.806
+Nearest neighbour-1: abr_b
+distanceHypercube: 381.701
 distanceTrue: 364.75
-tLSH: 3.6214e-05
-tTrue: 0.012642
+tLSH: 3.45803e-05
+tTrue: 0.012997
 Query: 99
 Nearest neighbour-1: aby
 distanceHypercube: 448.649
 distanceTrue: 442.084
-tLSH: 3.4214e-05
-tTrue: 0.01305
+tLSH: 3.35803e-05
+tTrue: 0.018116
 Query: 100
-Nearest neighbour-1: abr_c
-distanceHypercube: 399.987
+Nearest neighbour-1: ab
+distanceHypercube: 400.971
 distanceTrue: 392.943
-tLSH: 3.6214e-05
-tTrue: 0.011643
+tLSH: 3.35803e-05
+tTrue: 0.016774

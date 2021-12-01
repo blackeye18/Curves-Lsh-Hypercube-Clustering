@@ -84,7 +84,7 @@ int main(int argc, char *argv[]){
 
             if(flag==0 || flag==2){//ama exoume kainourio query file
                 qvectors=open_and_create_vectors(query_file,&queries_no_of_coordinates,&queries_no_of_vectors);//diavazoume to arxeio kai to apothikevoume
-                if(nvectors==NULL)
+                if(qvectors==NULL)
                     return -1;
                 printf("Queries:: queries_no_of_vectors: %d, queries_no_of_coordinates: %d\n",queries_no_of_vectors,queries_no_of_coordinates);
             }
@@ -143,7 +143,7 @@ int main(int argc, char *argv[]){
 
             cout<<"Output File Created!!"<<endl;
         //synarthsh gia to menu analoga me to ti thelei o xrhsths, an epistrepsei -1 tote h efarmogh termatizei
-        flag=repeat_handler(nvectors,qvectors,input_file,query_file,output_file,lht,alg_flag);
+        flag=repeat_handler(nvectors,qvectors,input_file,query_file,output_file,lht,alg_flag,cube);
         for(int i=0;i<queries_no_of_vectors;i++){//Freeing memory
 
             vector<dist_vec>* dstemp2 =(*dsvec2)[i];

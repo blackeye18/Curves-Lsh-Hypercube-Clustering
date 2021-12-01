@@ -307,7 +307,7 @@ int print_to_file(char output_file[256],string lsh_or_hypercube,vector<vector<di
     return 0;
 }
 //synarthsh pou rwtaei ton xrhsth pows thelei na synexisei meta apo kathe treksimo tou kwdika
-int repeat_handler(vec* nvectors, vec* qvectors,char* input_file,char*query_file,char* output_file,Lhashtables *lht,int alg_flag){
+int repeat_handler(vec* nvectors, vec* qvectors,char* input_file,char*query_file,char* output_file,Lhashtables *lht,int alg_flag,hypercube *cube){
     cout<<"To end programm type 0, To repeat with new query_file and input_file type 1, To repeat with new input_file type 2, To repeat with new query_file type 3 : "<<endl;
     int input;
     char temp[256];
@@ -338,7 +338,10 @@ int repeat_handler(vec* nvectors, vec* qvectors,char* input_file,char*query_file
             strcpy(output_file,temp);
             delete [] nvectors;
             delete [] qvectors;
-            delete lht;
+            if(alg_flag==1)
+                delete lht;
+            else if (alg_flag==2)
+                delete cube;
             return 0;
         }else if(input ==2){//ama exoume mono kainourio input file zhtame onoma kai eleftherwnoume thn mnhmh tou lsh kathw tha prepei na ksanaypologistei
             cout<<"Please enter input_file"<<endl;
@@ -349,7 +352,10 @@ int repeat_handler(vec* nvectors, vec* qvectors,char* input_file,char*query_file
             scanf("%s",temp);
             strcpy(output_file,temp);
             delete [] nvectors;
-            delete lht;
+             if(alg_flag==1)
+                delete lht;
+            else if (alg_flag==2)
+                delete cube;
             return 1;
         }else if(input==3){//ama exoume mono kainourio query file tote apeleftherwnoume thn mnhmh twn paliwn queries kai den diagramoume tis domes tou lsh afou einai oi idies afou exoume idio input file
             cout<<"Please enter query_file"<<endl;
