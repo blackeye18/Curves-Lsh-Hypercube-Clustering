@@ -17,6 +17,7 @@ using namespace std::chrono;
 
 #include "classes_and_defines.hpp"
 #include "input_menu_starting_func.hpp"
+#include "cube_basic_functions.hpp"
 #include "lsh_basic_functions.hpp"
 #include "knn_ranges_brutes.hpp"
 

@@ -14,9 +14,9 @@
 
 using namespace std;
 using namespace std::chrono;
-
 #include "classes_and_defines.hpp"
 #include "input_menu_starting_func.hpp"
+#include "cube_basic_functions.hpp"
 #include "lsh_basic_functions.hpp"
 #include "knn_ranges_brutes.hpp"
 
@@ -307,7 +307,7 @@ int print_to_file(char output_file[256],string lsh_or_hypercube,vector<vector<di
     return 0;
 }
 //synarthsh pou rwtaei ton xrhsth pows thelei na synexisei meta apo kathe treksimo tou kwdika
-int repeat_handler(vec* nvectors, vec* qvectors,char* input_file,char*query_file,char* output_file,Lhashtables *lht){
+int repeat_handler(vec* nvectors, vec* qvectors,char* input_file,char*query_file,char* output_file,Lhashtables *lht,int alg_flag){
     cout<<"To end programm type 0, To repeat with new query_file and input_file type 1, To repeat with new input_file type 2, To repeat with new query_file type 3 : "<<endl;
     int input;
     char temp[256];

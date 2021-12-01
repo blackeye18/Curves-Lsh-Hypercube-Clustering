@@ -7,5 +7,5 @@ int input_handler(int argc, char *argv[],int* k, int* L,int* probes,double* delt
 vec* open_and_create_vectors(char input_file[256],int* no_of_coordinates,int *no_of_vectors);//diavazei ola ta vector apo to inputfile(eite afto einai input eite query)
 void print_vectors(vec *nvectors,int no_of_vectors,int no_of_coordinates);//emfanizei ola ta vectors, voithikh synarthsh
 int print_to_file(char output_file[256],string lsh_or_hypercube,vector<vector<dist_vec>*>* dsvec2,int queries_no_of_vectors,vec* qvectors,double* time_per_query_lsh,double *time_per_query_brute,vector<vector<dist_vec>*>* dsvec3);//ektypwnei to output file opws afto zhteite
-int repeat_handler(vec* nvectors, vec* qvectors,char* input_file,char*query_file,char* output_file,Lhashtables *lht);//synarthsh pou einai ypefthinh gia to menu pou emfanizetai sto telos tou kathe treksimatos
+int repeat_handler(vec* nvectors, vec* qvectors,char* input_file,char*query_file,char* output_file,Lhashtables *lht,int alg_flag);//synarthsh pou einai ypefthinh gia to menu pou emfanizetai sto telos tou kathe treksimatos
 #endif

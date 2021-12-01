@@ -17,6 +17,7 @@ using namespace std::chrono;
 
 #include "classes_and_defines.hpp"
 #include "input_menu_starting_func.hpp"
+#include "cube_basic_functions.hpp"
 #include "lsh_basic_functions.hpp"
 #include "knn_ranges_brutes.hpp"
 
@@ -40,18 +41,33 @@ int main(int argc, char *argv[]){
     int no_of_vectors,no_of_coordinates;
     int queries_no_of_vectors,queries_no_of_coordinates;
     Lhashtables *lht=NULL;
-    //hypercube *cube=NULL;
+    hypercube *cube=NULL;
 
+    int alg_flag=0;//1 gia LSH 2 gia Hypercube 3 gia Frechet
 
+    string lsh_or_hypercube="";
 
-
-
-    string lsh_or_hypercube="distanceLSH: ";//string gia thn ektypwsh sto output file
+    
     if(input_handler(argc,argv,&k,&L,&probes,&delta,&M,metric,(input_file), query_file, output_file,algorithm))//elegxei an ta orismata exoun dothei apo thn grammh h prepei na ta zhthsei
         return -1;
 
     printf("input_file: %s, query_file: %s, output_file: %s,k:%d,L:%d,probes:%d,delta:%.2f,M:%d,metric: %s,algorithm: %s\n",input_file,query_file,output_file,k,L,probes,delta,M,metric,algorithm);
     
+    if(strcmp(algorithm,"LSH")==0)
+        alg_flag=1;
+    else if(strcmp(algorithm,"Hypercube")==0)
+        alg_flag=2;
+    else if(strcmp(algorithm,"Frechet")==0)
+        alg_flag=3;
+    else{
+        cout<<"Unknown algorithm. Exiting."<<endl;
+        return -1;
+    }
+    if(alg_flag==1 || alg_flag==2){
+        if(alg_flag==1)
+            lsh_or_hypercube="distanceLSH: ";//string gia thn ektypwsh sto output file
+        else
+            lsh_or_hypercube="distanceHypercube: "; 
 
         int flag=0;//flag gia to menu
         while(flag!=-1){
@@ -73,12 +89,18 @@ int main(int argc, char *argv[]){
                 printf("Queries:: queries_no_of_vectors: %d, queries_no_of_coordinates: %d\n",queries_no_of_vectors,queries_no_of_coordinates);
             }
 
-            cout<<"Now using LSH and KNN"<<endl;
+            cout<<"Now using "<<algorithm<<" and KNN"<<endl;
 
             auto start1 = high_resolution_clock::now();//https://www.geeksforgeeks.org/measure-execution-time-function-cpp/
             if(flag==0 || flag==1){//an exoume kainourio input file tote prepei na ksanadimourgisoume ta L ht gia to kainourio input file
-                lht=new Lhashtables(L,no_of_coordinates,k);//synarthsh arxikopoihshs
-                lht->lsh_start(no_of_vectors,nvectors);//gemizoume ta ht 
+                if(alg_flag==1){
+                    lht=new Lhashtables(L,no_of_coordinates,k);//synarthsh arxikopoihshs
+                    lht->lsh_start(no_of_vectors,nvectors);//gemizoume ta ht 
+                }else{
+                    
+                    cube=new hypercube(M,probes,no_of_coordinates,k,no_of_vectors);//arxikopoioume thn domh tou hypercube
+                    cube->cube_start(no_of_vectors,nvectors);//insert ola ta vector sto cube
+                }
             }
             auto stop1 = high_resolution_clock::now();
             auto duration1 = duration_cast<microseconds>(stop1 - start1);
@@ -90,10 +112,16 @@ int main(int argc, char *argv[]){
 
 
             vector<vector<dist_vec>*>* dsvec2;//kai prostetoume ton xrono pou xreiastike h knn gia kathe query antistoixa
-            dsvec2=lht->find_k_nearest(qvectors,N,queries_no_of_vectors,time_per_query_lsh);//synarthsh gia to knn
+            if(alg_flag==1)
+                dsvec2=lht->find_k_nearest(qvectors,N,queries_no_of_vectors,time_per_query_lsh);//synarthsh gia to knn
+            else
+                dsvec2=cube->all_NN_search(qvectors,N,queries_no_of_vectors,time_per_query_lsh);//knn search gia ola ta query
            
             if(dsvec2==NULL){//failsafe
-                delete lht;
+                if(alg_flag==1)
+                    delete lht;
+                else
+                    delete cube;
                 delete [] nvectors;
                 delete [] qvectors;
                 return -1;
@@ -108,14 +136,14 @@ int main(int argc, char *argv[]){
             vector<vector<dist_vec>*>* dsvec3;
             dsvec3=brute_calculate_all(qvectors,nvectors,no_of_vectors,no_of_coordinates,queries_no_of_vectors,N,time_per_query_brute);
             
-           vector<vector<dist_vec>*>* dsvec4;
+           
            
             //synarthsh pou ektypwnei ta dedomena pou mazepsame mesw twn prohgoumenwn synarthsewn kai ta ektypwnei sto arxeio
             print_to_file(output_file,lsh_or_hypercube,dsvec2,queries_no_of_vectors,qvectors,time_per_query_lsh,time_per_query_brute,dsvec3);
 
             cout<<"Output File Created!!"<<endl;
         //synarthsh gia to menu analoga me to ti thelei o xrhsths, an epistrepsei -1 tote h efarmogh termatizei
-        flag=repeat_handler(nvectors,qvectors,input_file,query_file,output_file,lht);
+        flag=repeat_handler(nvectors,qvectors,input_file,query_file,output_file,lht,alg_flag);
         for(int i=0;i<queries_no_of_vectors;i++){//Freeing memory
 
             vector<dist_vec>* dstemp2 =(*dsvec2)[i];
@@ -132,8 +160,12 @@ int main(int argc, char *argv[]){
         dsvec3->clear();delete dsvec3;
         //dsvec4->clear();delete dsvec4;
         }
-        delete lht;
+        if(alg_flag==1)
+            delete lht;
+        if(alg_flag==2)
+            delete cube;
+            
         delete [] nvectors;
         delete [] qvectors;
-        
+    }
 }
