@@ -23,7 +23,7 @@ using namespace std::chrono;
 //elegxoume an to # twn arguments einai swsto
 int argsOK(int argc, char *argv[])
 {
-    if (argc == 15 || argc== 11)
+    if (argc == 21 || argc== 19 )
     {
         //printf("Error in # of args\n");
         return 1;
@@ -31,31 +31,72 @@ int argsOK(int argc, char *argv[])
     return 0;
 }
 //h synarthsh eixe graftei se c kathws sthn arxh ksekinisame to project se c kai oxi se c++
-int input_handler(int argc, char *argv[],int* k, int* L, int* N,double* R,char (&input_file)[256], char (&query_file)[256], char (&output_file)[256]){
+int input_handler(int argc, char *argv[],int* k, int* L,int* probes,double* delta,int* M,char (&metric)[256],char (&input_file)[256], char (&query_file)[256], char (&output_file)[256],char (&algorithm)[256]){
     char temp[256];
     if(argsOK(argc,argv)){
-        if(argc==15){//an exoun dothei oloi oi parametroi apo command line
+        if(argc==21){//an exoun dothei oloi oi parametroi apo command line
             printf("All parameters given from command line...\n");
+
             strcpy((input_file),argv[2]);
             strcpy((query_file),argv[4]);
-            strcpy((output_file),argv[10]);
+            strcpy((output_file),argv[14]);
             *(k)=atoi(argv[6]);
             if(*(k)==0)//bad user safe
                 *(k)=1;
             *(L)=atoi(argv[8]);
             if(*(L)==0)
                 *(L)=1;
-            *(N)=atoi(argv[12]);
-            *(R)=atof(argv[14]);
-        }else{//an exoun dothei kapoioi marametroi apo command line
-            printf("Almost all parameters given from command line... Using default for k and L\n");
+            *(M)=atoi(argv[10]);
+            if(*(M)==0)
+                *(M)=1;
+            *(probes)=atoi(argv[12]);
+            if(*(probes)==0)
+                *(probes)=1;
+            strcpy((algorithm),argv[16]);//should be fretchet afou exoume 21 orismata
+            strcpy((metric),argv[18]);
+            *(delta)=atof(argv[20]);
+
+            //*(N)=atoi(argv[12]);
+            //*(R)=atof(argv[14]);
+        }else if(argc==19){//an exoun dothei kapoioi marametroi apo command line
+            printf("Almost all parameters given from command line... Using default for k, L, probes, M\n");
+            strcpy((input_file),argv[2]);
+            strcpy((query_file),argv[4]);
+            strcpy((output_file),argv[14]);
+            *(k)=atoi(argv[6]);
+            if(*(k)==0)//bad user safe
+                *(k)=1;
+            *(L)=atoi(argv[8]);
+            if(*(L)==0)
+                *(L)=1;
+            *(M)=atoi(argv[10]);
+            if(*(M)==0)
+                *(M)=1;
+            *(probes)=atoi(argv[12]);
+            if(*(probes)==0)
+                *(probes)=1;
+            strcpy((algorithm),argv[16]);//should NOT be fretchet afou DEN exoume 21 orismata
+            //strcpy((metric),argv[18]);
+            *(delta)=atof(argv[18]);
+
+        }else{
             strcpy((input_file),argv[2]);
             strcpy((query_file),argv[4]);
             strcpy((output_file),argv[6]);
+            strcpy((algorithm),argv[8]);//should NOT be fretchet afou DEN exoume 21 orismata
+            *(delta)=atof(argv[18]);
             *(k)=4;
             *(L)=5;
-            *(N)=atoi(argv[8]);
-            *(R)=atof(argv[10]);
+            *(probes)=2;
+            *(M)=10;
+            if(strcmp(algorithm,"LSH")==0){
+                *(k)=4;
+                *(L)=5;
+
+            }else if(strcmp(algorithm,"Hypercube")==0){
+                *(k)=14;
+                *(M)=10;
+            }
 
         }
     }else{//ama den exei dothei kamia parametros apo command line tis zhtame oles apo ton xrhsth kata thn ektelesh
@@ -63,8 +104,8 @@ int input_handler(int argc, char *argv[],int* k, int* L, int* N,double* R,char (
         //default times
         *(k)=4;
         *(L)=5;
-        *(N)=1;
-        *(R)=10000;
+        *(probes)=2;
+        *(M)=10;
         printf("Type the path to the input_file: ");
         scanf("%s",(input_file));
         //printf("\n");
@@ -73,6 +114,8 @@ int input_handler(int argc, char *argv[],int* k, int* L, int* N,double* R,char (
         //printf("\n");
         printf("Type the path to the output_file: ");
         scanf("%s",(output_file));
+        printf("Type the algorithm to use: ");
+        scanf("%s",(algorithm));
 
         printf("Type the value of k or type d for default value(4) ");
         scanf("%s",temp);
@@ -87,46 +130,66 @@ int input_handler(int argc, char *argv[],int* k, int* L, int* N,double* R,char (
             }
         }
         strcpy(temp,"");
-
-        printf("Type the value of L or type d for default value(5) ");
-        scanf("%s",temp);
-        if(strcmp(temp,"d")==0)
-            *(L)=5;
-        else{
+        if(strcmp(algorithm,"LSH")==0){
+            printf("Type the value of L or type d for default value(5) ");
+            scanf("%s",temp);
+            if(strcmp(temp,"d")==0)
+                *(L)=5;
+            else{
+                if(isdigit(temp[0]))
+                    *(L)=atoi(temp);
+                else{
+                    printf("You did not enter a number or d! I will not tolerate this! Exiting...\n");
+                    return(1);
+                }
+            }
+            strcpy(temp,"");
+        }else if(strcmp(algorithm,"Hypercube")==0){
+            printf("Type the value of M or type d for default value(10) ");
+            scanf("%s",temp);
+            if(strcmp(temp,"d")==0)
+                *(M)=10;
+            else{
+                if(isdigit(temp[0]))
+                    *(M)=atoi(temp);
+                else{
+                    printf("You did not enter a number or d! I will not tolerate this! Exiting...\n");
+                    return(1);
+                }
+            }
+            strcpy(temp,"");
+            printf("Type the value of probes or type d for default value(2) ");
+            scanf("%s",temp);
+            if(strcmp(temp,"d")==0)
+                *(probes)=5;
+            else{
+                if(isdigit(temp[0]))
+                    *(probes)=atoi(temp);
+                else{
+                    printf("You did not enter a number or d! I will not tolerate this! Exiting...\n");
+                    return(1);
+                }
+            }
+            strcpy(temp,"");
+        }else if(strcmp(algorithm,"Frechet")){
+            printf("Type the metric to use: ");
+            scanf("%s",(metric));
+            printf("Type the value of delta ");
+            scanf("%s",temp);
+            
             if(isdigit(temp[0]))
-                *(L)=atoi(temp);
+                *(delta)=atoi(temp);
             else{
-                printf("You did not enter a number or d! I will not tolerate this! Exiting...\n");
+                printf("You did not enter a number! I will not tolerate this! Exiting...\n");
                 return(1);
             }
+            
+            strcpy(temp,"");
+            
+        }else{
+            cout<<"algorithm not defined. Exiting.."<<endl;
+            return 1;
         }
-        strcpy(temp,"");
-        printf("Type the value of N or type d for default value(1) ");
-         scanf("%s",temp);
-        if(strcmp(temp,"d")==0)
-            *(N)=1;
-        else{
-             if(isdigit(temp[0]))
-                *(N)=atoi(temp);
-            else{
-                printf("You did not enter a number or d! I will not tolerate this! Exiting...\n");
-                return(1);
-            }
-        }
-        strcpy(temp,"");
-        printf("Type the value of R or type d for default value(10000) ");
-         scanf("%s",temp);
-        if(strcmp(temp,"d")==0)
-            *(R)=10000;
-        else{
-             if(isdigit(temp[0]))
-                *(R)=atof(temp);
-            else{
-                printf("You did not enter a number or d! I will not tolerate this! Exiting...\n");
-                return(1);
-            }
-        }
-        strcpy(temp,"");
         //printf("\n");
     }
     return 0;
@@ -208,7 +271,7 @@ void print_vectors(vec *nvectors,int no_of_vectors,int no_of_coordinates){//voit
 }
 //synarthsh pou ektypwnei to output arxeio opws afto zhteite
 
-int print_to_file(char output_file[256],string lsh_or_hypercube,vector<vector<dist_vec>*>* dsvec2,int queries_no_of_vectors,vec* qvectors,double *time_per_query_lsh,double *time_per_query_brute,vector<vector<dist_vec>*>* dsvec3,vector<vector<dist_vec>*>* dsvec4,double R){
+int print_to_file(char output_file[256],string lsh_or_hypercube,vector<vector<dist_vec>*>* dsvec2,int queries_no_of_vectors,vec* qvectors,double *time_per_query_lsh,double *time_per_query_brute,vector<vector<dist_vec>*>* dsvec3){
     ofstream outfile;
     outfile.open(output_file);
 
@@ -237,15 +300,7 @@ int print_to_file(char output_file[256],string lsh_or_hypercube,vector<vector<di
         outfile<<"tLSH: ";
         outfile<<time_per_query_lsh[i]<<endl;
         outfile<<"tTrue: "<<time_per_query_brute[i]<<endl;
-        outfile<<R<<"-near neighbours:"<<endl;//den kserw an thelei R h thelei to noumero tou R
-
-        vector<dist_vec>* dstemp4 =(*dsvec4)[i];
-        int size4=dstemp4->size();
-        for(int r=0;r<size4;r++)//ektypwnei tous geitones pou vretikan me thn xrhsh ths lradius
-        	{
-        	dist_vec ds4=(*dstemp4)[r];
-            outfile<<ds4.vect->name<<endl;
-        	}
+        
     }
     outfile.close();
 
