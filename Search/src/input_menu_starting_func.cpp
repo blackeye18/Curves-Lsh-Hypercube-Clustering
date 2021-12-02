@@ -31,7 +31,7 @@ int argsOK(int argc, char *argv[])
     return 0;
 }
 //h synarthsh eixe graftei se c kathws sthn arxh ksekinisame to project se c kai oxi se c++
-int input_handler(int argc, char *argv[],int* k, int* L,int* probes,double* delta,int* M,char (&metric)[256],char (&input_file)[256], char (&query_file)[256], char (&output_file)[256],char (&algorithm)[256]){
+int input_handler(int argc, char *argv[],int* k, int* L,int* probes,double* delta,int* M,char (&metricfr)[256],char (&input_file)[256], char (&query_file)[256], char (&output_file)[256],char (&algorithm)[256]){
     char temp[256];
     if(argsOK(argc,argv)){
         if(argc==21){//an exoun dothei oloi oi parametroi apo command line
@@ -53,7 +53,7 @@ int input_handler(int argc, char *argv[],int* k, int* L,int* probes,double* delt
             if(*(probes)==0)
                 *(probes)=1;
             strcpy((algorithm),argv[16]);//should be fretchet afou exoume 21 orismata
-            strcpy((metric),argv[18]);
+            strcpy((metricfr),argv[18]);
             *(delta)=atof(argv[20]);
 
             //*(N)=atoi(argv[12]);
@@ -76,7 +76,7 @@ int input_handler(int argc, char *argv[],int* k, int* L,int* probes,double* delt
             if(*(probes)==0)
                 *(probes)=1;
             strcpy((algorithm),argv[16]);//should NOT be fretchet afou DEN exoume 21 orismata
-            //strcpy((metric),argv[18]);
+            //strcpy((metricfr),argv[18]);
             *(delta)=atof(argv[18]);
 
         }else{
@@ -173,7 +173,7 @@ int input_handler(int argc, char *argv[],int* k, int* L,int* probes,double* delt
             strcpy(temp,"");
         }else if(strcmp(algorithm,"Frechet")){
             printf("Type the metric to use: ");
-            scanf("%s",(metric));
+            scanf("%s",(metricfr));
             printf("Type the value of delta ");
             scanf("%s",temp);
             
@@ -338,7 +338,7 @@ int repeat_handler(vec* nvectors, vec* qvectors,char* input_file,char*query_file
             strcpy(output_file,temp);
             delete [] nvectors;
             delete [] qvectors;
-            if(alg_flag==1)
+            if(alg_flag==1 || alg_flag==3)
                 delete lht;
             else if (alg_flag==2)
                 delete cube;
@@ -352,7 +352,7 @@ int repeat_handler(vec* nvectors, vec* qvectors,char* input_file,char*query_file
             scanf("%s",temp);
             strcpy(output_file,temp);
             delete [] nvectors;
-             if(alg_flag==1)
+             if(alg_flag==1 || alg_flag==3)
                 delete lht;
             else if (alg_flag==2)
                 delete cube;

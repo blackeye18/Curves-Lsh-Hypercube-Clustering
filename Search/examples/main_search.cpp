@@ -22,20 +22,96 @@ using namespace std::chrono;
 #include "knn_ranges_brutes.hpp"
 
 
+vec* snapping(vec* nvectors,int no_of_coordinates,int no_of_vectors,double delta){
+    vector<vector<vector<double>>> temp;
+    temp.resize(no_of_vectors,vector<vector<double> >(no_of_coordinates,vector<double>(2)));////resize analoga 
+    for(int i=0;i<no_of_vectors;i++){//kanw adistoixish me meres 
+        for(int j=0;j<no_of_coordinates;j++){
+            temp[i][j][0]=(j);
+            temp[i][j][1]=nvectors[i].coord[j];
+        }
+    }
+    // for(int j=0;j<no_of_coordinates;j++){
+    //     //cout<<temp[1][j].size()<<endl;
+    //         for(int k=0;k<temp[1][j].size();k++){
+    //            cout<<temp[1][j][k]<<endl;
+    //         }
+    //     cout<<endl<<endl<<endl;
+    //         //temp[1][j].push_back(j);
+    //         //temp[1][j].push_back(nvectors[i].coord[j]);
+    //     }
+
+    int same_counter=0;
+    double prev1=0,prev2=0;
+    int first_flag=0;
+    vector<vector<vector<double>>> temp2;
+    temp2.resize(no_of_vectors,vector<vector<double> >(no_of_coordinates));////resize analoga 
+    for(int i=0;i<no_of_vectors;i++){//kanw adistoixish me meres 
+        first_flag=0;
+
+        for(int j=0;j<no_of_coordinates;j++){
+            if(first_flag==0){
+                temp2[i][j].push_back(floor((temp[i][j][0]/delta)+1/2));
+                temp2[i][j].push_back(floor((temp[i][j][1]/delta)+1/2));
+                prev1=temp2[i][j][0];
+                prev2=temp2[i][j][1];
+                first_flag=1;
+            }else{
+                double temphold1,temphold2;
+                temphold1=(floor((temp[i][j][0]/delta)+1/2));
+                temphold2=(floor((temp[i][j][1]/delta)+1/2));
+                if(temphold1==prev1 && temphold2==prev2){
+                    same_counter++;
+                }else{
+                    temp2[i][j].push_back(temphold1);
+                    temp2[i][j].push_back(temphold2);
+                    prev1=temphold1;
+                    prev2=temphold2;
+                }
+
+            }
+        }
+    }
+    //cout<<same_counter<<endl;
+    //cout<<temp2[0][1].size()<<endl;
+    vec* newnvectors;
+    newnvectors = new vec[no_of_vectors];//desmevoume xwro gia ta vectors
+    for(int i=0;i<no_of_vectors;i++){
+        newnvectors[i].name=nvectors[i].name;
+    }
+    for(int i=0;i<no_of_vectors;i++){
+        for(int j=0;j<no_of_coordinates;j++){
+            for(int k=0;k<temp2[i][j].size();k++){
+                newnvectors[i].coord.push_back(temp2[i][j][k]);
+
+            }
+        }
+    }
+    for(int i=0;i<no_of_vectors;i++){
+        int tempint=newnvectors[i].coord.size();
+        while(tempint!=no_of_coordinates*2){
+            newnvectors[i].coord.push_back(1234);
+            newnvectors[i].coord.push_back(1234);
+            tempint=newnvectors[i].coord.size();
+        }
+    }
+    delete [] nvectors;
+    for(int i=0;i<no_of_vectors;i++){
+        cout<<newnvectors[i].name<<endl;
+    }
+    return newnvectors;
+}
+
+
+
+
+
+
 
 int main(int argc, char *argv[]){
-    //char input_file[256],query_file[256],output_file[256],temp[256];
-    //int k,L,N;
-    //int N=1;
-   // double R;
-    
-    
-    //int ret;
-
-    
     double delta;
     int L,k,M,probes,N=1;
-    char input_file[256],query_file[256],output_file[256],metric[256],algorithm[256];
+    char input_file[256],query_file[256],output_file[256],metricfr[256],algorithm[256];
     vec* nvectors;
     vec* qvectors;
     int no_of_vectors,no_of_coordinates;
@@ -44,30 +120,72 @@ int main(int argc, char *argv[]){
     hypercube *cube=NULL;
 
     int alg_flag=0;//1 gia LSH 2 gia Hypercube 3 gia Frechet
+    int metricfr_flag=0;//1 gia discrete 2 gia cont
 
     string lsh_or_hypercube="";
 
     
-    if(input_handler(argc,argv,&k,&L,&probes,&delta,&M,metric,(input_file), query_file, output_file,algorithm))//elegxei an ta orismata exoun dothei apo thn grammh h prepei na ta zhthsei
+    if(input_handler(argc,argv,&k,&L,&probes,&delta,&M,metricfr,(input_file), query_file, output_file,algorithm))//elegxei an ta orismata exoun dothei apo thn grammh h prepei na ta zhthsei
         return -1;
 
-    printf("input_file: %s, query_file: %s, output_file: %s,k:%d,L:%d,probes:%d,delta:%.2f,M:%d,metric: %s,algorithm: %s\n",input_file,query_file,output_file,k,L,probes,delta,M,metric,algorithm);
+    printf("input_file: %s, query_file: %s, output_file: %s,k:%d,L:%d,probes:%d,delta:%.2f,M:%d,metric: %s,algorithm: %s\n",input_file,query_file,output_file,k,L,probes,delta,M,metricfr,algorithm);
     
     if(strcmp(algorithm,"LSH")==0)
         alg_flag=1;
     else if(strcmp(algorithm,"Hypercube")==0)
         alg_flag=2;
-    else if(strcmp(algorithm,"Frechet")==0)
+    else if(strcmp(algorithm,"Frechet")==0){
         alg_flag=3;
+        if(strcmp(metricfr,"discrete")==0){
+            metricfr_flag=1;
+        }else if(strcmp(metricfr,"continuous")==0){
+            metricfr_flag=2;
+        }else{
+            cout<<"Unknown metric. Exiting."<<endl;
+            return -1;
+        }
+    }
     else{
         cout<<"Unknown algorithm. Exiting."<<endl;
         return -1;
     }
-    if(alg_flag==1 || alg_flag==2){
+
+
+    // if(alg_flag==3 ){
+    //     lsh_or_hypercube="distanceLSH: ";//string gia thn ektypwsh sto output file
+
+    //     nvectors=open_and_create_vectors(input_file,&no_of_coordinates,&no_of_vectors);//diavazoume to arxeio kai to apothikevvoume
+    //         if(nvectors==NULL)
+    //             return -1;
+    //     printf("Input:: no_of_vectors: %d, no_of_coordinates: %d\n",no_of_vectors,no_of_coordinates);
+    //     nvectors=snapping(nvectors,no_of_coordinates,no_of_vectors,delta);
+    //     no_of_coordinates=no_of_coordinates*2;
+
+    //     qvectors=open_and_create_vectors(query_file,&queries_no_of_coordinates,&queries_no_of_vectors);//diavazoume to arxeio kai to apothikevoume
+    //         if(qvectors==NULL)
+    //             return -1;
+    //     printf("Queries:: queries_no_of_vectors: %d, queries_no_of_coordinates: %d\n",queries_no_of_vectors,queries_no_of_coordinates);
+    //     qvectors=snapping(qvectors,queries_no_of_coordinates,queries_no_of_vectors,delta);
+    //     queries_no_of_coordinates=queries_no_of_coordinates*2;
+
+    //     delete [] nvectors;
+    //     delete [] qvectors;
+
+    // }
+
+
+    //Kwdikas gia Ai 
+    //if(alg_flag==1 || alg_flag==2){
         if(alg_flag==1)
-            lsh_or_hypercube="distanceLSH: ";//string gia thn ektypwsh sto output file
-        else
-            lsh_or_hypercube="distanceHypercube: "; 
+            lsh_or_hypercube="LSH_Vector";//string gia thn ektypwsh sto output file
+        else if(alg_flag==2)
+            lsh_or_hypercube="Hypercube"; 
+        else if(alg_flag==3){
+            if(metricfr_flag==1)
+                lsh_or_hypercube=" LSH_Frechet_Discrete"; 
+            else
+                lsh_or_hypercube="LSH_Frechet_Continuous"; 
+        }
 
         int flag=0;//flag gia to menu
         while(flag!=-1){
@@ -79,6 +197,10 @@ int main(int argc, char *argv[]){
                 if(nvectors==NULL)
                     return -1;
                 printf("Input:: no_of_vectors: %d, no_of_coordinates: %d\n",no_of_vectors,no_of_coordinates);
+                if(alg_flag==3){
+                    nvectors=snapping(nvectors,no_of_coordinates,no_of_vectors,delta);
+                    no_of_coordinates=no_of_coordinates*2;
+                }
             }
            // cout<<"sdasdsds"<<endl;
 
@@ -87,6 +209,10 @@ int main(int argc, char *argv[]){
                 if(qvectors==NULL)
                     return -1;
                 printf("Queries:: queries_no_of_vectors: %d, queries_no_of_coordinates: %d\n",queries_no_of_vectors,queries_no_of_coordinates);
+                if(alg_flag==3){
+                    qvectors=snapping(qvectors,queries_no_of_coordinates,queries_no_of_vectors,delta);
+                    queries_no_of_coordinates=queries_no_of_coordinates*2;
+                }
             }
 
             cout<<"Now using "<<algorithm<<" and KNN"<<endl;
@@ -160,12 +286,12 @@ int main(int argc, char *argv[]){
         dsvec3->clear();delete dsvec3;
         //dsvec4->clear();delete dsvec4;
         }
-        if(alg_flag==1)
+        if(alg_flag==1 || alg_flag==3)
             delete lht;
         if(alg_flag==2)
             delete cube;
             
         delete [] nvectors;
         delete [] qvectors;
-    }
+    //}
 }
