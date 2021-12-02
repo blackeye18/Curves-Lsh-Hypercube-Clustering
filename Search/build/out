@@ -1,600 +1,600 @@
 Query: 1
-Nearest neighbour-1: btec
-LSH_Vector381.87
+Nearest neighbour-1: bsx
+LSH_Vector383.367
 distanceTrue: 379.52
-tLSH: 0.000180532
-tTrue: 0.013525
+tLSH: 0.000153262
+tTrue: 0.014554
 Query: 2
-Nearest neighbour-1: jsmd
-LSH_Vector357.896
+Nearest neighbour-1: wtr
+LSH_Vector357.547
 distanceTrue: 354.968
-tLSH: 0.000262532
-tTrue: 0.016325
+tLSH: 0.000177262
+tTrue: 0.015469
 Query: 3
-Nearest neighbour-1: mnr_c
-LSH_Vector412.136
-distanceTrue: 407.255
-tLSH: 0.000206532
-tTrue: 0.015645
-Query: 4
-Nearest neighbour-1: schn
-LSH_Vector392.728
-distanceTrue: 390.784
-tLSH: 0.000240532
-tTrue: 0.015053
-Query: 5
-Nearest neighbour-1: srdx
-LSH_Vector402.653
-distanceTrue: 395.945
-tLSH: 0.000191532
-tTrue: 0.013431
-Query: 6
-Nearest neighbour-1: flqe
-LSH_Vector370.335
-distanceTrue: 368.097
-tLSH: 0.000165532
-tTrue: 0.014589
-Query: 7
-Nearest neighbour-1: fe
-LSH_Vector371.377
-distanceTrue: 368.431
-tLSH: 0.000192532
-tTrue: 0.01301
-Query: 8
-Nearest neighbour-1: fgbi
-LSH_Vector422.828
-distanceTrue: 416.707
-tLSH: 0.000198532
-tTrue: 0.012238
-Query: 9
-Nearest neighbour-1: tcmd
-LSH_Vector374.461
-distanceTrue: 366.031
-tLSH: 0.000154532
-tTrue: 0.013718
-Query: 10
-Nearest neighbour-1: tx
-LSH_Vector398.592
-distanceTrue: 394.775
-tLSH: 0.000340532
-tTrue: 0.012398
-Query: 11
-Nearest neighbour-1: sovb
-LSH_Vector382.015
-distanceTrue: 379.392
-tLSH: 0.000298532
-tTrue: 0.013131
-Query: 12
-Nearest neighbour-1: pfgc
-LSH_Vector389.014
-distanceTrue: 387.475
-tLSH: 0.000252532
-tTrue: 0.01382
-Query: 13
-Nearest neighbour-1: infr
-LSH_Vector383.045
-distanceTrue: 380.823
-tLSH: 0.000290532
-tTrue: 0.01478
-Query: 14
-Nearest neighbour-1: esgs
-LSH_Vector389.073
-distanceTrue: 384.24
-tLSH: 0.000236532
-tTrue: 0.015794
-Query: 15
-Nearest neighbour-1: grif
-LSH_Vector359.247
-distanceTrue: 354.497
-tLSH: 0.000235532
-tTrue: 0.01667
-Query: 16
-Nearest neighbour-1: dwlv
-LSH_Vector382.002
-distanceTrue: 379.173
-tLSH: 0.000176532
-tTrue: 0.013845
-Query: 17
-Nearest neighbour-1: snbr
-LSH_Vector365.105
-distanceTrue: 360.29
-tLSH: 0.000159532
-tTrue: 0.013695
-Query: 18
-Nearest neighbour-1: tx
-LSH_Vector373.405
-distanceTrue: 370.607
-tLSH: 0.000219532
-tTrue: 0.014186
-Query: 19
-Nearest neighbour-1: fr
-LSH_Vector356.239
-distanceTrue: 348.325
-tLSH: 0.000191532
-tTrue: 0.016036
-Query: 20
-Nearest neighbour-1: fdlo
-LSH_Vector378.839
-distanceTrue: 375.281
-tLSH: 0.000273532
-tTrue: 0.016304
-Query: 21
-Nearest neighbour-1: psa_e
-LSH_Vector422.422
-distanceTrue: 414.301
-tLSH: 0.000605532
-tTrue: 0.015462
-Query: 22
-Nearest neighbour-1: zb_a
-LSH_Vector424.754
-distanceTrue: 417.863
-tLSH: 0.000263532
-tTrue: 0.015639
-Query: 23
-Nearest neighbour-1: hseb
-LSH_Vector410.832
-distanceTrue: 406.857
-tLSH: 0.000242532
-tTrue: 0.016476
-Query: 24
-Nearest neighbour-1: invh
-LSH_Vector428.584
-distanceTrue: 424.751
-tLSH: 0.000209532
-tTrue: 0.01627
-Query: 25
-Nearest neighbour-1: wrb_d
-LSH_Vector401.829
-distanceTrue: 400.099
-tLSH: 0.000262532
-tTrue: 0.01565
-Query: 26
-Nearest neighbour-1: hvt
-LSH_Vector403.811
-distanceTrue: 397.769
-tLSH: 0.000198532
-tTrue: 0.015983
-Query: 27
-Nearest neighbour-1: gblil
-LSH_Vector421.247
-distanceTrue: 418.186
-tLSH: 0.000211532
-tTrue: 0.015805
-Query: 28
-Nearest neighbour-1: wbk
-LSH_Vector415.474
-distanceTrue: 412.005
-tLSH: 0.000247532
-tTrue: 0.016002
-Query: 29
-Nearest neighbour-1: esgl
-LSH_Vector421.568
-distanceTrue: 418.571
-tLSH: 0.000181532
-tTrue: 0.016897
-Query: 30
-Nearest neighbour-1: batra
-LSH_Vector438.394
-distanceTrue: 433.815
-tLSH: 0.000277532
-tTrue: 0.015554
-Query: 31
-Nearest neighbour-1: foxa
-LSH_Vector400.822
-distanceTrue: 396.35
-tLSH: 0.000203532
-tTrue: 0.015548
-Query: 32
-Nearest neighbour-1: ipb
-LSH_Vector406.57
-distanceTrue: 403.78
-tLSH: 0.000342532
-tTrue: 0.015576
-Query: 33
-Nearest neighbour-1: yndx
-LSH_Vector391.123
-distanceTrue: 384.972
-tLSH: 0.000250532
-tTrue: 0.013599
-Query: 34
-Nearest neighbour-1: ctdd
-LSH_Vector406.018
-distanceTrue: 402.704
-tLSH: 0.000188532
-tTrue: 0.01444
-Query: 35
-Nearest neighbour-1: infr
-LSH_Vector387.162
-distanceTrue: 385.536
-tLSH: 0.000255532
-tTrue: 0.013473
-Query: 36
-Nearest neighbour-1: alco
-LSH_Vector360.714
-distanceTrue: 357.578
-tLSH: 0.000378532
-tTrue: 0.013968
-Query: 37
-Nearest neighbour-1: fncf
-LSH_Vector356.395
-distanceTrue: 353.928
-tLSH: 0.000266532
-tTrue: 0.012868
-Query: 38
-Nearest neighbour-1: omi
-LSH_Vector392.404
-distanceTrue: 386.55
-tLSH: 0.000365532
-tTrue: 0.012397
-Query: 39
-Nearest neighbour-1: ms_i
-LSH_Vector392.023
-distanceTrue: 389.156
-tLSH: 0.000186532
-tTrue: 0.013299
-Query: 40
-Nearest neighbour-1: atu
-LSH_Vector426.793
-distanceTrue: 423.149
-tLSH: 0.000169532
-tTrue: 0.013583
-Query: 41
-Nearest neighbour-1: cj
-LSH_Vector377.243
-distanceTrue: 375.505
-tLSH: 0.000351532
-tTrue: 0.013072
-Query: 42
-Nearest neighbour-1: agm_c
-LSH_Vector407.544
-distanceTrue: 404.332
-tLSH: 0.000232532
-tTrue: 0.012407
-Query: 43
-Nearest neighbour-1: afst
-LSH_Vector411.271
-distanceTrue: 405.44
-tLSH: 0.000291532
-tTrue: 0.013119
-Query: 44
-Nearest neighbour-1: inbk
-LSH_Vector361.797
-distanceTrue: 358.567
-tLSH: 0.000184532
-tTrue: 0.013569
-Query: 45
-Nearest neighbour-1: anh_c
-LSH_Vector426.223
-distanceTrue: 419.682
-tLSH: 0.000174532
-tTrue: 0.012914
-Query: 46
-Nearest neighbour-1: banfp
-LSH_Vector426.048
-distanceTrue: 421.6
-tLSH: 0.000200532
-tTrue: 0.012395
-Query: 47
-Nearest neighbour-1: evi
-LSH_Vector419.569
-distanceTrue: 413.976
-tLSH: 0.000279532
-tTrue: 0.013635
-Query: 48
-Nearest neighbour-1: gnty
-LSH_Vector337.081
-distanceTrue: 332.596
-tLSH: 0.000240532
-tTrue: 0.014694
-Query: 49
-Nearest neighbour-1: pko
-LSH_Vector406.999
-distanceTrue: 403.223
-tLSH: 0.000246532
-tTrue: 0.012924
-Query: 50
-Nearest neighbour-1: acu
-LSH_Vector420.92
-distanceTrue: 420.92
-tLSH: 0.000215532
-tTrue: 0.013638
-Query: 51
-Nearest neighbour-1: vbtx
-LSH_Vector418.004
-distanceTrue: 415.898
-tLSH: 0.000303532
-tTrue: 0.015026
-Query: 52
-Nearest neighbour-1: entg
-LSH_Vector401.377
-distanceTrue: 398.66
-tLSH: 0.000313532
-tTrue: 0.014026
-Query: 53
-Nearest neighbour-1: mmi
-LSH_Vector409.42
-distanceTrue: 406.255
-tLSH: 0.000238532
-tTrue: 0.013872
-Query: 54
-Nearest neighbour-1: lpx
-LSH_Vector419.433
-distanceTrue: 413.51
-tLSH: 0.000241532
-tTrue: 0.014277
-Query: 55
-Nearest neighbour-1: mtt
-LSH_Vector430.319
-distanceTrue: 424.212
-tLSH: 0.000245532
-tTrue: 0.016322
-Query: 56
-Nearest neighbour-1: spke
-LSH_Vector436.334
-distanceTrue: 432.139
-tLSH: 0.000164532
-tTrue: 0.016812
-Query: 57
-Nearest neighbour-1: vrtu
-LSH_Vector389.01
-distanceTrue: 381.11
-tLSH: 0.000196532
-tTrue: 0.014762
-Query: 58
-Nearest neighbour-1: cnya
-LSH_Vector396.002
-distanceTrue: 392.011
-tLSH: 0.000205532
-tTrue: 0.016728
-Query: 59
-Nearest neighbour-1: matx
-LSH_Vector382.115
-distanceTrue: 379.003
-tLSH: 0.000171532
-tTrue: 0.015093
-Query: 60
-Nearest neighbour-1: eot
-LSH_Vector461.693
-distanceTrue: 457.786
-tLSH: 0.000199532
-tTrue: 0.015454
-Query: 61
-Nearest neighbour-1: btec
-LSH_Vector392.96
-distanceTrue: 385.007
-tLSH: 0.000171532
-tTrue: 0.01504
-Query: 62
-Nearest neighbour-1: qvcb
-LSH_Vector439.724
-distanceTrue: 437.22
-tLSH: 0.000231532
-tTrue: 0.014556
-Query: 63
-Nearest neighbour-1: bci
-LSH_Vector431.999
-distanceTrue: 426.585
-tLSH: 0.000195532
-tTrue: 0.013994
-Query: 64
-Nearest neighbour-1: dm
-LSH_Vector419.736
-distanceTrue: 416.033
-tLSH: 0.000224532
-tTrue: 0.017731
-Query: 65
-Nearest neighbour-1: ppc
-LSH_Vector411.575
-distanceTrue: 403.849
-tLSH: 0.000206532
-tTrue: 0.014829
-Query: 66
-Nearest neighbour-1: upld
-LSH_Vector417.823
-distanceTrue: 414.65
-tLSH: 0.000177532
-tTrue: 0.014674
-Query: 67
-Nearest neighbour-1: cog
-LSH_Vector423.855
-distanceTrue: 416.138
-tLSH: 0.000188532
-tTrue: 0.01301
-Query: 68
-Nearest neighbour-1: acu
-LSH_Vector421.797
-distanceTrue: 420.488
-tLSH: 0.000191532
-tTrue: 0.012958
-Query: 69
-Nearest neighbour-1: wbie
-LSH_Vector431.229
-distanceTrue: 424.197
-tLSH: 0.000203532
-tTrue: 0.011274
-Query: 70
-Nearest neighbour-1: bbby
-LSH_Vector390.415
-distanceTrue: 388.501
-tLSH: 0.000184532
-tTrue: 0.011599
-Query: 71
-Nearest neighbour-1: adms
-LSH_Vector448.376
-distanceTrue: 444.006
-tLSH: 0.000172532
-tTrue: 0.012018
-Query: 72
-Nearest neighbour-1: rlgt_a
-LSH_Vector412.228
-distanceTrue: 397.048
-tLSH: 0.000182532
-tTrue: 0.012018
-Query: 73
-Nearest neighbour-1: nusc
-LSH_Vector388.118
-distanceTrue: 386.08
-tLSH: 0.000237532
-tTrue: 0.013014
-Query: 74
-Nearest neighbour-1: rexr
-LSH_Vector385.165
-distanceTrue: 380.223
-tLSH: 0.000242532
-tTrue: 0.012084
-Query: 75
-Nearest neighbour-1: jpih
-LSH_Vector379.378
-distanceTrue: 376.512
-tLSH: 0.000205532
-tTrue: 0.013073
-Query: 76
-Nearest neighbour-1: jpih
-LSH_Vector387.191
-distanceTrue: 383.032
-tLSH: 0.000179532
-tTrue: 0.012501
-Query: 77
-Nearest neighbour-1: cli
-LSH_Vector419.297
-distanceTrue: 416.928
-tLSH: 0.000174532
-tTrue: 0.014025
-Query: 78
-Nearest neighbour-1: mime
-LSH_Vector381.521
-distanceTrue: 379.865
-tLSH: 0.000193532
-tTrue: 0.011728
-Query: 79
-Nearest neighbour-1: cbshp
-LSH_Vector417.206
-distanceTrue: 413.719
-tLSH: 0.000160532
-tTrue: 0.0122
-Query: 80
-Nearest neighbour-1: bak
-LSH_Vector448.452
-distanceTrue: 441.71
-tLSH: 0.000205532
-tTrue: 0.011798
-Query: 81
-Nearest neighbour-1: epd
-LSH_Vector415.524
-distanceTrue: 408.805
-tLSH: 0.000318532
-tTrue: 0.011493
-Query: 82
-Nearest neighbour-1: swin
-LSH_Vector391.637
-distanceTrue: 386.192
-tLSH: 0.000221532
-tTrue: 0.012651
-Query: 83
-Nearest neighbour-1: vmin
-LSH_Vector371.692
-distanceTrue: 366.64
-tLSH: 0.000223532
-tTrue: 0.011534
-Query: 84
-Nearest neighbour-1: elc
-LSH_Vector417.218
-distanceTrue: 411.176
-tLSH: 0.000229532
-tTrue: 0.011743
-Query: 85
-Nearest neighbour-1: fdrr
-LSH_Vector393.654
-distanceTrue: 389.26
-tLSH: 0.000175532
-tTrue: 0.011617
-Query: 86
-Nearest neighbour-1: rgnx
-LSH_Vector419.249
-distanceTrue: 399.541
-tLSH: 0.000479532
-tTrue: 0.01151
-Query: 87
-Nearest neighbour-1: san_b
-LSH_Vector406.632
-distanceTrue: 396.763
-tLSH: 0.000292532
-tTrue: 0.011569
-Query: 88
-Nearest neighbour-1: lob
-LSH_Vector435.055
-distanceTrue: 421.137
-tLSH: 0.000656532
-tTrue: 0.012028
-Query: 89
-Nearest neighbour-1: ipg
-LSH_Vector424.457
-distanceTrue: 417.494
-tLSH: 0.000158532
-tTrue: 0.011787
-Query: 90
-Nearest neighbour-1: bpopm
-LSH_Vector433.726
-distanceTrue: 428.161
-tLSH: 0.000178532
-tTrue: 0.013238
-Query: 91
-Nearest neighbour-1: nwfl
-LSH_Vector420.189
-distanceTrue: 418.307
-tLSH: 0.000237532
-tTrue: 0.01222
-Query: 92
-Nearest neighbour-1: schn
-LSH_Vector420.073
-distanceTrue: 413.644
-tLSH: 0.000237532
-tTrue: 0.011564
-Query: 93
-Nearest neighbour-1: ergf
-LSH_Vector401.131
-distanceTrue: 396.285
-tLSH: 0.000236532
-tTrue: 0.012327
-Query: 94
-Nearest neighbour-1: mur
-LSH_Vector419.646
-distanceTrue: 415.886
-tLSH: 0.000182532
-tTrue: 0.011587
-Query: 95
-Nearest neighbour-1: wve
-LSH_Vector435.493
-distanceTrue: 432.786
-tLSH: 0.000223532
-tTrue: 0.011487
-Query: 96
-Nearest neighbour-1: fdrr
-LSH_Vector384.466
-distanceTrue: 382.512
-tLSH: 0.000357532
-tTrue: 0.011549
-Query: 97
-Nearest neighbour-1: hfwa
-LSH_Vector401.756
-distanceTrue: 396.282
-tLSH: 0.000162532
-tTrue: 0.011518
-Query: 98
 Nearest neighbour-1: hcom
-LSH_Vector373.849
+LSH_Vector411.833
+distanceTrue: 407.255
+tLSH: 0.000267262
+tTrue: 0.016518
+Query: 4
+Nearest neighbour-1: ctx
+LSH_Vector394.791
+distanceTrue: 390.784
+tLSH: 0.000148262
+tTrue: 0.014328
+Query: 5
+Nearest neighbour-1: acrs
+LSH_Vector402.097
+distanceTrue: 395.945
+tLSH: 0.000167262
+tTrue: 0.012631
+Query: 6
+Nearest neighbour-1: gpt
+LSH_Vector371.204
+distanceTrue: 368.097
+tLSH: 0.000154262
+tTrue: 0.013131
+Query: 7
+Nearest neighbour-1: bxs
+LSH_Vector372.221
+distanceTrue: 368.431
+tLSH: 0.000153262
+tTrue: 0.012515
+Query: 8
+Nearest neighbour-1: pdvw
+LSH_Vector421.728
+distanceTrue: 416.707
+tLSH: 0.000141262
+tTrue: 0.01244
+Query: 9
+Nearest neighbour-1: idhd
+LSH_Vector376.059
+distanceTrue: 366.031
+tLSH: 0.000165262
+tTrue: 0.012377
+Query: 10
+Nearest neighbour-1: epr_c
+LSH_Vector399.055
+distanceTrue: 394.775
+tLSH: 0.000155262
+tTrue: 0.012294
+Query: 11
+Nearest neighbour-1: sbgi
+LSH_Vector380.705
+distanceTrue: 379.392
+tLSH: 0.000354262
+tTrue: 0.013617
+Query: 12
+Nearest neighbour-1: dezu
+LSH_Vector389.254
+distanceTrue: 387.475
+tLSH: 0.000330262
+tTrue: 0.012156
+Query: 13
+Nearest neighbour-1: gseu
+LSH_Vector383.393
+distanceTrue: 380.823
+tLSH: 0.000178262
+tTrue: 0.012347
+Query: 14
+Nearest neighbour-1: gbl
+LSH_Vector389.79
+distanceTrue: 384.24
+tLSH: 0.000190262
+tTrue: 0.012337
+Query: 15
+Nearest neighbour-1: syf
+LSH_Vector358.889
+distanceTrue: 354.497
+tLSH: 0.000213262
+tTrue: 0.012969
+Query: 16
+Nearest neighbour-1: hcrf
+LSH_Vector381.167
+distanceTrue: 379.173
+tLSH: 0.000171262
+tTrue: 0.01441
+Query: 17
+Nearest neighbour-1: bhe
+LSH_Vector365.86
+distanceTrue: 360.29
+tLSH: 0.000158262
+tTrue: 0.015207
+Query: 18
+Nearest neighbour-1: sbgi
+LSH_Vector373.843
+distanceTrue: 370.607
+tLSH: 0.000212262
+tTrue: 0.013264
+Query: 19
+Nearest neighbour-1: arow
+LSH_Vector356.858
+distanceTrue: 348.325
+tLSH: 0.000170262
+tTrue: 0.012737
+Query: 20
+Nearest neighbour-1: ll
+LSH_Vector377.887
+distanceTrue: 375.281
+tLSH: 0.000180262
+tTrue: 0.01274
+Query: 21
+Nearest neighbour-1: san_b
+LSH_Vector422.048
+distanceTrue: 414.301
+tLSH: 0.000679262
+tTrue: 0.013287
+Query: 22
+Nearest neighbour-1: idmo
+LSH_Vector424.805
+distanceTrue: 417.863
+tLSH: 0.000147262
+tTrue: 0.012432
+Query: 23
+Nearest neighbour-1: acsi
+LSH_Vector411.901
+distanceTrue: 406.857
+tLSH: 0.000140262
+tTrue: 0.013465
+Query: 24
+Nearest neighbour-1: ab
+LSH_Vector427.747
+distanceTrue: 424.751
+tLSH: 0.000143262
+tTrue: 0.012146
+Query: 25
+Nearest neighbour-1: hfbl
+LSH_Vector400.585
+distanceTrue: 400.099
+tLSH: 0.000272262
+tTrue: 0.012444
+Query: 26
+Nearest neighbour-1: asps
+LSH_Vector403.001
+distanceTrue: 397.769
+tLSH: 0.000210262
+tTrue: 0.012344
+Query: 27
+Nearest neighbour-1: gel
+LSH_Vector419.839
+distanceTrue: 418.186
+tLSH: 0.000144262
+tTrue: 0.012374
+Query: 28
+Nearest neighbour-1: bgca
+LSH_Vector415.771
+distanceTrue: 412.005
+tLSH: 0.000164262
+tTrue: 0.012184
+Query: 29
+Nearest neighbour-1: rvnc
+LSH_Vector419.921
+distanceTrue: 418.571
+tLSH: 0.000188262
+tTrue: 0.012381
+Query: 30
+Nearest neighbour-1: atrc
+LSH_Vector438.285
+distanceTrue: 433.815
+tLSH: 0.000192262
+tTrue: 0.01294
+Query: 31
+Nearest neighbour-1: arrs
+LSH_Vector400.665
+distanceTrue: 396.35
+tLSH: 0.000170262
+tTrue: 0.012563
+Query: 32
+Nearest neighbour-1: discb
+LSH_Vector406.886
+distanceTrue: 403.78
+tLSH: 0.000166262
+tTrue: 0.012372
+Query: 33
+Nearest neighbour-1: azul
+LSH_Vector390.225
+distanceTrue: 384.972
+tLSH: 0.000230262
+tTrue: 0.012256
+Query: 34
+Nearest neighbour-1: gdv_a
+LSH_Vector405.636
+distanceTrue: 402.704
+tLSH: 0.000168262
+tTrue: 0.01229
+Query: 35
+Nearest neighbour-1: btu
+LSH_Vector387.859
+distanceTrue: 385.536
+tLSH: 0.000207262
+tTrue: 0.013203
+Query: 36
+Nearest neighbour-1: qdel
+LSH_Vector357.694
+distanceTrue: 357.578
+tLSH: 0.000151262
+tTrue: 0.013312
+Query: 37
+Nearest neighbour-1: pcg_a
+LSH_Vector356.65
+distanceTrue: 353.928
+tLSH: 0.000161262
+tTrue: 0.01286
+Query: 38
+Nearest neighbour-1: epr_c
+LSH_Vector395.017
+distanceTrue: 386.55
+tLSH: 0.000179262
+tTrue: 0.012631
+Query: 39
+Nearest neighbour-1: btec
+LSH_Vector391.857
+distanceTrue: 389.156
+tLSH: 0.000237262
+tTrue: 0.012478
+Query: 40
+Nearest neighbour-1: bhvn
+LSH_Vector424.957
+distanceTrue: 423.149
+tLSH: 0.000152262
+tTrue: 0.012803
+Query: 41
+Nearest neighbour-1: pui
+LSH_Vector377.571
+distanceTrue: 375.505
+tLSH: 0.000190262
+tTrue: 0.012341
+Query: 42
+Nearest neighbour-1: afsi_c
+LSH_Vector407.061
+distanceTrue: 404.332
+tLSH: 0.000130262
+tTrue: 0.012635
+Query: 43
+Nearest neighbour-1: hewl
+LSH_Vector410.319
+distanceTrue: 405.44
+tLSH: 0.000206262
+tTrue: 0.014278
+Query: 44
+Nearest neighbour-1: mgm
+LSH_Vector360.969
+distanceTrue: 358.567
+tLSH: 0.000179262
+tTrue: 0.014081
+Query: 45
+Nearest neighbour-1: sgza
+LSH_Vector426.427
+distanceTrue: 419.682
+tLSH: 0.000160262
+tTrue: 0.013188
+Query: 46
+Nearest neighbour-1: psa_x
+LSH_Vector426.92
+distanceTrue: 421.6
+tLSH: 0.000256262
+tTrue: 0.014242
+Query: 47
+Nearest neighbour-1: bhvn
+LSH_Vector419.237
+distanceTrue: 413.976
+tLSH: 0.000154262
+tTrue: 0.014087
+Query: 48
+Nearest neighbour-1: arow
+LSH_Vector336.116
+distanceTrue: 332.596
+tLSH: 0.000150262
+tTrue: 0.015208
+Query: 49
+Nearest neighbour-1: ois
+LSH_Vector406.623
+distanceTrue: 403.223
+tLSH: 0.000148262
+tTrue: 0.013516
+Query: 50
+Nearest neighbour-1: gjv
+LSH_Vector422.944
+distanceTrue: 420.92
+tLSH: 0.000174262
+tTrue: 0.014266
+Query: 51
+Nearest neighbour-1: glog_a
+LSH_Vector417.627
+distanceTrue: 415.898
+tLSH: 0.000213262
+tTrue: 0.013694
+Query: 52
+Nearest neighbour-1: hcc
+LSH_Vector402.784
+distanceTrue: 398.66
+tLSH: 0.000198262
+tTrue: 0.011783
+Query: 53
+Nearest neighbour-1: qmom
+LSH_Vector409.645
+distanceTrue: 406.255
+tLSH: 0.000152262
+tTrue: 0.012987
+Query: 54
+Nearest neighbour-1: enor
+LSH_Vector419.174
+distanceTrue: 413.51
+tLSH: 0.000146262
+tTrue: 0.012548
+Query: 55
+Nearest neighbour-1: omer
+LSH_Vector425.314
+distanceTrue: 424.212
+tLSH: 0.000149262
+tTrue: 0.012418
+Query: 56
+Nearest neighbour-1: upld
+LSH_Vector434.052
+distanceTrue: 432.139
+tLSH: 0.000144262
+tTrue: 0.012542
+Query: 57
+Nearest neighbour-1: tcmd
+LSH_Vector388.364
+distanceTrue: 381.11
+tLSH: 0.000182262
+tTrue: 0.012255
+Query: 58
+Nearest neighbour-1: evi
+LSH_Vector392.011
+distanceTrue: 392.011
+tLSH: 0.000162262
+tTrue: 0.012936
+Query: 59
+Nearest neighbour-1: ipl_d
+LSH_Vector383.716
+distanceTrue: 379.003
+tLSH: 0.000155262
+tTrue: 0.012455
+Query: 60
+Nearest neighbour-1: stor
+LSH_Vector461.618
+distanceTrue: 457.786
+tLSH: 0.000221262
+tTrue: 0.012477
+Query: 61
+Nearest neighbour-1: epay
+LSH_Vector390.634
+distanceTrue: 385.007
+tLSH: 0.000200262
+tTrue: 0.012287
+Query: 62
+Nearest neighbour-1: hql
+LSH_Vector439.451
+distanceTrue: 437.22
+tLSH: 0.000219262
+tTrue: 0.014905
+Query: 63
+Nearest neighbour-1: gden
+LSH_Vector429.734
+distanceTrue: 426.585
+tLSH: 0.000165262
+tTrue: 0.013556
+Query: 64
+Nearest neighbour-1: pe
+LSH_Vector420.756
+distanceTrue: 416.033
+tLSH: 0.000146262
+tTrue: 0.015894
+Query: 65
+Nearest neighbour-1: ptnq
+LSH_Vector417.902
+distanceTrue: 403.849
+tLSH: 0.000164262
+tTrue: 0.012901
+Query: 66
+Nearest neighbour-1: vmax
+LSH_Vector417.065
+distanceTrue: 414.65
+tLSH: 0.000193262
+tTrue: 0.012545
+Query: 67
+Nearest neighbour-1: hees
+LSH_Vector417.894
+distanceTrue: 416.138
+tLSH: 0.000257262
+tTrue: 0.013061
+Query: 68
+Nearest neighbour-1: aek
+LSH_Vector425.406
+distanceTrue: 420.488
+tLSH: 0.000164262
+tTrue: 0.013081
+Query: 69
+Nearest neighbour-1: pagp
+LSH_Vector430.779
+distanceTrue: 424.197
+tLSH: 0.000174262
+tTrue: 0.011938
+Query: 70
+Nearest neighbour-1: cbshp
+LSH_Vector392.165
+distanceTrue: 388.501
+tLSH: 0.000154262
+tTrue: 0.012008
+Query: 71
+Nearest neighbour-1: cvi
+LSH_Vector448.036
+distanceTrue: 444.006
+tLSH: 0.000206262
+tTrue: 0.011859
+Query: 72
+Nearest neighbour-1: bci
+LSH_Vector415.6
+distanceTrue: 397.048
+tLSH: 0.000146262
+tTrue: 0.012035
+Query: 73
+Nearest neighbour-1: stt_d
+LSH_Vector387.438
+distanceTrue: 386.08
+tLSH: 0.000172262
+tTrue: 0.011805
+Query: 74
+Nearest neighbour-1: sgy
+LSH_Vector382.825
+distanceTrue: 380.223
+tLSH: 0.000196262
+tTrue: 0.013099
+Query: 75
+Nearest neighbour-1: infr
+LSH_Vector379.045
+distanceTrue: 376.512
+tLSH: 0.000166262
+tTrue: 0.012101
+Query: 76
+Nearest neighbour-1: wmb
+LSH_Vector385.419
+distanceTrue: 383.032
+tLSH: 0.000219262
+tTrue: 0.013168
+Query: 77
+Nearest neighbour-1: tv
+LSH_Vector419.274
+distanceTrue: 416.928
+tLSH: 0.000166262
+tTrue: 0.012413
+Query: 78
+Nearest neighbour-1: bbu
+LSH_Vector381.394
+distanceTrue: 379.865
+tLSH: 0.000161262
+tTrue: 0.013382
+Query: 79
+Nearest neighbour-1: lgf-b
+LSH_Vector417.051
+distanceTrue: 413.719
+tLSH: 0.000159262
+tTrue: 0.011704
+Query: 80
+Nearest neighbour-1: selb
+LSH_Vector449.452
+distanceTrue: 441.71
+tLSH: 0.000207262
+tTrue: 0.012789
+Query: 81
+Nearest neighbour-1: foxa
+LSH_Vector415.776
+distanceTrue: 408.805
+tLSH: 0.000186262
+tTrue: 0.012297
+Query: 82
+Nearest neighbour-1: bx
+LSH_Vector390.756
+distanceTrue: 386.192
+tLSH: 0.000149262
+tTrue: 0.012528
+Query: 83
+Nearest neighbour-1: tleh
+LSH_Vector370.113
+distanceTrue: 366.64
+tLSH: 0.000155262
+tTrue: 0.013399
+Query: 84
+Nearest neighbour-1: hfbl
+LSH_Vector417.151
+distanceTrue: 411.176
+tLSH: 0.000149262
+tTrue: 0.01259
+Query: 85
+Nearest neighbour-1: wing
+LSH_Vector392.721
+distanceTrue: 389.26
+tLSH: 0.000149262
+tTrue: 0.011461
+Query: 86
+Nearest neighbour-1: ndrm
+LSH_Vector426.944
+distanceTrue: 399.541
+tLSH: 0.000174262
+tTrue: 0.011731
+Query: 87
+Nearest neighbour-1: tyg
+LSH_Vector403.956
+distanceTrue: 396.763
+tLSH: 0.000165262
+tTrue: 0.011995
+Query: 88
+Nearest neighbour-1: hth
+LSH_Vector434.97
+distanceTrue: 421.137
+tLSH: 0.000332262
+tTrue: 0.011982
+Query: 89
+Nearest neighbour-1: atrc
+LSH_Vector423.293
+distanceTrue: 417.494
+tLSH: 0.000232262
+tTrue: 0.011805
+Query: 90
+Nearest neighbour-1: elc
+LSH_Vector434.071
+distanceTrue: 428.161
+tLSH: 0.000227262
+tTrue: 0.011709
+Query: 91
+Nearest neighbour-1: lpx
+LSH_Vector420.88
+distanceTrue: 418.307
+tLSH: 0.000187262
+tTrue: 0.011595
+Query: 92
+Nearest neighbour-1: gdvd
+LSH_Vector423.265
+distanceTrue: 413.644
+tLSH: 0.000137262
+tTrue: 0.01183
+Query: 93
+Nearest neighbour-1: mtdr
+LSH_Vector399.022
+distanceTrue: 396.285
+tLSH: 0.000235262
+tTrue: 0.011582
+Query: 94
+Nearest neighbour-1: hvt-a
+LSH_Vector419.617
+distanceTrue: 415.886
+tLSH: 0.000208262
+tTrue: 0.011623
+Query: 95
+Nearest neighbour-1: goex
+LSH_Vector436.321
+distanceTrue: 432.786
+tLSH: 0.000194262
+tTrue: 0.011894
+Query: 96
+Nearest neighbour-1: rexr
+LSH_Vector384.012
+distanceTrue: 382.512
+tLSH: 0.000168262
+tTrue: 0.011665
+Query: 97
+Nearest neighbour-1: dq
+LSH_Vector398.923
+distanceTrue: 396.282
+tLSH: 0.000172262
+tTrue: 0.011742
+Query: 98
+Nearest neighbour-1: wern
+LSH_Vector373.384
 distanceTrue: 364.75
-tLSH: 0.000252532
-tTrue: 0.012713
+tLSH: 0.000162262
+tTrue: 0.011739
 Query: 99
-Nearest neighbour-1: fisk
-LSH_Vector447.681
+Nearest neighbour-1: bswn
+LSH_Vector446.577
 distanceTrue: 442.084
-tLSH: 0.000407532
-tTrue: 0.011895
+tLSH: 0.000164262
+tTrue: 0.011641
 Query: 100
-Nearest neighbour-1: kemp
-LSH_Vector399.188
+Nearest neighbour-1: icbk
+LSH_Vector397.139
 distanceTrue: 392.943
-tLSH: 0.000148532
-tTrue: 0.011373
+tLSH: 0.000262262
+tTrue: 0.011734
