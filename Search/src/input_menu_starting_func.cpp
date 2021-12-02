@@ -19,6 +19,7 @@ using namespace std::chrono;
 #include "cube_basic_functions.hpp"
 #include "lsh_basic_functions.hpp"
 #include "knn_ranges_brutes.hpp"
+extern string metric;
 
 //elegxoume an to # twn arguments einai swsto
 int argsOK(int argc, char *argv[])

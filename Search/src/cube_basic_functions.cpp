@@ -22,7 +22,7 @@ using namespace std::chrono;
 #include "lsh_basic_functions.hpp"
 #include "knn_ranges_brutes.hpp"
 
-
+extern string metric;
 unsigned int hammingDistance(unsigned int n1, unsigned int n2)//https://www.geeksforgeeks.org/hamming-distance-between-two-integers/
 	{
     unsigned int x = n1 ^ n2;//btwise exclusive or(XOR vgazi 1 otan n1 0 kai n2 1 h n1 1 n2 0)

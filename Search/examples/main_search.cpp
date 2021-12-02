@@ -21,6 +21,8 @@ using namespace std::chrono;
 #include "lsh_basic_functions.hpp"
 #include "knn_ranges_brutes.hpp"
 
+//string 
+string metric = "euclidean_distance";
 
 vec* snapping(vec* nvectors,int no_of_coordinates,int no_of_vectors,double delta){
     vector<vector<vector<double>>> temp;
@@ -90,8 +92,8 @@ vec* snapping(vec* nvectors,int no_of_coordinates,int no_of_vectors,double delta
     for(int i=0;i<no_of_vectors;i++){
         int tempint=newnvectors[i].coord.size();
         while(tempint!=no_of_coordinates*2){
-            newnvectors[i].coord.push_back(1234);
-            newnvectors[i].coord.push_back(1234);
+            newnvectors[i].coord.push_back(M_big_num);
+            newnvectors[i].coord.push_back(M_big_num);
             tempint=newnvectors[i].coord.size();
         }
     }
@@ -137,8 +139,10 @@ int main(int argc, char *argv[]){
     else if(strcmp(algorithm,"Frechet")==0){
         alg_flag=3;
         if(strcmp(metricfr,"discrete")==0){
+            metric="LSH_Frechet_Discrete";
             metricfr_flag=1;
         }else if(strcmp(metricfr,"continuous")==0){
+            metric="LSH_Frechet_Continuous";
             metricfr_flag=2;
         }else{
             cout<<"Unknown metric. Exiting."<<endl;

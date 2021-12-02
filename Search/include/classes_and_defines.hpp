@@ -6,7 +6,8 @@
 #define PNUM 4294967291
 #define W 4//meta3i 0 kai 6
 #define BUCKET_RATIO 16
-const string metric = "euclidean_distance";
+#define M_big_num 33554432 //2^25 
+//const string metric = "euclidean_distance";
 
 
 

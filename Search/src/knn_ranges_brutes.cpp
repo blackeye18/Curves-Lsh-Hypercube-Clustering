@@ -20,6 +20,7 @@ using namespace std::chrono;
 #include "cube_basic_functions.hpp"
 #include "lsh_basic_functions.hpp"
 #include "knn_ranges_brutes.hpp"
+extern string metric;
 
 dist_vec::~dist_vec()//adeios destructor, den xreiazetai
 	{
