@@ -26,41 +26,6 @@ string metric = "euclidean_distance";
 
 
 
-long double dfd(vector<double> nvec,vector<double> qvec,int mv,int mq)
-    {
-
-    vector<vector<long double>> C;
-    C.resize(mv,vector<long double>(mq));
-
-    long double dist=abs(nvec[0]-qvec[0]);
-    C[0][0]=dist;
-
-
-    for (int i = 1; i < mq; ++i)
-        {
-        long double dist=abs(nvec[0]-qvec[i]);
-        C[0][i]=max(dist,C[0][i-1]);
-        }
-
-    for (int i = 1; i < mv; ++i)
-        {
-        long double dist=abs(nvec[i]-qvec[0]);
-        C[i][0]=max(dist,C[i-1][0]);
-        }
-
-    for (int i = 1; i < mv; ++i)
-        {
-        for (int j = 1; j < mq; ++j)
-            {
-            long double dist=abs(nvec[i]-qvec[j]);
-
-            long double mprev=min(min(C[i-1][j],C[i-1][j-1]),C[i][j-1]);
-            C[i][j]=max(dist,mprev);
-            }
-        }
-
-    return C[mv-1][mq-1];
-    }
 
 
 
@@ -144,9 +109,9 @@ vec* snapping(vec* nvectors,int no_of_coordinates,int no_of_vectors,double delta
         }
     }
     delete [] nvectors;
-    for(int i=0;i<no_of_vectors;i++){
-        cout<<newnvectors[i].name<<endl;
-    }
+    // for(int i=0;i<no_of_vectors;i++){
+    //     cout<<newnvectors[i].name<<endl;
+    // }
     return newnvectors;
 }
 
@@ -201,29 +166,6 @@ int main(int argc, char *argv[]){
     }
 
 
-    // if(alg_flag==3 ){
-    //     lsh_or_hypercube="distanceLSH: ";//string gia thn ektypwsh sto output file
-
-    //     nvectors=open_and_create_vectors(input_file,&no_of_coordinates,&no_of_vectors);//diavazoume to arxeio kai to apothikevvoume
-    //         if(nvectors==NULL)
-    //             return -1;
-    //     printf("Input:: no_of_vectors: %d, no_of_coordinates: %d\n",no_of_vectors,no_of_coordinates);
-    //     nvectors=snapping(nvectors,no_of_coordinates,no_of_vectors,delta);
-    //     no_of_coordinates=no_of_coordinates*2;
-
-    //     qvectors=open_and_create_vectors(query_file,&queries_no_of_coordinates,&queries_no_of_vectors);//diavazoume to arxeio kai to apothikevoume
-    //         if(qvectors==NULL)
-    //             return -1;
-    //     printf("Queries:: queries_no_of_vectors: %d, queries_no_of_coordinates: %d\n",queries_no_of_vectors,queries_no_of_coordinates);
-    //     qvectors=snapping(qvectors,queries_no_of_coordinates,queries_no_of_vectors,delta);
-    //     queries_no_of_coordinates=queries_no_of_coordinates*2;
-
-    //     delete [] nvectors;
-    //     delete [] qvectors;
-
-    // }
-
-
     //Kwdikas gia Ai 
     //if(alg_flag==1 || alg_flag==2){
         if(alg_flag==1)
@@ -265,11 +207,11 @@ int main(int argc, char *argv[]){
                 }
             }
 
-            cout<<"Now using "<<algorithm<<" and KNN"<<endl;
+            cout<<"Now using "<<algorithm<<endl;
 
             auto start1 = high_resolution_clock::now();//https://www.geeksforgeeks.org/measure-execution-time-function-cpp/
             if(flag==0 || flag==1){//an exoume kainourio input file tote prepei na ksanadimourgisoume ta L ht gia to kainourio input file
-                if(alg_flag==1){
+                if(alg_flag==1 || alg_flag==3){
                     lht=new Lhashtables(L,no_of_coordinates,k);//synarthsh arxikopoihshs
                     lht->lsh_start(no_of_vectors,nvectors);//gemizoume ta ht 
                 }else{
@@ -286,15 +228,15 @@ int main(int argc, char *argv[]){
             for(int i=0;i<queries_no_of_vectors;i++)//apothikevoume ton xrono poy xreiastike gia na dhmiourgithoun oi domes gia to lsh
                 time_per_query_lsh[i]=time1;
 
-
+            cout<<"Now using KNN"<<endl;
             vector<vector<dist_vec>*>* dsvec2;//kai prostetoume ton xrono pou xreiastike h knn gia kathe query antistoixa
-            if(alg_flag==1)
+            if(alg_flag==1 || alg_flag==3)
                 dsvec2=lht->find_k_nearest(qvectors,N,queries_no_of_vectors,time_per_query_lsh);//synarthsh gia to knn
             else
                 dsvec2=cube->all_NN_search(qvectors,N,queries_no_of_vectors,time_per_query_lsh);//knn search gia ola ta query
            
             if(dsvec2==NULL){//failsafe
-                if(alg_flag==1)
+                if(alg_flag==1 || alg_flag==3)
                     delete lht;
                 else
                     delete cube;

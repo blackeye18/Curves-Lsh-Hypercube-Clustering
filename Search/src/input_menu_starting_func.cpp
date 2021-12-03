@@ -275,11 +275,16 @@ void print_vectors(vec *nvectors,int no_of_vectors,int no_of_coordinates){//voit
 int print_to_file(char output_file[256],string lsh_or_hypercube,vector<vector<dist_vec>*>* dsvec2,int queries_no_of_vectors,vec* qvectors,double *time_per_query_lsh,double *time_per_query_brute,vector<vector<dist_vec>*>* dsvec3){
     ofstream outfile;
     outfile.open(output_file);
+    double total_time_per_query_lsh=0;
+    double total_time_per_query_brute=0;
+    double maf;
+    int maf_first_flag=0;
 
     for(int i=0;i<queries_no_of_vectors;i++){//gia kathe query
         outfile<<"Query: ";
         outfile<<qvectors[i].name;
         outfile<<endl;
+        outfile<<"Algorithm: "<<lsh_or_hypercube<<endl;
         vector<dist_vec>* dstemp2 =(*dsvec2)[i];
         vector<dist_vec>* dstemp3 =(*dsvec3)[i];
         
@@ -289,20 +294,40 @@ int print_to_file(char output_file[256],string lsh_or_hypercube,vector<vector<di
         	dist_vec ds2=(*dstemp2)[j];
         	dist_vec ds3=(*dstemp3)[j];
         	
-
-            outfile<<"Nearest neighbour-";
-            outfile<<j+1<<": "<<ds2.vect->name<<endl;
-            outfile<<lsh_or_hypercube;
-            outfile<<ds2.dist<<endl;
+            if(ds3.dist!=0){
+                if(maf_first_flag==0){
+                    maf=ds2.dist/ds3.dist;
+                    maf_first_flag=1;
+                }else{
+                    double temp_maf=ds2.dist/ds3.dist;
+                    if(temp_maf>maf)
+                        maf=temp_maf;
+                }
+            }
+            //outfile<<"Nearest neighbour-";
+            //outfile<<j+1<<": "<<ds2.vect->name<<endl;
+            outfile<<"Approximate Nearest neighbor: "<<ds2.vect->name<<endl;
+            outfile<<"True Nearest neighbor: "<<ds3.vect->name<<endl;
+            outfile<<"distanceApproximate: "<<ds2.dist<<endl;
             outfile<<"distanceTrue: "<<ds3.dist<<endl;
+            //outfile<<ds2.dist<<endl;
+           // outfile<<"distanceTrue: "<<ds3.dist<<endl;
         }
         
-    
-        outfile<<"tLSH: ";
-        outfile<<time_per_query_lsh[i]<<endl;
-        outfile<<"tTrue: "<<time_per_query_brute[i]<<endl;
+        
+        //outfile<<"tLSH: ";
+        total_time_per_query_lsh+=time_per_query_lsh[i];
+        total_time_per_query_brute+=time_per_query_brute[i];
+        //outfile<<time_per_query_lsh[i]<<endl;
+        //outfile<<"tTrue: "<<time_per_query_brute[i]<<endl;
         
     }
+    outfile<<endl;
+    double avg_time_lsh=total_time_per_query_lsh/queries_no_of_vectors;
+    double avg_time_brute=total_time_per_query_brute/queries_no_of_vectors;
+    outfile<<"tApproximateAverage: "<<avg_time_lsh<<endl;
+    outfile<<"tTrueAverage: "<<avg_time_brute<<endl;
+    outfile<<"MAF: "<<maf;
     outfile.close();
 
     return 0;

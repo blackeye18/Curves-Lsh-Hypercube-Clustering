@@ -39,6 +39,48 @@ node* hashtable::search_nd(long hvalue)//epistrefei thn swsth thesh tou hastbabl
     return NULL;
     }
 
+
+
+
+
+long double dfd(vector<double> nvec,vector<double> qvec,int mv,int mq)
+    {
+
+    vector<vector<long double>> C;
+    C.resize(mv,vector<long double>(mq));
+
+    long double dist=abs(nvec[0]-qvec[0]);
+    C[0][0]=dist;
+
+
+    for (int i = 1; i < mq; ++i)
+        {
+        long double dist=abs(nvec[0]-qvec[i]);
+        C[0][i]=max(dist,C[0][i-1]);
+        }
+
+    for (int i = 1; i < mv; ++i)
+        {
+        long double dist=abs(nvec[i]-qvec[0]);
+        C[i][0]=max(dist,C[i-1][0]);
+        }
+
+    for (int i = 1; i < mv; ++i)
+        {
+        for (int j = 1; j < mq; ++j)
+            {
+            long double dist=abs(nvec[i]-qvec[j]);
+
+            long double mprev=min(min(C[i-1][j],C[i-1][j-1]),C[i][j-1]);
+            C[i][j]=max(dist,mprev);
+            }
+        }
+        //cout<<"FINISHED CALCULATION"<<endl;
+    return C[mv-1][mq-1];
+    }
+
+
+
 long double vect_dist(vector<double> vecA,vector<double> vecB,int d)//ypologizei thn efklideia apostash metaksi 2 vector ston d diastato xwro
 {
     long double sum=0;
@@ -53,10 +95,17 @@ long double vect_dist(vector<double> vecA,vector<double> vecB,int d)//ypologizei
 vector<dist_vec>* brute_calculate(vec* qvector,vec* nvectors,int no_of_vectors,int no_of_coordinates,int N,int pos){
     long double dist;
     priority_queue<dist_vec, vector<dist_vec>, pqcompare> Q;
+
     for(int i=0;i<no_of_vectors;i++){
         if(metric=="euclidean_distance"){
             dist=vect_dist(qvector[pos].coord,nvectors[i].coord,no_of_coordinates);//ypologismos apostashs tou query apo ola ta input vectors
             Q.push(dist_vec(dist,&(nvectors[i])));//ta vazoume se priority queue kai kratame ta N
+        }else if(metric=="LSH_Frechet_Discrete"){
+            //cout<<"START"<<endl;
+            dist=dfd(qvector[pos].coord,nvectors[i].coord,no_of_coordinates,no_of_coordinates);
+            Q.push(dist_vec(dist,&(nvectors[i])));
+            //cout<<"END"<<endl;
+
         }else{
          cout<<"No function for metric:"<<metric<<endl;
          return NULL;
@@ -132,6 +181,9 @@ vector<dist_vec>* Lhashtables::NN_search(vec* nvector,int N)//synarthsh gia to k
                     if(metric=="euclidean_distance"){
                     	long double dist=vect_dist(nvector->coord,currnode->vect->coord,d);//ypologizoume thn eyklideia apostash
                     	Q.push(dist_vec(dist,currnode->vect));//to eisxwroume sto priority queue
+                    }else if(metric=="LSH_Frechet_Discrete"){
+                        long double dist=dfd(nvector->coord,currnode->vect->coord,d,d);
+                        Q.push(dist_vec(dist,currnode->vect));
                     }else{
                         cout<<"No function for metric:"<<metric<<endl;
                         return NULL;
@@ -158,6 +210,9 @@ vector<dist_vec>* Lhashtables::NN_search(vec* nvector,int N)//synarthsh gia to k
                         counter++;
                     if(metric=="euclidean_distance"){
                         long double dist=vect_dist(nvector->coord,currnode->vect->coord,d);//ypologizoume thn eyklideia apostash
+                        Q.push(dist_vec(dist,currnode->vect));
+                    }else if(metric=="LSH_Frechet_Discrete"){
+                        long double dist=dfd(nvector->coord,currnode->vect->coord,d,d);
                         Q.push(dist_vec(dist,currnode->vect));
                     }else{
                         cout<<"No function for metric:"<<metric<<endl;
@@ -242,6 +297,10 @@ vector<dist_vec>* Lhashtables::LRadius_search(vec* nvector,double R)// peripou i
                 if(metric=="euclidean_distance"){
             	   long double dist=vect_dist(nvector->coord,currnode->vect->coord,d);
             	   if(dist<R)
+                        Q.push(dist_vec(dist,currnode->vect));
+                }else if(metric=="LSH_Frechet_Discrete"){
+                    long double dist=dfd(nvector->coord,currnode->vect->coord,d,d);
+                    if(dist<R)
                         Q.push(dist_vec(dist,currnode->vect));
                 }else{
                     cout<<"No function for metric:"<<metric<<endl;
