@@ -31,17 +31,18 @@ using namespace std::chrono;
 //Ousiastika mia miksh ths main tou lsh me thn main tou hypercube.
 int main(int argc, char *argv[]){
 	int complete_flag;
+    int silhouette_flag;
 	int K_medians,L,k_lsh,M,k_hypercube,probes;
-	char input_file[256],configuration_file[256],output_file[256],method[256];
+	char input_file[256],configuration_file[256],output_file[256],assigment[256],update[256];
 	vec* nvectors;
 	int no_of_vectors,no_of_coordinates;
     Lhashtables *lht=NULL;
     hypercube *cube=NULL;
-	if(input_handler(argc,argv,input_file,configuration_file,output_file,method,&K_medians,&L,&k_lsh,&M,&k_hypercube,&probes,&complete_flag))//diavasma conf file kai arguments
+	if(input_handler(argc,argv,input_file,configuration_file,output_file,assigment,update,&K_medians,&L,&k_lsh,&M,&k_hypercube,&probes,&complete_flag,&silhouette_flag))//diavasma conf file kai arguments
 		return -1;
 
-	cout<<"input_file: "<<input_file<<" configuration_file: "<<configuration_file<<" output_file :"<<output_file<<" method: "<<method<<endl;
-	cout<<"K_medians: "<<K_medians<<" L: "<<L<<" k_lsh: "<<k_lsh<<" M: "<<M<<" k_hypercube: "<<k_hypercube<<" probes: "<<probes<<" Complete: "<<complete_flag<<endl;
+	cout<<"input_file: "<<input_file<<" configuration_file: "<<configuration_file<<" output_file :"<<output_file<<" assigment: "<<assigment<<" update: "<<update<<endl;
+	cout<<"K_medians: "<<K_medians<<" L: "<<L<<" k_lsh: "<<k_lsh<<" M: "<<M<<" k_hypercube: "<<k_hypercube<<" probes: "<<probes<<" Complete: "<<complete_flag<<" silhouette: "<<silhouette_flag<<endl;
 
 
 	nvectors=open_and_create_vectors(input_file,&no_of_coordinates,&no_of_vectors);//diavasma input vector 
@@ -57,36 +58,27 @@ int main(int argc, char *argv[]){
     vector<vec>* clustersvec;
     clustersvec=clus.Kmeanplus(nvectors);
 
-/*
-   cout<<endl<<clustersvec->size()<<endl;//afto prepei na fygei otan teleiwsoume
-    for(int i=0; i<clustersvec->size();i++){
-        //int temp=clustersvec->at(i);
-        for(int j=0;j<no_of_coordinates;j++)
-            cout<<(clustersvec->at(i)).coord.at(j)<<" ";
-        cout<<endl;
-    }
-*/
     vector<vector<vec*>>* cluster_neighbours;
 
-    if( strcmp(method,"Classic")==0){//ama einai classic kaleite h repeat gia lloyds
+    if( strcmp(assigment,"Classic")==0){//ama einai classic kaleite h repeat gia lloyds
 
         cout<<"Now using Lloyds"<<endl;
         cluster_neighbours=clus.repeat(nvectors,clustersvec,0,NULL);//0 gia lloyds
 
-    }else if(strcmp(method,"LSH")==0){//ama einai me lsh ftiaxnontai oi domes  tou lsh kai kaleite h repeat gia lsh
+    }else if(strcmp(assigment,"LSH")==0){//ama einai me lsh ftiaxnontai oi domes  tou lsh kai kaleite h repeat gia lsh
         cout<<"Now using LSH"<<endl;
         lht=new Lhashtables(L,no_of_coordinates,k_lsh);
         lht->lsh_start(no_of_vectors,nvectors);
         cluster_neighbours=clus.repeat(nvectors,clustersvec,1,(void*)lht);//1 gia lht
 
-    }else if(strcmp(method,"Hypercube")==0){//ama einai me hypercube tote ftiaxnontai oi domes tou hypercube kai kaleite h repeat gia to hypercube
+    }else if(strcmp(assigment,"Hypercube")==0){//ama einai me hypercube tote ftiaxnontai oi domes tou hypercube kai kaleite h repeat gia to hypercube
         cout<<"Now using Hypercube"<<endl;
         cube=new hypercube(M,probes,no_of_coordinates,k_hypercube,no_of_vectors);
         cube->cube_start(no_of_vectors,nvectors);
         cluster_neighbours=clus.repeat(nvectors,clustersvec,2,(void*)cube);//2 gia cube
 
     }else {//failsafe 
-        cout<<"Method: "<<method<<" Not defined :("<<endl;
+        cout<<"Assigment: "<<assigment<<" Not defined :("<<endl;
         delete clustersvec;
         delete [] nvectors;
         return -1;
@@ -104,18 +96,18 @@ int main(int argc, char *argv[]){
      }
      cout<<"sum "<<tempsum<<endl;*/
     vector<long double>* silhouette_vec=NULL ;
-
-    cout<<"Now using silhouette"<<endl;//ypologismos toy silhouette
-    silhouette_vec =clus.silhouette(cluster_neighbours,clustersvec,nvectors);
-    for (int i = 0; i < silhouette_vec->size(); ++i)
-        {
-        cout<<"silhouette for cluster: "<<i<<" : "<<(*silhouette_vec)[i]<<endl;
-        }
-    
+    if(silhouette_flag==1){
+        cout<<"Now using silhouette"<<endl;//ypologismos toy silhouette
+        silhouette_vec =clus.silhouette(cluster_neighbours,clustersvec,nvectors);
+        for (int i = 0; i < silhouette_vec->size(); ++i)
+            {
+            cout<<"silhouette for cluster: "<<i<<" : "<<(*silhouette_vec)[i]<<endl;
+            }
+    }
 
 
     //synarthsh pou ektypwnei ta apotelesmata sto arxeio opws afto zhteite
-    print_to_file(clustersvec,cluster_neighbours,complete_flag,output_file,method,no_of_coordinates,no_of_vectors,nvectors,time1,silhouette_vec);
+    print_to_file(clustersvec,cluster_neighbours,complete_flag,output_file,assigment,no_of_coordinates,no_of_vectors,nvectors,time1,silhouette_vec);
 
     cout<<"Output File Created!!"<<endl;
 
@@ -133,9 +125,9 @@ int main(int argc, char *argv[]){
     if(silhouette_vec!=NULL)
         delete silhouette_vec;
     delete [] nvectors;
-    if(strcmp(method,"LSH")==0)//analoga thn methodo ginete eleftherwsh mnhmhs
+    if(strcmp(assigment,"LSH")==0)//analoga thn methodo ginete eleftherwsh mnhmhs
         delete lht;
-    if(strcmp(method,"Hypercube")==0)
+    if(strcmp(assigment,"Hypercube")==0)
         delete cube;
 
 

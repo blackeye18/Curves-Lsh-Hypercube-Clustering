@@ -29,7 +29,7 @@ using namespace std::chrono;
 //elegxoume an to # twn arguments einai swsto
 int argsOK(int argc, char *argv[])
 {
-    if (argc == 10 || argc== 9)
+    if (argc == 13 || argc== 12 || argc ==11)
     {
         //printf("Error in # of args\n");
         return 1;
@@ -90,36 +90,67 @@ int handle_conf_file(char configuration_file[256],int* K_medians,int*L,int*k_lsh
 return 0;
 }
 
-int input_handler(int argc, char *argv[],char (&input_file)[256], char (&configuration_file)[256], char (&output_file)[256],char (&method)[256],int* K_medians,int*L,int*k_lsh,int*M,int*k_hypercube,int*probes,int*complete_flag){
+int input_handler(int argc, char *argv[],char (&input_file)[256], char (&configuration_file)[256], char (&output_file)[256],char (&assigment)[256],char (&update)[256],int* K_medians,int*L,int*k_lsh,int*M,int*k_hypercube,int*probes,int*complete_flag,int* silhouette_flag){
 
 	if(!argsOK(argc,argv)){
 		cout<<"You entered something wrong.. Exiting"<<endl;
 		return 1;
 	}
-	if(argc==10){//ama exoun dothei ola ta orismata apo grammh edolwn
+	if(argc==13){//ama exoun dothei ola ta orismata apo grammh edolwn
 	
 		strcpy(input_file,argv[2]);
 		strcpy(configuration_file,argv[4]);
 		strcpy(output_file,argv[6]);
-		if(strcmp(argv[7],"-complete")==0){
+		if(strcmp(argv[11],"-complete")==0){
 			cout<<"Complete parameter given!"<<endl;
 			(*complete_flag)=1;
 		}else{
 			cout<<"Something is wrong with input parameters... Exiting.."<<endl;
 			return 1;
 		}
-		strcpy(method,argv[9]);
+        if(strcmp(argv[12],"-silhouette")==0){
+            cout<<"Silhouette parameter given!"<<endl;
+            (*silhouette_flag)=1;
+        }else{
+            cout<<"Something is wrong with input parameters... Exiting.."<<endl;
+            return 1;
+        }
+        strcpy(update,argv[8]);
+		strcpy(assigment,argv[10]);
         if(handle_conf_file(configuration_file,K_medians,L,k_lsh,M,k_hypercube,probes))
             return 1;
-
+    }else if(argc==12){
+        (*complete_flag)=0;
+        (*silhouette_flag)=0;
+        strcpy(input_file,argv[2]);
+        strcpy(configuration_file,argv[4]);
+        strcpy(output_file,argv[6]);
+        if(strcmp(argv[11],"-complete")==0){
+            cout<<"Complete parameter given!"<<endl;
+            (*complete_flag)=1;
+        }
+        if(strcmp(argv[11],"-silhouette")==0){
+            cout<<"Silhouette parameter given!"<<endl;
+            (*silhouette_flag)=1;
+        }
+        strcpy(update,argv[8]);
+        strcpy(assigment,argv[10]);
+        if(handle_conf_file(configuration_file,K_medians,L,k_lsh,M,k_hypercube,probes))
+            return 1;
+    }else if(argc==11){
+        (*complete_flag)=0;
+        (*silhouette_flag)=0;
+        strcpy(input_file,argv[2]);
+        strcpy(configuration_file,argv[4]);
+        strcpy(output_file,argv[6]);
+        strcpy(update,argv[8]);
+        strcpy(assigment,argv[10]);
+        if(handle_conf_file(configuration_file,K_medians,L,k_lsh,M,k_hypercube,probes))
+            return 1;
+    
 	}else{//ama exoun dothei mono ta vasika orismata apo grammh edolwn
-		strcpy(input_file,argv[2]);
-		strcpy(configuration_file,argv[4]);
-		strcpy(output_file,argv[6]);
-		(*complete_flag)=0;
-		strcpy(method,argv[8]);
-		if(handle_conf_file(configuration_file,K_medians,L,k_lsh,M,k_hypercube,probes))
-			return 1;
+		cout<<"Something went wrong. Exiting..."<<endl;
+        return 1;
 
 	}
 

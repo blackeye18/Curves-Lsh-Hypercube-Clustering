@@ -1,0 +1,1 @@
+./cluster –i input_small_id –c cluster.conf -o out -update Mean Vector –assignment LSH -complete -silhouette
