@@ -24,6 +24,52 @@ using namespace std::chrono;
 //string 
 string metric = "euclidean_distance";
 
+
+
+long double dfd(vector<double> nvec,vector<double> qvec,int mv,int mq)
+    {
+
+    vector<vector<long double>> C;
+    C.resize(mv,vector<long double>(mq));
+
+    long double dist=abs(nvec[0]-qvec[0]);
+    C[0][0]=dist;
+
+
+    for (int i = 1; i < mq; ++i)
+        {
+        long double dist=abs(nvec[0]-qvec[i]);
+        C[0][i]=max(dist,C[0][i-1]);
+        }
+
+    for (int i = 1; i < mv; ++i)
+        {
+        long double dist=abs(nvec[i]-qvec[0]);
+        C[i][0]=max(dist,C[i-1][0]);
+        }
+
+    for (int i = 1; i < mv; ++i)
+        {
+        for (int j = 1; j < mq; ++j)
+            {
+            long double dist=abs(nvec[i]-qvec[j]);
+
+            long double mprev=min(min(C[i-1][j],C[i-1][j-1]),C[i][j-1]);
+            C[i][j]=max(dist,mprev);
+            }
+        }
+
+    return C[mv-1][mq-1];
+    }
+
+
+
+
+
+
+
+
+
 vec* snapping(vec* nvectors,int no_of_coordinates,int no_of_vectors,double delta){
     vector<vector<vector<double>>> temp;
     temp.resize(no_of_vectors,vector<vector<double> >(no_of_coordinates,vector<double>(2)));////resize analoga 
