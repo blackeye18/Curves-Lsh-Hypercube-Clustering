@@ -7,7 +7,7 @@
 #define BUCKET_RATIO 8
 #define PERCISION 0.001
 #define MAXIT 50
-const string metric = "euclidean_distance";
+//const string metric = "euclidean_distance";
 
 
 //gia oti den yparxei sxolio yparxoun sta arxeia tou lsh kai tou hypercube

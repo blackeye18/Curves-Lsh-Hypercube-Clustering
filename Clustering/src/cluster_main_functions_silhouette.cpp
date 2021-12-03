@@ -23,6 +23,7 @@ using namespace std::chrono;
 #include "cube_basic_functions.hpp"
 #include "cluster_main_functions_silhouette.hpp"
 //#include "knn_ranges_brutes.hpp"
+extern string metric;
 
 long double Mean_coord(vector<vec*> nvects,vec*  cvec,int d)
  	{

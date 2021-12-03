@@ -23,7 +23,7 @@ using namespace std::chrono;
 #include "cluster_main_functions_silhouette.hpp"
 //#include "knn_ranges_brutes.hpp"
 
-
+extern string metric;
 
 
 //elegxoume an to # twn arguments einai swsto

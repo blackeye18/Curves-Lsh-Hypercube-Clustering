@@ -25,6 +25,8 @@ using namespace std::chrono;
 #include "cluster_main_functions_silhouette.hpp"
 //#include "knn_ranges_brutes.hpp"
 
+extern string metric;
+
 long double vect_dist(vector<double> vecA,vector<double> vecB,int d)
 {
     long double sum=0;

@@ -23,7 +23,7 @@ using namespace std::chrono;
 #include "cluster_main_functions_silhouette.hpp"
 //#include "knn_ranges_brutes.hpp"
 
-
+extern string metric;
 unsigned int hammingDistance(unsigned int n1, unsigned int n2)
 	{
     unsigned int x = n1 ^ n2;

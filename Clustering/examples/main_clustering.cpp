@@ -23,6 +23,7 @@ using namespace std::chrono;
 #include "cube_basic_functions.hpp"
 #include "cluster_main_functions_silhouette.hpp"
 
+string metric = "euclidean_distance";
 
 
 
@@ -44,6 +45,36 @@ int main(int argc, char *argv[]){
 	cout<<"input_file: "<<input_file<<" configuration_file: "<<configuration_file<<" output_file :"<<output_file<<" assigment: "<<assigment<<" update: "<<update<<endl;
 	cout<<"K_medians: "<<K_medians<<" L: "<<L<<" k_lsh: "<<k_lsh<<" M: "<<M<<" k_hypercube: "<<k_hypercube<<" probes: "<<probes<<" Complete: "<<complete_flag<<" silhouette: "<<silhouette_flag<<endl;
 
+    int assigment_flag=0;
+    int update_flag=0;
+
+    if(strcmp(assigment,"Classic")==0){
+        assigment_flag=0;
+        if(strcmp(update,"MeanFrechet")==0){
+            cout<<"aaa";
+            metric="LSH_Frechet_Discrete";
+            update_flag=1;
+        }else if(strcmp(update,"MeanVector")==0){
+            metric="euclidean_distance";
+            update_flag=2;
+        }else{
+            cout<<"Unknown metric. Exiting."<<endl;
+            return -1;
+        }
+    }
+    else if(strcmp(assigment,"LSH")==0)
+        assigment_flag=1;
+    else if(strcmp(assigment,"Hypercube")==0)
+        assigment_flag=2;
+    else if(strcmp(assigment,"LSH_Frechet")==0){
+        assigment_flag=3;
+        metric="LSH_Frechet_Discrete";
+        update_flag=1;
+    }
+    else{
+        cout<<"Unknown assigment. Exiting."<<endl;
+        return -1;
+    }
 
 	nvectors=open_and_create_vectors(input_file,&no_of_coordinates,&no_of_vectors);//diavasma input vector 
 	if(nvectors==NULL)
@@ -60,18 +91,18 @@ int main(int argc, char *argv[]){
 
     vector<vector<vec*>>* cluster_neighbours;
 
-    if( strcmp(assigment,"Classic")==0){//ama einai classic kaleite h repeat gia lloyds
+    if( assigment_flag==0){//ama einai classic kaleite h repeat gia lloyds
 
         cout<<"Now using Lloyds"<<endl;
         cluster_neighbours=clus.repeat(nvectors,clustersvec,0,NULL);//0 gia lloyds
 
-    }else if(strcmp(assigment,"LSH")==0){//ama einai me lsh ftiaxnontai oi domes  tou lsh kai kaleite h repeat gia lsh
+    }else if(assigment_flag==1 || assigment_flag==3){//ama einai me lsh ftiaxnontai oi domes  tou lsh kai kaleite h repeat gia lsh
         cout<<"Now using LSH"<<endl;
         lht=new Lhashtables(L,no_of_coordinates,k_lsh);
         lht->lsh_start(no_of_vectors,nvectors);
         cluster_neighbours=clus.repeat(nvectors,clustersvec,1,(void*)lht);//1 gia lht
 
-    }else if(strcmp(assigment,"Hypercube")==0){//ama einai me hypercube tote ftiaxnontai oi domes tou hypercube kai kaleite h repeat gia to hypercube
+    }else if(assigment_flag==2){//ama einai me hypercube tote ftiaxnontai oi domes tou hypercube kai kaleite h repeat gia to hypercube
         cout<<"Now using Hypercube"<<endl;
         cube=new hypercube(M,probes,no_of_coordinates,k_hypercube,no_of_vectors);
         cube->cube_start(no_of_vectors,nvectors);
@@ -125,9 +156,9 @@ int main(int argc, char *argv[]){
     if(silhouette_vec!=NULL)
         delete silhouette_vec;
     delete [] nvectors;
-    if(strcmp(assigment,"LSH")==0)//analoga thn methodo ginete eleftherwsh mnhmhs
+    if(assigment_flag==1 || assigment_flag==3)//analoga thn methodo ginete eleftherwsh mnhmhs
         delete lht;
-    if(strcmp(assigment,"Hypercube")==0)
+    if(assigment_flag==2)
         delete cube;
 
 
