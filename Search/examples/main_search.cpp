@@ -27,7 +27,93 @@ string metric = "euclidean_distance";
 
 
 
+int filtering(vec* nvectors,int no_of_coordinates,int no_of_vectors,int triads)
+    {
 
+    for (int i = 0; i < no_of_vectors; ++i)
+        {
+        int temp_no_coord=no_of_coordinates-1;
+        for (int j = 1; j < temp_no_coord; ++j)
+            {
+            double a=nvectors[i].coord[j-1];
+            double b=nvectors[i].coord[j];
+            double c=nvectors[i].coord[j+1];
+
+            if(abs(a-b)<=FILTER_E && abs(b-c)<=FILTER_E)
+                {
+                nvectors[i].coord.erase(nvectors[i].coord.begin() + j);
+                temp_no_coord--;
+
+                if(!triads)
+                    j--;
+                }
+
+            }
+        }
+    return 0;
+    }
+
+int snapping_cont(vec* nvectors,int no_of_vectors,double delta)
+    {
+
+    int same_counter=0;
+    double prev=0;
+
+    for(int i=0;i<no_of_vectors;i++)
+        {
+
+        int no_of_coord=nvectors[i].coord.size();
+        for(int j=0;j<no_of_coord;j++)
+            {
+            nvectors[i].coord[j]=(floor((nvectors[i].coord[j]/delta)+1/2)*delta);
+            }
+        }
+
+    return 0;
+    }
+
+int padding_cont(vec* nvectors,int no_of_vectors,int no_of_coordinates,double delta)
+    {
+     for(int i=0;i<no_of_vectors;i++)
+        {//kanw adistoixish me meres 
+
+        int no_of_coord=nvectors[i].coord.size();
+        for(int j=no_of_coord;j<no_of_coordinates;j++)
+            {
+            nvectors[i].coord.push_back(M_big_num);
+            }
+        }
+    return 0;
+    }
+
+int mini_maxi_cont(vec* nvectors,int no_of_vectors,double delta)
+    {
+    for(int i=0;i<no_of_vectors;i++)
+        {//kanw adistoixish me meres 
+
+        int no_of_coord=nvectors[i].coord.size();
+        for(int j=1;j<no_of_coord-1;j++)
+            {
+            double mini=min(nvectors[i].coord[j-1],nvectors[i].coord[j+1]);
+            if(mini<nvectors[i].coord[j])
+                {
+                double maxi=max(nvectors[i].coord[j-1],nvectors[i].coord[j+1]);
+                if(nvectors[i].coord[j]<maxi)
+                    nvectors[i].coord.erase(nvectors[i].coord.begin() + j);
+                }
+            }
+        }
+    return 0;
+    }
+
+int preprocessing_cont(vec* nvectors,int no_of_vectors,int no_of_coordinates,double delta)
+    {
+    filtering(nvectors,no_of_coordinates,no_of_vectors,0);
+    snapping_cont(nvectors,no_of_vectors,delta);
+    mini_maxi_cont(nvectors,no_of_vectors,delta);
+    padding_cont(nvectors,no_of_vectors,no_of_coordinates,delta);
+    return 0;
+    }
 
 
 

@@ -27,6 +27,76 @@ string metric = "euclidean_distance";
 
 
 
+vec* snapping(vec* nvectors,int no_of_coordinates,int no_of_vectors,double delta){
+    vector<vector<vector<double>>> temp;
+    temp.resize(no_of_vectors,vector<vector<double> >(no_of_coordinates,vector<double>(2)));////resize analoga 
+    for(int i=0;i<no_of_vectors;i++){//kanw adistoixish me meres 
+        for(int j=0;j<no_of_coordinates;j++){
+            temp[i][j][0]=(j);
+            temp[i][j][1]=nvectors[i].coord[j];
+        }
+    }
+    int same_counter=0;
+    double prev1=0,prev2=0;
+    int first_flag=0;
+    vector<vector<vector<double>>> temp2;
+    temp2.resize(no_of_vectors,vector<vector<double> >(no_of_coordinates));////resize analoga 
+    for(int i=0;i<no_of_vectors;i++){//kanw adistoixish me meres 
+        first_flag=0;
+
+        for(int j=0;j<no_of_coordinates;j++){
+            if(first_flag==0){
+                temp2[i][j].push_back(floor((temp[i][j][0]/delta)+1/2));
+                temp2[i][j].push_back(floor((temp[i][j][1]/delta)+1/2));
+                prev1=temp2[i][j][0];
+                prev2=temp2[i][j][1];
+                first_flag=1;
+            }else{
+                double temphold1,temphold2;
+                temphold1=(floor((temp[i][j][0]/delta)+1/2));
+                temphold2=(floor((temp[i][j][1]/delta)+1/2));
+                if(temphold1==prev1 && temphold2==prev2){
+                    same_counter++;
+                }else{
+                    temp2[i][j].push_back(temphold1);
+                    temp2[i][j].push_back(temphold2);
+                    prev1=temphold1;
+                    prev2=temphold2;
+                }
+
+            }
+        }
+    }
+    //cout<<same_counter<<endl;
+    //cout<<temp2[0][1].size()<<endl;
+    vec* newnvectors;
+    newnvectors = new vec[no_of_vectors];//desmevoume xwro gia ta vectors
+    for(int i=0;i<no_of_vectors;i++){
+        newnvectors[i].name=nvectors[i].name;
+    }
+    for(int i=0;i<no_of_vectors;i++){
+        for(int j=0;j<no_of_coordinates;j++){
+            for(int k=0;k<temp2[i][j].size();k++){
+                newnvectors[i].coord.push_back(temp2[i][j][k]);
+
+            }
+        }
+    }
+    for(int i=0;i<no_of_vectors;i++){
+        int tempint=newnvectors[i].coord.size();
+        while(tempint!=no_of_coordinates*2){
+            newnvectors[i].coord.push_back(M_big_num);
+            newnvectors[i].coord.push_back(M_big_num);
+            tempint=newnvectors[i].coord.size();
+        }
+    }
+    delete [] nvectors;
+    // for(int i=0;i<no_of_vectors;i++){
+    //     cout<<newnvectors[i].name<<endl;
+    // }
+    return newnvectors;
+}
+
 
  
 //Ousiastika mia miksh ths main tou lsh me thn main tou hypercube.
@@ -80,8 +150,11 @@ int main(int argc, char *argv[]){
 	if(nvectors==NULL)
 	    return -1;
 	printf("Input:: no_of_vectors: %d, no_of_coordinates: %d\n",no_of_vectors,no_of_coordinates);
-	
-    
+	if(update_flag==1){
+        nvectors=snapping(nvectors,no_of_coordinates,no_of_vectors,delta);
+        no_of_coordinates=no_of_coordinates*2;
+    }
+    cout<<no_of_coordinates<<endl;
     cout<<"Now using Kmeans++"<<endl;
     auto start1 = high_resolution_clock::now();//https://www.geeksforgeeks.org/measure-execution-time-function-cpp/
 
@@ -118,14 +191,6 @@ int main(int argc, char *argv[]){
     auto duration1 = duration_cast<microseconds>(stop1 - start1);
     double time1=((double)duration1.count()/1000000);
 
-/*
-       
-     int tempsum=0;
-     for(int w=0;w<cluster_neighbours->size();w++){
-        tempsum+=(*cluster_neighbours)[w].size();
-        cout<<"clust "<<w<<" "<<(*cluster_neighbours)[w].size()<<endl;
-     }
-     cout<<"sum "<<tempsum<<endl;*/
     vector<long double>* silhouette_vec=NULL ;
     if(silhouette_flag==1){
         cout<<"Now using silhouette"<<endl;//ypologismos toy silhouette

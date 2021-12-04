@@ -3,6 +3,7 @@
 //gia oti den yparxei sxolio yparxoun sta arxeia tou lsh kai tou hypercube
 double normal_dist_generator(void);
 long double vect_dist(vector<double> vecA,vector<double> vecB,int d);
+long double dfd(vector<double> nvec,vector<double> qvec,int mv,int mq);
 //hashtable::hashtable();
 //void hashtable::hashtable_init(int bnum);
 //int hashtable:: hashtable_insert(vec* nvec, long hvalue);

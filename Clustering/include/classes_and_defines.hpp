@@ -7,6 +7,8 @@
 #define BUCKET_RATIO 8
 #define PERCISION 0.001
 #define MAXIT 50
+#define M_big_num 33554432 //2^25 
+const double delta=1.2;
 //const string metric = "euclidean_distance";
 
 
