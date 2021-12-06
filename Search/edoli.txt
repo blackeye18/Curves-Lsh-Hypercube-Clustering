@@ -1,3 +1,6 @@
 ./search –i nasdaq2017_LQ.csv –q query_small_id –k 3 -L 4 -M 10 -probes 10 -ο out -algorithm LSH -delta 2
 
 ./search –i nasdaq2017_LQ.csv –q nasdaq2017_LQ.csv –k 3 -L 4 -M 10 -probes 10 -ο out -algorithm Frechet -metric discrete -delta 1.2
+
+./search –i nasdaq2017_LQ.csv –q nasdaq2017_tiny.csv   –k 3 -L 4 -M 10 -probes 10 -ο out -algorithm Frechet -metric continuous -delta 1.2
+

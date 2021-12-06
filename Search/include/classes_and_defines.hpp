@@ -20,6 +20,7 @@ public:
 };
 
 vec* snapping(vec* nvectors,int no_of_coordinates,int no_of_vectors,double delta);
+int key_cont(vec* nvectors,int no_of_vectors,int no_of_coordinates,double delta);
 
 class dist_vec//tuple me apostasi kai to vec
     {public:

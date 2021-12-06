@@ -109,12 +109,20 @@ int mini_maxi_cont(vec* nvectors,int no_of_vectors,double delta)
 int preprocessing_cont(vec* nvectors,int no_of_vectors,int no_of_coordinates,double delta)
     {
     filtering(nvectors,no_of_coordinates,no_of_vectors,0);
+    //snapping_cont(nvectors,no_of_vectors,delta);
+    //mini_maxi_cont(nvectors,no_of_vectors,delta);
+    padding_cont(nvectors,no_of_vectors,no_of_coordinates,delta);
+    return 0;
+    }
+
+int key_cont(vec* nvectors,int no_of_vectors,int no_of_coordinates,double delta)
+    {
+    //filtering(nvectors,no_of_coordinates,no_of_vectors,0);
     snapping_cont(nvectors,no_of_vectors,delta);
     mini_maxi_cont(nvectors,no_of_vectors,delta);
     padding_cont(nvectors,no_of_vectors,no_of_coordinates,delta);
     return 0;
     }
-
 
 
 
@@ -209,7 +217,7 @@ int main(int argc, char *argv[]){
     Lhashtables *lht=NULL;
     hypercube *cube=NULL;
 
-    int alg_flag=0;//1 gia LSH 2 gia Hypercube 3 gia Frechet
+    int alg_flag=0;//1 gia LSH 2 gia Hypercube 3 gia Frechet discrete
     int metricfr_flag=0;//1 gia discrete 2 gia cont
 
     string lsh_or_hypercube="";
@@ -266,10 +274,10 @@ int main(int argc, char *argv[]){
                 if(nvectors==NULL)
                     return -1;
                 printf("Input:: no_of_vectors: %d, no_of_coordinates: %d\n",no_of_vectors,no_of_coordinates);
-                //if(alg_flag==3){
-                    //nvectors=snapping(nvectors,no_of_coordinates,no_of_vectors,delta);
+                if(metricfr_flag==2){
+                    preprocessing_cont(nvectors,no_of_vectors,no_of_coordinates,delta);
                     //no_of_coordinates=no_of_coordinates*2;
-                //}
+                    }
             }
            // cout<<"sdasdsds"<<endl;
 
@@ -292,7 +300,12 @@ int main(int argc, char *argv[]){
                     if(alg_flag==1)
                         lht=new Lhashtables(L,no_of_coordinates,k);//synarthsh arxikopoihshs
                     else if(alg_flag==3)
-                        lht=new Lhashtables(L,2*no_of_coordinates,k);//synarthsh arxikopoihshs
+                        {
+                        if(metricfr_flag==1)
+                            lht=new Lhashtables(L,2*no_of_coordinates,k);//synarthsh arxikopoihshs//EDW
+                        else if(metricfr_flag==2)
+                            lht=new Lhashtables(L,no_of_coordinates,k);//synarthsh arxikopoihshs//EDW
+                        }
                     lht->lsh_start(no_of_vectors,nvectors);//gemizoume ta ht 
                 }else{
                     

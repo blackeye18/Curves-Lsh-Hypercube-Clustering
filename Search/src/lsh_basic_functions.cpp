@@ -20,6 +20,7 @@ using namespace std::chrono;
 #include "cube_basic_functions.hpp"
 #include "lsh_basic_functions.hpp"
 #include "knn_ranges_brutes.hpp"
+
 extern string metric;
 extern double delta;
 
@@ -199,9 +200,17 @@ int Lhashtables:: lsh_continue(int no_of_ht,int no_of_vectors, vec* nvectors){//
     vec * snapped_paded_nvectors;
     if(metric=="LSH_Frechet_Discrete")
         snapped_paded_nvectors=snapping(nvectors,nvectors[0].coord.size(),no_of_vectors,delta);
+    else if(metric=="LSH_Frechet_Continuous")
+        {
+        snapped_paded_nvectors=new vec[no_of_vectors];
+        snapped_paded_nvectors=nvectors;
+
+        key_cont(snapped_paded_nvectors,no_of_vectors,nvectors[0].coord.size(),delta);
+
+        }
     for(int i=0;i<no_of_vectors;i++){
         for(int ki=0;ki<this->k;ki++){//ypologizoume thn timh twn h, afto ginetai k fors
-            if(metric=="LSH_Frechet_Discrete")
+            if(metric=="LSH_Frechet_Discrete"||metric=="LSH_Frechet_Continuous")
                 h_return=h_function(snapped_paded_nvectors[i].coord,this->v[no_of_ht][ki],this->t[no_of_ht][ki]);
             else if(metric=="euclidean_distance")
                  h_return=h_function(nvectors[i].coord,this->v[no_of_ht][ki],this->t[no_of_ht][ki]);

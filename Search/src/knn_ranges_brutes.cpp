@@ -106,7 +106,10 @@ vector<dist_vec>* brute_calculate(vec* qvector,vec* nvectors,int no_of_vectors,i
             dist=dfd(qvector[pos].coord,nvectors[i].coord,no_of_coordinates,no_of_coordinates);
             Q.push(dist_vec(dist,&(nvectors[i])));
             //cout<<"END"<<endl;
-
+        }else if(metric=="LSH_Frechet_Continuous"){
+                        //cout<<"LSH_Frechet_Continuous no ready yet so we are using DFD"<<endl;
+                        dist=dfd(qvector[pos].coord,nvectors[i].coord,no_of_coordinates,no_of_coordinates);
+                        Q.push(dist_vec(dist,&(nvectors[i])));
         }else{
          cout<<"No function for metric:"<<metric<<endl;
          return NULL;
@@ -157,13 +160,22 @@ vector<dist_vec>* Lhashtables::NN_search(vec* nvector,int N)//synarthsh gia to k
     int h_return;
     int h[k];
     vec * snapped_paded_nvectors;
-    if(metric=="LSH_Frechet_Discrete")
+    if(metric=="LSH_Frechet_Discrete")///////////////EDW
         snapped_paded_nvectors=snapping(nvector,nvector->coord.size(),1,delta);
+    else if(metric=="LSH_Frechet_Continuous")
+        {
+        snapped_paded_nvectors=new vec[1];
+        snapped_paded_nvectors[0]=*nvector;
+        cout<<"qvector"<<endl;
+
+        key_cont(nvector,1,nvector->coord.size(),delta);
+        }
+
     for (int li = 0; li < L; li++)
         {
         for(int ki=0;ki<this->k;ki++)
             {
-            if(metric=="LSH_Frechet_Discrete")
+            if(metric=="LSH_Frechet_Discrete"||metric=="LSH_Frechet_Continuous")//EDW
                 h_return=h_function(snapped_paded_nvectors[0].coord,this->v[li][ki],this->t[li][ki]);//ypologizoume ta h tou query gia kathe hastable
             else if(metric=="euclidean_distance")
                 h_return=h_function(nvector->coord,this->v[li][ki],this->t[li][ki]);//ypologizoume ta h tou query gia kathe hastable
@@ -187,6 +199,10 @@ vector<dist_vec>* Lhashtables::NN_search(vec* nvector,int N)//synarthsh gia to k
                     	long double dist=vect_dist(nvector->coord,currnode->vect->coord,d);//ypologizoume thn eyklideia apostash
                     	Q.push(dist_vec(dist,currnode->vect));//to eisxwroume sto priority queue
                     }else if(metric=="LSH_Frechet_Discrete"){
+                        long double dist=dfd(nvector->coord,currnode->vect->coord,nvector->coord.size(),currnode->vect->coord.size());
+                        Q.push(dist_vec(dist,currnode->vect));
+                    }else if(metric=="LSH_Frechet_Continuous"){
+                        //cout<<"LSH_Frechet_Continuous no ready yet so we are using DFD"<<endl;
                         long double dist=dfd(nvector->coord,currnode->vect->coord,nvector->coord.size(),currnode->vect->coord.size());
                         Q.push(dist_vec(dist,currnode->vect));
                     }else{
@@ -218,6 +234,10 @@ vector<dist_vec>* Lhashtables::NN_search(vec* nvector,int N)//synarthsh gia to k
                         Q.push(dist_vec(dist,currnode->vect));
                     }else if(metric=="LSH_Frechet_Discrete"){
                         long double dist=dfd(nvector->coord,currnode->vect->coord,d,d);
+                        Q.push(dist_vec(dist,currnode->vect));
+                    }else if(metric=="LSH_Frechet_Continuous"){
+                        //cout<<"LSH_Frechet_Continuous no ready yet so we are using DFD"<<endl;
+                        long double dist=dfd(nvector->coord,currnode->vect->coord,nvector->coord.size(),currnode->vect->coord.size());
                         Q.push(dist_vec(dist,currnode->vect));
                     }else{
                         cout<<"No function for metric:"<<metric<<endl;
@@ -304,6 +324,10 @@ vector<dist_vec>* Lhashtables::LRadius_search(vec* nvector,double R)// peripou i
             	   if(dist<R)
                         Q.push(dist_vec(dist,currnode->vect));
                 }else if(metric=="LSH_Frechet_Discrete"){
+                    long double dist=dfd(nvector->coord,currnode->vect->coord,d,d);
+                    if(dist<R)
+                        Q.push(dist_vec(dist,currnode->vect));
+                }else if(metric=="LSH_Frechet_Continuous"){
                     long double dist=dfd(nvector->coord,currnode->vect->coord,d,d);
                     if(dist<R)
                         Q.push(dist_vec(dist,currnode->vect));
