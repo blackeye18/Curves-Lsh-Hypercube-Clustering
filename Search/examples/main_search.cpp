@@ -24,7 +24,7 @@ using namespace std::chrono;
 //string 
 string metric = "euclidean_distance";
 
-
+double delta;
 
 
 int filtering(vec* nvectors,int no_of_coordinates,int no_of_vectors,int triads)
@@ -130,16 +130,7 @@ vec* snapping(vec* nvectors,int no_of_coordinates,int no_of_vectors,double delta
             temp[i][j][1]=nvectors[i].coord[j];
         }
     }
-    // for(int j=0;j<no_of_coordinates;j++){
-    //     //cout<<temp[1][j].size()<<endl;
-    //         for(int k=0;k<temp[1][j].size();k++){
-    //            cout<<temp[1][j][k]<<endl;
-    //         }
-    //     cout<<endl<<endl<<endl;
-    //         //temp[1][j].push_back(j);
-    //         //temp[1][j].push_back(nvectors[i].coord[j]);
-    //     }
-
+    
     int same_counter=0;
     double prev1=0,prev2=0;
     int first_flag=0;
@@ -194,7 +185,7 @@ vec* snapping(vec* nvectors,int no_of_coordinates,int no_of_vectors,double delta
             tempint=newnvectors[i].coord.size();
         }
     }
-    delete [] nvectors;
+    //delete [] nvectors;
     // for(int i=0;i<no_of_vectors;i++){
     //     cout<<newnvectors[i].name<<endl;
     // }
@@ -208,7 +199,7 @@ vec* snapping(vec* nvectors,int no_of_coordinates,int no_of_vectors,double delta
 
 
 int main(int argc, char *argv[]){
-    double delta;
+    //double delta;
     int L,k,M,probes,N=1;
     char input_file[256],query_file[256],output_file[256],metricfr[256],algorithm[256];
     vec* nvectors;
@@ -275,10 +266,10 @@ int main(int argc, char *argv[]){
                 if(nvectors==NULL)
                     return -1;
                 printf("Input:: no_of_vectors: %d, no_of_coordinates: %d\n",no_of_vectors,no_of_coordinates);
-                if(alg_flag==3){
-                    nvectors=snapping(nvectors,no_of_coordinates,no_of_vectors,delta);
-                    no_of_coordinates=no_of_coordinates*2;
-                }
+                //if(alg_flag==3){
+                    //nvectors=snapping(nvectors,no_of_coordinates,no_of_vectors,delta);
+                    //no_of_coordinates=no_of_coordinates*2;
+                //}
             }
            // cout<<"sdasdsds"<<endl;
 
@@ -287,10 +278,10 @@ int main(int argc, char *argv[]){
                 if(qvectors==NULL)
                     return -1;
                 printf("Queries:: queries_no_of_vectors: %d, queries_no_of_coordinates: %d\n",queries_no_of_vectors,queries_no_of_coordinates);
-                if(alg_flag==3){
-                    qvectors=snapping(qvectors,queries_no_of_coordinates,queries_no_of_vectors,delta);
-                    queries_no_of_coordinates=queries_no_of_coordinates*2;
-                }
+                //if(alg_flag==3){
+                   // qvectors=snapping(qvectors,queries_no_of_coordinates,queries_no_of_vectors,delta);
+                   // queries_no_of_coordinates=queries_no_of_coordinates*2;
+               // }
             }
 
             cout<<"Now using "<<algorithm<<endl;
@@ -298,7 +289,10 @@ int main(int argc, char *argv[]){
             auto start1 = high_resolution_clock::now();//https://www.geeksforgeeks.org/measure-execution-time-function-cpp/
             if(flag==0 || flag==1){//an exoume kainourio input file tote prepei na ksanadimourgisoume ta L ht gia to kainourio input file
                 if(alg_flag==1 || alg_flag==3){
-                    lht=new Lhashtables(L,no_of_coordinates,k);//synarthsh arxikopoihshs
+                    if(alg_flag==1)
+                        lht=new Lhashtables(L,no_of_coordinates,k);//synarthsh arxikopoihshs
+                    else if(alg_flag==3)
+                        lht=new Lhashtables(L,2*no_of_coordinates,k);//synarthsh arxikopoihshs
                     lht->lsh_start(no_of_vectors,nvectors);//gemizoume ta ht 
                 }else{
                     

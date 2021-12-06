@@ -21,6 +21,7 @@ using namespace std::chrono;
 #include "lsh_basic_functions.hpp"
 #include "knn_ranges_brutes.hpp"
 extern string metric;
+extern double delta;
 
 double normal_dist_generator(void)
     {
@@ -195,10 +196,15 @@ int Lhashtables:: lsh_continue(int no_of_ht,int no_of_vectors, vec* nvectors){//
     int tablesize=no_of_vectors/BUCKET_RATIO;//apo diafaneies
     this->Lhtables[no_of_ht].hashtable_init(tablesize);
     long int g_notablesize;
+    vec * snapped_paded_nvectors;
+    if(metric=="LSH_Frechet_Discrete")
+        snapped_paded_nvectors=snapping(nvectors,nvectors[0].coord.size(),no_of_vectors,delta);
     for(int i=0;i<no_of_vectors;i++){
         for(int ki=0;ki<this->k;ki++){//ypologizoume thn timh twn h, afto ginetai k fors
-
-            h_return=h_function(nvectors[i].coord,this->v[no_of_ht][ki],this->t[no_of_ht][ki]);
+            if(metric=="LSH_Frechet_Discrete")
+                h_return=h_function(snapped_paded_nvectors[i].coord,this->v[no_of_ht][ki],this->t[no_of_ht][ki]);
+            else if(metric=="euclidean_distance")
+                 h_return=h_function(nvectors[i].coord,this->v[no_of_ht][ki],this->t[no_of_ht][ki]);
             h[ki]=h_return;
             //cout<<"H Function Return:"<<h[ki]<<endl;
         }

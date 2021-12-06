@@ -21,6 +21,7 @@ using namespace std::chrono;
 #include "lsh_basic_functions.hpp"
 #include "knn_ranges_brutes.hpp"
 extern string metric;
+extern double delta;
 
 dist_vec::~dist_vec()//adeios destructor, den xreiazetai
 	{
@@ -155,13 +156,17 @@ vector<dist_vec>* Lhashtables::NN_search(vec* nvector,int N)//synarthsh gia to k
     long int g_notablesize[this->L];
     int h_return;
     int h[k];
-
+    vec * snapped_paded_nvectors;
+    if(metric=="LSH_Frechet_Discrete")
+        snapped_paded_nvectors=snapping(nvector,nvector->coord.size(),1,delta);
     for (int li = 0; li < L; li++)
         {
         for(int ki=0;ki<this->k;ki++)
             {
-
-            h_return=h_function(nvector->coord,this->v[li][ki],this->t[li][ki]);//ypologizoume ta h tou query gia kathe hastable
+            if(metric=="LSH_Frechet_Discrete")
+                h_return=h_function(snapped_paded_nvectors[0].coord,this->v[li][ki],this->t[li][ki]);//ypologizoume ta h tou query gia kathe hastable
+            else if(metric=="euclidean_distance")
+                h_return=h_function(nvector->coord,this->v[li][ki],this->t[li][ki]);//ypologizoume ta h tou query gia kathe hastable
             h[ki]=h_return;
             //cout<<"H Function Return:"<<h[ki]<<endl;
             }
@@ -182,7 +187,7 @@ vector<dist_vec>* Lhashtables::NN_search(vec* nvector,int N)//synarthsh gia to k
                     	long double dist=vect_dist(nvector->coord,currnode->vect->coord,d);//ypologizoume thn eyklideia apostash
                     	Q.push(dist_vec(dist,currnode->vect));//to eisxwroume sto priority queue
                     }else if(metric=="LSH_Frechet_Discrete"){
-                        long double dist=dfd(nvector->coord,currnode->vect->coord,d,d);
+                        long double dist=dfd(nvector->coord,currnode->vect->coord,nvector->coord.size(),currnode->vect->coord.size());
                         Q.push(dist_vec(dist,currnode->vect));
                     }else{
                         cout<<"No function for metric:"<<metric<<endl;

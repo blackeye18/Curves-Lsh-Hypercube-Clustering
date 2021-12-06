@@ -20,7 +20,7 @@ using namespace std::chrono;
 #include "lsh_basic_functions.hpp"
 #include "knn_ranges_brutes.hpp"
 extern string metric;
-
+extern double delta;
 //elegxoume an to # twn arguments einai swsto
 int argsOK(int argc, char *argv[])
 {
