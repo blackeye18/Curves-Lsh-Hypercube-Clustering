@@ -26,6 +26,136 @@ using namespace std::chrono;
 string metric = "euclidean_distance";
 
 
+vector<double>* MeanCurve(vector<double> nvec,vector<double> qvec,int mv,int mq)
+    {
+    //dfd table
+    vector<vector<long double>> C;
+    C.resize(mv,vector<long double>(mq));
+
+    long double dist=abs(nvec[0]-qvec[0]);
+    C[0][0]=dist;
+
+
+    for (int i = 1; i < mq; ++i)
+        {
+        long double dist=abs(nvec[0]-qvec[i]);
+        C[0][i]=max(dist,C[0][i-1]);
+        }
+
+    for (int i = 1; i < mv; ++i)
+        {
+        long double dist=abs(nvec[i]-qvec[0]);
+        C[i][0]=max(dist,C[i-1][0]);
+        }
+
+    for (int i = 1; i < mv; ++i)
+        {
+        for (int j = 1; j < mq; ++j)
+            {
+            long double dist=abs(nvec[i]-qvec[j]);
+
+            long double mprev=min(min(C[i-1][j],C[i-1][j-1]),C[i][j-1]);
+            C[i][j]=max(dist,mprev);
+            }
+        }
+    //algorithm of page 30 in curves.pdf
+    int Pi=mv-1;
+    int Qi=mq-1;
+
+    vector<tuple<double,double>> traversal;
+
+    traversal.insert(traversal.begin(),make_tuple(Pi,Qi));
+
+    while(Pi!=0 && Qi !=0)
+        {
+        //calculating min Index
+        int minIdx=0;
+
+        if(C[Pi][Qi-1]<C[Pi-1][Qi])
+            {
+            minIdx++;
+            if(C[Pi-1][Qi-1]<C[Pi][Qi-1])
+                minIdx++;
+            }
+        else if(C[Pi-1][Qi-1]<C[Pi-1][Qi])
+            minIdx=2;
+
+        if(minIdx==0)
+            traversal.insert(traversal.begin(),make_tuple(--Pi,Qi));
+        else if(minIdx==1)
+            traversal.insert(traversal.begin(),make_tuple(Pi,--Qi));
+        else if(minIdx==2)
+            traversal.insert(traversal.begin(),make_tuple(--Pi,--Qi));
+        else
+            {
+            cout<<"ERROR minIdx out of range 0-2"<<endl;
+            }
+
+        }
+    vector<double>* mvec_ptr=new vector<double>;
+
+    for (int i = 0; i < traversal.size(); ++i)
+        {
+        double cord=nvec[get<0>(traversal[i])] + qvec[get<1>(traversal[i])];cord/=2;
+        mvec_ptr->push_back(cord);
+        }
+
+    return mvec_ptr;
+    }
+
+long double MeanNCurves(vector<vec*> nvects,vec*  cvec)
+    {
+
+    vector<vector<double>>* prev=new vector<vector<double>>;
+
+    for (int i = 0; i < nvects.size(); ++i)
+        {
+        prev->push_back(nvects[i]->coord);
+        }
+    //ta kanw shuffle
+    unsigned seed=std::chrono::steady_clock::now().time_since_epoch().count();
+    default_random_engine e(seed);
+    shuffle(begin(*prev), end(*prev), e);   
+
+    while(prev->size()>1)
+        {
+        vector<vector<double>>* curr=new vector<vector<double>>;//xrisimopoiume 2 vectors anti binary tree logo tis apousias tu apto stl kai poliplokotitas xwrou
+
+        for (int i = 0; i < prev->size()-1; i+=2)
+            {
+            vector<double>* mvec_ptr=MeanCurve(prev->at(i),prev->at(i+1),prev->at(i).size(),prev->at(i+1).size());
+            curr->push_back(*mvec_ptr);
+
+            mvec_ptr->empty();
+            delete mvec_ptr;
+            }
+
+        if(prev->size()%2==1)//an exei mono arithmo
+            curr->push_back(prev->back());
+
+        for (int i = 0; i < prev->size(); ++i)
+            prev->at(i).empty();
+        prev->empty();delete prev;
+
+        prev=curr;
+        }
+
+    long double Sum_diff=0;
+    int size=min(prev->at(0).size(),cvec->coord.size());
+    for (int i = 0; i < size; ++i)
+        {
+        Sum_diff+=abs(cvec->coord[i]-prev->at(0)[i]);
+        cvec->coord[i]=prev->at(0)[i];
+        }
+    long double Avg_diff=Sum_diff/size;
+
+    prev->at(0).empty();
+    prev->empty();delete prev;
+
+    return Avg_diff;
+    }
+
+
 
 vec* snapping(vec* nvectors,int no_of_coordinates,int no_of_vectors,double delta){
     vector<vector<vector<double>>> temp;
