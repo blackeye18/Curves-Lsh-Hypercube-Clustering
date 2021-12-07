@@ -140,18 +140,37 @@ long double MeanNCurves(vector<vec*> nvects,vec*  cvec)
         prev=curr;
         }
 
-    long double Sum_diff=0;
-    int size=min(prev->at(0).size(),cvec->coord.size());
+    cout<<"old clustersvec with size "<< cvec->coord.size()<<" and new "<<prev->at(0).size()<<endl;
+   /* for (int i = 0; i < cvec->coord.size(); ++i)
+    	{
+    	cout<<cvec->coord[i]<<" ";
+    	}
+    cout<<endl;*/
+
+    long double Avg_diff=dfd(prev->at(0),cvec->coord,prev->at(0).size(),cvec->coord.size());
+
+    cout<<"Avg_diff alright"<<endl;
+    int size=3000;
+    cvec->coord.clear();
     for (int i = 0; i < size; ++i)
         {
-        Sum_diff+=abs(cvec->coord[i]-prev->at(0)[i]);
-        cvec->coord[i]=prev->at(0)[i];
+        if(i<prev->at(0).size())
+        	cvec->coord.push_back(prev->at(0)[i]);
+        else
+        	cvec->coord.push_back(M_big_num);
         }
-    long double Avg_diff=Sum_diff/size;
+
 
     prev->at(0).empty();
     prev->empty();delete prev;
 
+    cout<<"new clustersvec with size "<< cvec->coord.size()<<endl;
+   /* for (int i = 0; i < cvec->coord.size(); ++i)
+    	{
+    	cout<<cvec->coord[i]<<" ";
+    	}
+    cout<<endl;*/
+    cout<<"alright MeanNCurves"<<endl;
     return Avg_diff;
     }
 
