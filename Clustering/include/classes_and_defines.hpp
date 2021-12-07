@@ -22,7 +22,7 @@ public:
     int clustered_flag;//gia to radi search sto hypercube kai lsh, an exei hdh mpei se kapoio cluster kai se poio iteration
 };
 
-vec* snapping(vec* nvectors,int no_of_coordinates,int no_of_vectors,double delta);
+vec* snapping(vec* nvectors,int no_of_coordinates,int no_of_vectors,double delta,vector<double>td1,vector<double>td2);
 long double MeanNCurves(vector<vec*> nvects,vec*  cvec);
 
 class dist_vec
@@ -105,6 +105,8 @@ class hashtable
         int k;
         vector<vector<vector<double>>> v;
         vector<vector<double>> t;
+        vector<vector<double>> td1;//gia to snapping tou descrete gia 2d
+        vector<vector<double>> td2;
         vector<vector<int>> r;
     public:
         Lhashtables(int,int,int);

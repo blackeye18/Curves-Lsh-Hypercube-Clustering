@@ -105,7 +105,7 @@ vector<vec>* cluster::Kmeanplus(vec* nvect)//kmeans ++ sel 45-46 nnCluster.pdf
                             mdist=vect_dist((clusters->at(ci)).coord,nvect[i].coord,no_of_coordinates);
                             mci=0;
                         }else if(metric=="LSH_Frechet_Discrete"){
-                            mdist=dfd((clusters->at(ci)).coord,nvect[i].coord,no_of_coordinates,no_of_coordinates);
+                            mdist=dfd((clusters->at(ci)).coord,nvect[i].coord,(clusters->at(ci)).coord.size(),nvect[i].coord.size());
                             mci=0;
                         }else{
                             cout<<"No function for metric:"<<metric<<endl;
@@ -118,7 +118,7 @@ vector<vec>* cluster::Kmeanplus(vec* nvect)//kmeans ++ sel 45-46 nnCluster.pdf
                         if(metric=="euclidean_distance"){
                             dist=vect_dist((clusters->at(ci)).coord,nvect[i].coord,no_of_coordinates);
                         }else if(metric=="LSH_Frechet_Discrete"){
-                            dist=dfd((clusters->at(ci)).coord,nvect[i].coord,no_of_coordinates,no_of_coordinates);
+                            dist=dfd((clusters->at(ci)).coord,nvect[i].coord,(clusters->at(ci)).coord.size(),nvect[i].coord.size());
                         }
                         if (dist<mdist)
                             {
@@ -166,7 +166,7 @@ vector<vector<vec*>>* cluster::lloyds(vec* nvect,vector<vec>* clustersvec)//sina
                     mdist=vect_dist(clustersvec->at(ci).coord,nvect[i].coord,no_of_coordinates);
                     mci=0;
                 }else if(metric=="LSH_Frechet_Discrete"){
-                    mdist=dfd(clustersvec->at(ci).coord,nvect[i].coord,no_of_coordinates,no_of_coordinates);
+                    mdist=dfd(clustersvec->at(ci).coord,nvect[i].coord,clustersvec->at(ci).coord.size(),nvect[i].coord.size());
                     mci=0;
                 }
             }
@@ -176,7 +176,7 @@ vector<vector<vec*>>* cluster::lloyds(vec* nvect,vector<vec>* clustersvec)//sina
                 if(metric=="euclidean_distance"){
                     dist=vect_dist(clustersvec->at(ci).coord,nvect[i].coord,no_of_coordinates);
                 }else if(metric=="LSH_Frechet_Discrete"){
-                    dist=dfd(clustersvec->at(ci).coord,nvect[i].coord,no_of_coordinates,no_of_coordinates);
+                    dist=dfd(clustersvec->at(ci).coord,nvect[i].coord,clustersvec->at(ci).coord.size(),nvect[i].coord.size());
                 }
                 if (dist<mdist)
                     {
@@ -273,7 +273,7 @@ vector<long double>* cluster::silhouette(vector<vector<vec*>>* cluster_neighbour
                             dist=vect_dist((*cluster_neighbours)[ci][vi]->coord,(*cluster_neighbours)[ci][ni]->coord,no_of_coordinates);
                             prev_dist[vi][ni]=dist;//apo8ikevume tin apostasi gia mellontiki xrisi
                         }else if(metric=="LSH_Frechet_Discrete"){
-                            dist=dfd((*cluster_neighbours)[ci][vi]->coord,(*cluster_neighbours)[ci][ni]->coord,no_of_coordinates,no_of_coordinates);
+                            dist=dfd((*cluster_neighbours)[ci][vi]->coord,(*cluster_neighbours)[ci][ni]->coord,(*cluster_neighbours)[ci][vi]->coord.size(),(*cluster_neighbours)[ci][ni]->coord.size());
                             prev_dist[vi][ni]=dist;//apo8ikevume tin apostasi gia mellontiki xrisi
                         }else{
                             cout<<"No function for metric:"<<metric<<endl;
@@ -303,7 +303,7 @@ vector<long double>* cluster::silhouette(vector<vector<vec*>>* cluster_neighbour
                             nextbestclust_dist=vect_dist(clustersvec->at(nci).coord,(*cluster_neighbours)[ci][vi]->coord,no_of_coordinates);
                             nextbestclust_ci=nci;
                         }else if(metric=="LSH_Frechet_Discrete"){
-                            nextbestclust_dist=dfd(clustersvec->at(nci).coord,(*cluster_neighbours)[ci][vi]->coord,no_of_coordinates,no_of_coordinates);
+                            nextbestclust_dist=dfd(clustersvec->at(nci).coord,(*cluster_neighbours)[ci][vi]->coord,clustersvec->at(nci).coord.size(),(*cluster_neighbours)[ci][vi]->coord.size());
                             nextbestclust_ci=nci;
                         }
                     }
@@ -313,7 +313,7 @@ vector<long double>* cluster::silhouette(vector<vector<vec*>>* cluster_neighbour
                         if(metric=="euclidean_distance"){
                             dist=vect_dist(clustersvec->at(nci).coord,(*cluster_neighbours)[ci][vi]->coord,no_of_coordinates);
                         }else if (metric=="LSH_Frechet_Discrete"){
-                            dist=dfd(clustersvec->at(nci).coord,(*cluster_neighbours)[ci][vi]->coord,no_of_coordinates,no_of_coordinates);
+                            dist=dfd(clustersvec->at(nci).coord,(*cluster_neighbours)[ci][vi]->coord,clustersvec->at(nci).coord.size(),(*cluster_neighbours)[ci][vi]->coord.size());
                         }
                         if(dist<nextbestclust_dist)
                             {
@@ -336,7 +336,7 @@ vector<long double>* cluster::silhouette(vector<vector<vec*>>* cluster_neighbour
                 if(metric=="euclidean_distance"){
                     dist=vect_dist((*cluster_neighbours)[ci][vi]->coord,(*cluster_neighbours)[nextbestclust_ci][nbvi]->coord,no_of_coordinates);
                 }else if (metric=="LSH_Frechet_Discrete"){
-                    dist=dfd((*cluster_neighbours)[ci][vi]->coord,(*cluster_neighbours)[nextbestclust_ci][nbvi]->coord,no_of_coordinates,no_of_coordinates);
+                    dist=dfd((*cluster_neighbours)[ci][vi]->coord,(*cluster_neighbours)[nextbestclust_ci][nbvi]->coord,(*cluster_neighbours)[ci][vi]->coord.size(),(*cluster_neighbours)[nextbestclust_ci][nbvi]->coord.size());
                 }
                 sumB+=dist;
                 }

@@ -199,11 +199,25 @@ void Lhashtables::Hashfun_init(void)
 
     r.resize(L,vector<int>(k));
 
+    td1.resize(L,vector<double>(d));
+
+    td2.resize(L,vector<double>(d));
+
     unsigned seed=std::chrono::steady_clock::now().time_since_epoch().count();
     default_random_engine e(seed);
 
     std::uniform_int_distribution<int>  distrR(-RLIMIT,RLIMIT);
     std::uniform_real_distribution<double>  distrT(0.0,W);
+    std::uniform_real_distribution<double>  distrTd1(0.0,delta);
+    std::uniform_real_distribution<double>  distrTd2(0.0,delta);
+
+
+    for(int Li=0;Li<L;Li++){
+        for(int di=0;di<d;di++){
+            td1[Li][di]=distrTd1(e);
+            td2[Li][di]=distrTd2(e);
+        }
+    }
 
 
     for (int Li = 0; Li < L; ++Li)
@@ -263,7 +277,7 @@ int Lhashtables:: lsh_continue(int no_of_ht,int no_of_vectors, vec* nvectors){
     long int g_notablesize;
     vec * snapped_paded_nvectors;
     if(metric=="LSH_Frechet_Discrete")
-        snapped_paded_nvectors=snapping(nvectors,nvectors[0].coord.size(),no_of_vectors,delta);
+        snapped_paded_nvectors=snapping(nvectors,nvectors[0].coord.size(),no_of_vectors,delta,td1[no_of_ht],td2[no_of_ht]);
     for(int i=0;i<no_of_vectors;i++){
 
             for(int ki=0;ki<this->k;ki++){
@@ -280,7 +294,8 @@ int Lhashtables:: lsh_continue(int no_of_ht,int no_of_vectors, vec* nvectors){
             this->Lhtables[no_of_ht].hashtable_insert(&(nvectors[i]),g_notablesize);
         
     }
-    
+     if(metric=="LSH_Frechet_Discrete")
+        delete [] snapped_paded_nvectors;
 
     return 0;
 }
@@ -384,12 +399,7 @@ vector<vector<vec*>>* Lhashtables::ANN_lsh(vec* nvect,vector<vec>* clustersvec,i
     long double mindist=999999999999999;
     cout<<"Asasdsadsafsa:"<<cluster_num<<endl;
     vector<vec*> snapped_paded_nvectors;
-    if(metric=="LSH_Frechet_Discrete"){
-        for(int ci=0;ci<cluster_num;ci++){
-            cout<<"Aaaa1";
-            snapped_paded_nvectors.push_back(snapping(&(clustersvec->at(ci)),clustersvec->at(ci).coord.size(),1,delta));
-        }
-    }
+    
     for (int ca = 0; ca < cluster_num-1; ++ca)
         {
         for (int cb = ca+1 ; cb <cluster_num;  ++cb)
@@ -398,7 +408,7 @@ vector<vector<vec*>>* Lhashtables::ANN_lsh(vec* nvect,vector<vec>* clustersvec,i
             if(metric=="euclidean_distance")
                 dist=vect_dist(clustersvec->at(ca).coord,clustersvec->at(cb).coord,d);
             else if (metric=="LSH_Frechet_Discrete")
-                dist=dfd(snapped_paded_nvectors.at(ca)->coord,snapped_paded_nvectors.at(cb)->coord,snapped_paded_nvectors.at(ca)->coord.size(),snapped_paded_nvectors.at(cb)->coord.size());
+                dist=dfd(clustersvec->at(ca).coord,clustersvec->at(cb).coord,clustersvec->at(ca).coord.size(),clustersvec->at(cb).coord.size());
             if(dist<=mindist)
                 mindist==dist;
             }
@@ -414,6 +424,12 @@ vector<vector<vec*>>* Lhashtables::ANN_lsh(vec* nvect,vector<vec>* clustersvec,i
         {
         for (int li = 0; li < L; li++)
             {
+                if(metric=="LSH_Frechet_Discrete"){
+                    for(int ci=0;ci<cluster_num;ci++){
+                        cout<<"Aaaa1";
+                        snapped_paded_nvectors.push_back(snapping(&(clustersvec->at(ci)),clustersvec->at(ci).coord.size(),1,delta,td1[li],td2[li]));
+                     }               
+                }
             for(int ki=0;ki<this->k;ki++)
                 {
                 if(metric=="LSH_Frechet_Discrete")
