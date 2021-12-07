@@ -220,7 +220,7 @@ vec* snapping(vec* nvectors,int no_of_coordinates,int no_of_vectors,double delta
             tempint=newnvectors[i].coord.size();
         }
     }
-    delete [] nvectors;
+    //delete [] nvectors;
     // for(int i=0;i<no_of_vectors;i++){
     //     cout<<newnvectors[i].name<<endl;
     // }
@@ -280,10 +280,10 @@ int main(int argc, char *argv[]){
 	if(nvectors==NULL)
 	    return -1;
 	printf("Input:: no_of_vectors: %d, no_of_coordinates: %d\n",no_of_vectors,no_of_coordinates);
-	if(update_flag==1){
-        nvectors=snapping(nvectors,no_of_coordinates,no_of_vectors,delta);
-        no_of_coordinates=no_of_coordinates*2;
-    }
+	//if(update_flag==1){
+        //nvectors=snapping(nvectors,no_of_coordinates,no_of_vectors,delta);
+        //no_of_coordinates=no_of_coordinates*2;
+    //}
     cout<<no_of_coordinates<<endl;
     cout<<"Now using Kmeans++"<<endl;
     auto start1 = high_resolution_clock::now();//https://www.geeksforgeeks.org/measure-execution-time-function-cpp/
@@ -301,8 +301,13 @@ int main(int argc, char *argv[]){
 
     }else if(assigment_flag==1 || assigment_flag==3){//ama einai me lsh ftiaxnontai oi domes  tou lsh kai kaleite h repeat gia lsh
         cout<<"Now using LSH"<<endl;
-        lht=new Lhashtables(L,no_of_coordinates,k_lsh);
+        if (assigment_flag==1)
+            lht=new Lhashtables(L,no_of_coordinates,k_lsh);
+        else if(assigment_flag==3)
+            lht=new Lhashtables(L,2*no_of_coordinates,k_lsh);
+        cout<<"lsh_start"<<endl;
         lht->lsh_start(no_of_vectors,nvectors);
+        cout<<"Repeat"<<endl;
         cluster_neighbours=clus.repeat(nvectors,clustersvec,1,(void*)lht);//1 gia lht
 
     }else if(assigment_flag==2){//ama einai me hypercube tote ftiaxnontai oi domes tou hypercube kai kaleite h repeat gia to hypercube

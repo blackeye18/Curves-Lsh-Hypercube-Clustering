@@ -261,11 +261,16 @@ int Lhashtables:: lsh_continue(int no_of_ht,int no_of_vectors, vec* nvectors){
     int tablesize=no_of_vectors/BUCKET_RATIO;//apo diafaneies
     this->Lhtables[no_of_ht].hashtable_init(tablesize);
     long int g_notablesize;
+    vec * snapped_paded_nvectors;
+    if(metric=="LSH_Frechet_Discrete")
+        snapped_paded_nvectors=snapping(nvectors,nvectors[0].coord.size(),no_of_vectors,delta);
     for(int i=0;i<no_of_vectors;i++){
 
             for(int ki=0;ki<this->k;ki++){
-
-                h_return=h_function(nvectors[i].coord,this->v[no_of_ht][ki],this->t[no_of_ht][ki]);
+                if(metric=="LSH_Frechet_Discrete")
+                    h_return=h_function(snapped_paded_nvectors[i].coord,this->v[no_of_ht][ki],this->t[no_of_ht][ki]);
+                else if(metric=="euclidean_distance")
+                    h_return=h_function(nvectors[i].coord,this->v[no_of_ht][ki],this->t[no_of_ht][ki]);
                 h[ki]=h_return;
                 //cout<<"H Function Return:"<<h[ki]<<endl;
             }
@@ -310,57 +315,57 @@ int Lhashtables::Cluster_LRadius(vec* cvector,long int g_notablesize[],double ra
                 
                 int clustered_flag=currnode->vect->clustered_flag;
                 if(clustered_flag==-1||clustered_flag==iteration)//ean den mpike 3ana se cluster i exi mpi se allo cluster se auto to iteration
-                    {
+                {
+                    long double dist;
                     if(metric=="euclidean_distance")
                         {
-
-                        long double dist=vect_dist(cvector->coord,currnode->vect->coord,d);
-                        if(dist<radius)
-                            {
-                            int push_flag=1;
-                            if(clustered_flag==iteration)//ean ine se allo cluster
-                                {
-                                push_flag=-1;
-                                int found=0;
-                                for (int ci = 0; ci < clust_num; ++ci)
-                                    {
-                                    for (int vi = 0; vi < (*curr_clust_vec)[ci].size(); ++vi)
-                                        {
-                                        if((*curr_clust_vec)[ci][vi].vect==currnode->vect)//vriskume pu ine
-                                            {
-                                            found=1;
-                                            if((*curr_clust_vec)[ci][vi].dist<=dist)//elegxume ean exi  mikroteri apostasi sto allo cluster
-                                                {
-                                                push_flag=0;//tote den tha to valume sto twrino cluster
-                                                }
-                                            else
-                                                {
-                                                push_flag=1;//tha to valume sto twrino cluster
-                                                (*curr_clust_vec)[ci].erase((*curr_clust_vec)[ci].begin() + vi);//to svinume apto allo cluster
-                                                }
-
-                                            break;
-                                            }
-                                        }
-                                    if(found){break;}
-                                    }
-                                }
-
-                            if(push_flag==1)//to vazume sto twrino cluster
-                                {
-                                currnode->vect->clustered_flag=iteration;
-                                (*curr_clust_vec)[clust_num].push_back(dist_vec(dist,currnode->vect));
-                                }
-
-                            }
-
+                        dist=vect_dist(cvector->coord,currnode->vect->coord,d);
                         }
+                    else if (metric=="LSH_Frechet_Discrete"){
+                        dist=dfd(cvector->coord,currnode->vect->coord,cvector->coord.size(),currnode->vect->coord.size());
+                    }
                     else
                         {
                         cout<<"No function for metric:"<<metric<<endl;
                         return 1;
                         }
+                    
+                    if(dist<radius)
+                        {
+                        int push_flag=1;
+                        if(clustered_flag==iteration)//ean ine se allo cluster
+                        {
+                            push_flag=-1;
+                            int found=0;
+                            for (int ci = 0; ci < clust_num; ++ci)
+                                {
+                                for (int vi = 0; vi < (*curr_clust_vec)[ci].size(); ++vi)
+                                    {
+                                    if((*curr_clust_vec)[ci][vi].vect==currnode->vect)//vriskume pu ine
+                                        {
+                                        found=1;
+                                        if((*curr_clust_vec)[ci][vi].dist<=dist)//elegxume ean exi  mikroteri apostasi sto allo cluster
+                                            {
+                                            push_flag=0;//tote den tha to valume sto twrino cluster
+                                            }
+                                        else
+                                            {
+                                            push_flag=1;//tha to valume sto twrino cluster
+                                            (*curr_clust_vec)[ci].erase((*curr_clust_vec)[ci].begin() + vi);//to svinume apto allo cluster
+                                            }
+                                            break;
+                                        }
+                                    }
+                                if(found){break;}
+                                }
+                            }
+                        if(push_flag==1)//to vazume sto twrino cluster
+                        {
+                            currnode->vect->clustered_flag=iteration;
+                            (*curr_clust_vec)[clust_num].push_back(dist_vec(dist,currnode->vect));
+                        }
                     }
+                }
                 }
             else
                 cout<<"NULL vect found"<<endl;
@@ -377,13 +382,23 @@ vector<vector<vec*>>* Lhashtables::ANN_lsh(vec* nvect,vector<vec>* clustersvec,i
     //ipologizoume to radi= mindist meta3i 2 cluster /2
     int cluster_num=clustersvec->size();
     long double mindist=999999999999999;
-
+    cout<<"Asasdsadsafsa:"<<cluster_num<<endl;
+    vector<vec*> snapped_paded_nvectors;
+    if(metric=="LSH_Frechet_Discrete"){
+        for(int ci=0;ci<cluster_num;ci++){
+            cout<<"Aaaa1";
+            snapped_paded_nvectors.push_back(snapping(&(clustersvec->at(ci)),clustersvec->at(ci).coord.size(),1,delta));
+        }
+    }
     for (int ca = 0; ca < cluster_num-1; ++ca)
         {
         for (int cb = ca+1 ; cb <cluster_num;  ++cb)
             {
-
-            long double dist=vect_dist(clustersvec->at(ca).coord,clustersvec->at(cb).coord,d);
+            long double dist;
+            if(metric=="euclidean_distance")
+                dist=vect_dist(clustersvec->at(ca).coord,clustersvec->at(cb).coord,d);
+            else if (metric=="LSH_Frechet_Discrete")
+                dist=dfd(snapped_paded_nvectors.at(ca)->coord,snapped_paded_nvectors.at(cb)->coord,snapped_paded_nvectors.at(ca)->coord.size(),snapped_paded_nvectors.at(cb)->coord.size());
             if(dist<=mindist)
                 mindist==dist;
             }
@@ -393,14 +408,18 @@ vector<vector<vec*>>* Lhashtables::ANN_lsh(vec* nvect,vector<vec>* clustersvec,i
     long int g_notablesize[cluster_num][this->L];
     int h_return;
     int h[cluster_num][k];
+    
+    cout<<"Aaaa1";
     for (int ci = 0; ci < cluster_num; ++ci)//ipologizume ola ta hashvalues
         {
         for (int li = 0; li < L; li++)
             {
             for(int ki=0;ki<this->k;ki++)
                 {
-
-                h_return=h_function(clustersvec->at(ci).coord,this->v[li][ki],this->t[li][ki]);
+                if(metric=="LSH_Frechet_Discrete")
+                    h_return=h_function(snapped_paded_nvectors.at(ci)->coord,this->v[li][ki],this->t[li][ki]);
+                else if(metric=="euclidean_distance")
+                    h_return=h_function(clustersvec->at(ci).coord,this->v[li][ki],this->t[li][ki]);
                 h[ci][ki]=h_return;
               
                 }
@@ -465,12 +484,21 @@ vector<vector<vec*>>* Lhashtables::ANN_lsh(vec* nvect,vector<vec>* clustersvec,i
 
                     if(ci==0)
                         {
-                        mdist=vect_dist(clustersvec->at(ci).coord,nvect[i].coord,d);
-                        mci=0;
+                        if(metric=="euclidean_distance"){
+                            mdist=vect_dist(clustersvec->at(ci).coord,nvect[i].coord,d);
+                            mci=0;
+                        }else if(metric=="LSH_Frechet_Discrete"){
+                            mdist=dfd(clustersvec->at(ci).coord,nvect[i].coord,clustersvec->at(ci).coord.size(),nvect[i].coord.size());
+                            mci=0;
+                        }
                         }
                     else
                         {
-                        long double dist=vect_dist(clustersvec->at(ci).coord,nvect[i].coord,d);
+                        long double dist;
+                        if(metric=="euclidean_distance")
+                            dist=vect_dist(clustersvec->at(ci).coord,nvect[i].coord,d);
+                        else if(metric=="LSH_Frechet_Discrete")
+                            dist=dfd(clustersvec->at(ci).coord,nvect[i].coord,clustersvec->at(ci).coord.size(),nvect[i].coord.size());
                         if (dist<mdist)
                             {
                             mdist=dist;

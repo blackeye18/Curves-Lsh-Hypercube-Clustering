@@ -231,8 +231,12 @@ vector<vector<vec*>>* cluster::repeat(vec* nvect,vector<vec>* clustersvec,int me
 		//vriskume ta nea clusters
 		for (int ci = 0; ci < clustersvec->size(); ++ci)
 			{
-
-			sum_diff+=Mean_coord(cluster_neighbours->at(ci),&(clustersvec->at(ci)),no_of_coordinates);
+            if(metric=="euclidean_distance")
+		      sum_diff+=Mean_coord(cluster_neighbours->at(ci),&(clustersvec->at(ci)),no_of_coordinates);
+            else if(metric=="LSH_Frechet_Discrete"){
+                cout<<"Mphka N curves"<<endl;
+                sum_diff+=MeanNCurves(cluster_neighbours->at(ci),&(clustersvec->at(ci)));
+            }
 
 			}
 			

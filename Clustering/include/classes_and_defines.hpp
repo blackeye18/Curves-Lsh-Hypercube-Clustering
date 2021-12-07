@@ -22,6 +22,8 @@ public:
     int clustered_flag;//gia to radi search sto hypercube kai lsh, an exei hdh mpei se kapoio cluster kai se poio iteration
 };
 
+vec* snapping(vec* nvectors,int no_of_coordinates,int no_of_vectors,double delta);
+long double MeanNCurves(vector<vec*> nvects,vec*  cvec);
 
 class dist_vec
     {public:
