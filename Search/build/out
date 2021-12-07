@@ -119,6 +119,6 @@ True Nearest neighbor: abac
 distanceApproximate: 0
 distanceTrue: 0
 
-tApproximateAverage: 0.00329232
-tTrueAverage: 3.40501
+tApproximateAverage: 0.00318924
+tTrueAverage: 3.52377
 MAF: 0

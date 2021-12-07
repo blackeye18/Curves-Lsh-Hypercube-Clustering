@@ -105,7 +105,7 @@ int mini_maxi_cont(vec* nvectors,int no_of_vectors,double delta)
         }
     return 0;
     }
-
+/*
 int preprocessing_cont(vec* nvectors,int no_of_vectors,int no_of_coordinates,double delta)
     {
     filtering(nvectors,no_of_coordinates,no_of_vectors,0);
@@ -113,11 +113,11 @@ int preprocessing_cont(vec* nvectors,int no_of_vectors,int no_of_coordinates,dou
     //mini_maxi_cont(nvectors,no_of_vectors,delta);
     padding_cont(nvectors,no_of_vectors,no_of_coordinates,delta);
     return 0;
-    }
+    }*/
 
 int key_cont(vec* nvectors,int no_of_vectors,int no_of_coordinates,double delta)
     {
-    //filtering(nvectors,no_of_coordinates,no_of_vectors,0);
+    filtering(nvectors,no_of_coordinates,no_of_vectors,0);
     snapping_cont(nvectors,no_of_vectors,delta);
     mini_maxi_cont(nvectors,no_of_vectors,delta);
     padding_cont(nvectors,no_of_vectors,no_of_coordinates,delta);
@@ -274,10 +274,11 @@ int main(int argc, char *argv[]){
                 if(nvectors==NULL)
                     return -1;
                 printf("Input:: no_of_vectors: %d, no_of_coordinates: %d\n",no_of_vectors,no_of_coordinates);
+                /*
                 if(metricfr_flag==2){
                     preprocessing_cont(nvectors,no_of_vectors,no_of_coordinates,delta);
                     //no_of_coordinates=no_of_coordinates*2;
-                    }
+                    }*/
             }
            // cout<<"sdasdsds"<<endl;
 
