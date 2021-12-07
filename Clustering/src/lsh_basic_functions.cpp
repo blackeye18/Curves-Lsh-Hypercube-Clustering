@@ -441,6 +441,16 @@ vector<vector<vec*>>* Lhashtables::ANN_lsh(vec* nvect,vector<vec>* clustersvec,i
                 }
        
             g_notablesize[ci][li]=g_function(h[ci],this->r[li],this->k);
+
+
+            //EDW THELEI DELETE TO SNAPPED
+            
+            // if(metric=="LSH_Frechet_Discrete")
+            //     for(int i=0;i<snapped_paded_nvectors.size();i++){
+            //         vec * temp=snapped_paded_nvectors[i];
+            //         delete temp;
+
+            //     }
             }
         }
 
