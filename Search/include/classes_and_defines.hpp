@@ -19,7 +19,7 @@ public:
     vector <double> coord;//sintetagmenes simeiou
 };
 
-vec* snapping(vec* nvectors,int no_of_coordinates,int no_of_vectors,double delta);
+vec* snapping(vec* nvectors,int no_of_coordinates,int no_of_vectors,double delta,vector<double>td1,vector<double>td2);
 int key_cont(vec* nvectors,int no_of_vectors,int no_of_coordinates,double delta);
 
 class dist_vec//tuple me apostasi kai to vec
@@ -84,6 +84,8 @@ class hashtable//klash gia hashtable
         */
         vector<vector<vector<double>>> v;
         vector<vector<double>> t;
+        vector<vector<double>> td1;//gia to snapping tou descrete gia 2d
+        vector<vector<double>> td2;
         vector<vector<int>> r;
     public:
         Lhashtables(int,int,int);//synarthsh arxikopoihshs 

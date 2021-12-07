@@ -135,11 +135,26 @@ void Lhashtables::Hashfun_init(void)//synarthsh pou ypologizei tyxaia tis times 
 
     r.resize(L,vector<int>(k));
 
+    td1.resize(L,vector<double>(d));
+
+    td2.resize(L,vector<double>(d));
+
+
     unsigned seed=std::chrono::steady_clock::now().time_since_epoch().count();
     default_random_engine e(seed);
 
     std::uniform_int_distribution<int>  distrR(-RLIMIT,RLIMIT);//vazoume ena orio opws mas proteine o k Emiris sthn dialeksh
     std::uniform_real_distribution<double>  distrT(0.0,W);
+    std::uniform_real_distribution<double>  distrTd1(0.0,delta);
+    std::uniform_real_distribution<double>  distrTd2(0.0,delta);
+
+
+    for(int Li=0;Li<L;Li++){
+        for(int di=0;di<d;di++){
+            td1[Li][di]=distrTd1(e);
+            td2[Li][di]=distrTd2(e);
+        }
+    }
 
 
     for (int Li = 0; Li < L; ++Li)
@@ -148,6 +163,7 @@ void Lhashtables::Hashfun_init(void)//synarthsh pou ypologizei tyxaia tis times 
             {
             t[Li][ki]=distrT(e);    //cout<<"t "<<t[Li][ki]<<endl;
             r[Li][ki]=distrR(e);    //cout<<"r "<<r[Li][ki]<<endl;
+            
 
             for (int di = 0; di < d; ++di)
                 {
@@ -199,7 +215,7 @@ int Lhashtables:: lsh_continue(int no_of_ht,int no_of_vectors, vec* nvectors){//
     long int g_notablesize;
     vec * snapped_paded_nvectors;
     if(metric=="LSH_Frechet_Discrete")
-        snapped_paded_nvectors=snapping(nvectors,nvectors[0].coord.size(),no_of_vectors,delta);
+        snapped_paded_nvectors=snapping(nvectors,nvectors[0].coord.size(),no_of_vectors,delta,this->td1[no_of_ht],this->td2[no_of_ht]);
     else if(metric=="LSH_Frechet_Continuous")
         {
         snapped_paded_nvectors=new vec[no_of_vectors];
@@ -222,7 +238,8 @@ int Lhashtables:: lsh_continue(int no_of_ht,int no_of_vectors, vec* nvectors){//
         //cout<<"Inserting to HT"<<endl;
         this->Lhtables[no_of_ht].hashtable_insert(&(nvectors[i]),g_notablesize);//kanoume insert to vector sthn antistoixh thesh
     }
-    
+    if(metric=="LSH_Frechet_Discrete"||metric=="LSH_Frechet_Continuous")
+        delete [] snapped_paded_nvectors;
 
     return 0;
 }

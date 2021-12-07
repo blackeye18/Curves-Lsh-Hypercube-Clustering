@@ -129,7 +129,7 @@ int key_cont(vec* nvectors,int no_of_vectors,int no_of_coordinates,double delta)
 
 
 
-vec* snapping(vec* nvectors,int no_of_coordinates,int no_of_vectors,double delta){
+vec* snapping(vec* nvectors,int no_of_coordinates,int no_of_vectors,double delta,vector<double> td1,vector<double>td2){
     vector<vector<vector<double>>> temp;
     temp.resize(no_of_vectors,vector<vector<double> >(no_of_coordinates,vector<double>(2)));////resize analoga 
     for(int i=0;i<no_of_vectors;i++){//kanw adistoixish me meres 
@@ -149,8 +149,8 @@ vec* snapping(vec* nvectors,int no_of_coordinates,int no_of_vectors,double delta
 
         for(int j=0;j<no_of_coordinates;j++){
             if(first_flag==0){
-                temp2[i][j].push_back(floor((temp[i][j][0]/delta)+1/2));
-                temp2[i][j].push_back(floor((temp[i][j][1]/delta)+1/2));
+                temp2[i][j].push_back(floor(((temp[i][j][0]-td1[j])/delta)+1/2)*delta +td1[j]);
+                temp2[i][j].push_back(floor(((temp[i][j][1]-td2[j])/delta)+1/2)*delta + td2[j]);
                 prev1=temp2[i][j][0];
                 prev2=temp2[i][j][1];
                 first_flag=1;

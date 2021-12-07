@@ -1,124 +1,40 @@
-Query: a
+Query: 1
 Algorithm:  LSH_Frechet_Discrete
-Approximate Nearest neighbor: a
-True Nearest neighbor: a
-distanceApproximate: 0
-distanceTrue: 0
-Query: aa
+Approximate Nearest neighbor: 27
+True Nearest neighbor: 27
+distanceApproximate: 42
+distanceTrue: 42
+Query: 2
 Algorithm:  LSH_Frechet_Discrete
-Approximate Nearest neighbor: aa
-True Nearest neighbor: aa
-distanceApproximate: 0
-distanceTrue: 0
-Query: aaap
+Approximate Nearest neighbor: 10
+True Nearest neighbor: 10
+distanceApproximate: 36
+distanceTrue: 36
+Query: 3
 Algorithm:  LSH_Frechet_Discrete
-Approximate Nearest neighbor: aaap
-True Nearest neighbor: aaap
-distanceApproximate: 0
-distanceTrue: 0
-Query: aaba
+Approximate Nearest neighbor: 5
+True Nearest neighbor: 5
+distanceApproximate: 44
+distanceTrue: 44
+Query: 4
 Algorithm:  LSH_Frechet_Discrete
-Approximate Nearest neighbor: aaba
-True Nearest neighbor: aaba
-distanceApproximate: 0
-distanceTrue: 0
-Query: aac
+Approximate Nearest neighbor: 7
+True Nearest neighbor: 7
+distanceApproximate: 39
+distanceTrue: 39
+Query: 5
 Algorithm:  LSH_Frechet_Discrete
-Approximate Nearest neighbor: aac
-True Nearest neighbor: aac
-distanceApproximate: 0
-distanceTrue: 0
-Query: aal
+Approximate Nearest neighbor: 28
+True Nearest neighbor: 28
+distanceApproximate: 44
+distanceTrue: 44
+Query: 6
 Algorithm:  LSH_Frechet_Discrete
-Approximate Nearest neighbor: aal
-True Nearest neighbor: aal
-distanceApproximate: 0
-distanceTrue: 0
-Query: aamc
-Algorithm:  LSH_Frechet_Discrete
-Approximate Nearest neighbor: aamc
-True Nearest neighbor: aamc
-distanceApproximate: 0
-distanceTrue: 0
-Query: aame
-Algorithm:  LSH_Frechet_Discrete
-Approximate Nearest neighbor: aame
-True Nearest neighbor: aame
-distanceApproximate: 0
-distanceTrue: 0
-Query: aan
-Algorithm:  LSH_Frechet_Discrete
-Approximate Nearest neighbor: aan
-True Nearest neighbor: aan
-distanceApproximate: 0
-distanceTrue: 0
-Query: aaoi
-Algorithm:  LSH_Frechet_Discrete
-Approximate Nearest neighbor: aaoi
-True Nearest neighbor: aaoi
-distanceApproximate: 0
-distanceTrue: 0
-Query: aaon
-Algorithm:  LSH_Frechet_Discrete
-Approximate Nearest neighbor: aaon
-True Nearest neighbor: aaon
-distanceApproximate: 0
-distanceTrue: 0
-Query: aap
-Algorithm:  LSH_Frechet_Discrete
-Approximate Nearest neighbor: aap
-True Nearest neighbor: aap
-distanceApproximate: 0
-distanceTrue: 0
-Query: aapl
-Algorithm:  LSH_Frechet_Discrete
-Approximate Nearest neighbor: aapl
-True Nearest neighbor: aapl
-distanceApproximate: 0
-distanceTrue: 0
-Query: aat
-Algorithm:  LSH_Frechet_Discrete
-Approximate Nearest neighbor: aat
-True Nearest neighbor: aat
-distanceApproximate: 0
-distanceTrue: 0
-Query: aau
-Algorithm:  LSH_Frechet_Discrete
-Approximate Nearest neighbor: aau
-True Nearest neighbor: aau
-distanceApproximate: 0
-distanceTrue: 0
-Query: aav
-Algorithm:  LSH_Frechet_Discrete
-Approximate Nearest neighbor: aav
-True Nearest neighbor: aav
-distanceApproximate: 0
-distanceTrue: 0
-Query: aaww
-Algorithm:  LSH_Frechet_Discrete
-Approximate Nearest neighbor: aaww
-True Nearest neighbor: aaww
-distanceApproximate: 0
-distanceTrue: 0
-Query: aaxn
-Algorithm:  LSH_Frechet_Discrete
-Approximate Nearest neighbor: aaxn
-True Nearest neighbor: aaxn
-distanceApproximate: 0
-distanceTrue: 0
-Query: ab
-Algorithm:  LSH_Frechet_Discrete
-Approximate Nearest neighbor: ab
-True Nearest neighbor: ab
-distanceApproximate: 0
-distanceTrue: 0
-Query: abac
-Algorithm:  LSH_Frechet_Discrete
-Approximate Nearest neighbor: abac
-True Nearest neighbor: abac
-distanceApproximate: 0
-distanceTrue: 0
+Approximate Nearest neighbor: 7
+True Nearest neighbor: 7
+distanceApproximate: 40
+distanceTrue: 40
 
-tApproximateAverage: 0.00318924
-tTrueAverage: 3.52377
-MAF: 0
+tApproximateAverage: 2.14904
+tTrueAverage: 0.515737
+MAF: 1

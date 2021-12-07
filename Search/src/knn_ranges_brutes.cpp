@@ -103,7 +103,7 @@ vector<dist_vec>* brute_calculate(vec* qvector,vec* nvectors,int no_of_vectors,i
             Q.push(dist_vec(dist,&(nvectors[i])));//ta vazoume se priority queue kai kratame ta N
         }else if(metric=="LSH_Frechet_Discrete"){
             //cout<<"START"<<endl;
-            dist=dfd(qvector[pos].coord,nvectors[i].coord,no_of_coordinates,no_of_coordinates);
+            dist=dfd(qvector[pos].coord,nvectors[i].coord, qvector[pos].coord.size(),nvectors[i].coord.size());
             Q.push(dist_vec(dist,&(nvectors[i])));
             //cout<<"END"<<endl;
         }else if(metric=="LSH_Frechet_Continuous"){
@@ -160,9 +160,8 @@ vector<dist_vec>* Lhashtables::NN_search(vec* nvector,int N)//synarthsh gia to k
     int h_return;
     int h[k];
     vec * snapped_paded_nvectors;
-    if(metric=="LSH_Frechet_Discrete")///////////////EDW
-        snapped_paded_nvectors=snapping(nvector,nvector->coord.size(),1,delta);
-    else if(metric=="LSH_Frechet_Continuous")
+    
+    if(metric=="LSH_Frechet_Continuous")
         {
         snapped_paded_nvectors=new vec[1];
         snapped_paded_nvectors[0]=*nvector;
@@ -172,6 +171,8 @@ vector<dist_vec>* Lhashtables::NN_search(vec* nvector,int N)//synarthsh gia to k
 
     for (int li = 0; li < L; li++)
         {
+        if(metric=="LSH_Frechet_Discrete")///////////////EDW
+            snapped_paded_nvectors=snapping(nvector,nvector->coord.size(),1,delta,this->td1[li],this->td2[li]);
         for(int ki=0;ki<this->k;ki++)
             {
             if(metric=="LSH_Frechet_Discrete"||metric=="LSH_Frechet_Continuous")//EDW
@@ -215,6 +216,8 @@ vector<dist_vec>* Lhashtables::NN_search(vec* nvector,int N)//synarthsh gia to k
               	//cout<<"NULL vect found"<<endl;
             currnode=currnode->next;    
             }
+            if(metric=="LSH_Frechet_Discrete"||metric=="LSH_Frechet_Continuous")
+                delete [] snapped_paded_nvectors;
 
         }
     if(counter<N){//ama den exoume vrei arketa stoixei me query trick psaxnoume kai ta ypoloipa sto analogo bucket
@@ -232,7 +235,7 @@ vector<dist_vec>* Lhashtables::NN_search(vec* nvector,int N)//synarthsh gia to k
                         long double dist=vect_dist(nvector->coord,currnode->vect->coord,d);//ypologizoume thn eyklideia apostash
                         Q.push(dist_vec(dist,currnode->vect));
                     }else if(metric=="LSH_Frechet_Discrete"){
-                        long double dist=dfd(nvector->coord,currnode->vect->coord,d,d);
+                        long double dist=dfd(nvector->coord,currnode->vect->coord,nvector->coord.size(),currnode->vect->coord.size());
                         Q.push(dist_vec(dist,currnode->vect));
                     }else if(metric=="LSH_Frechet_Continuous"){
                         //cout<<"LSH_Frechet_Continuous no ready yet so we are using DFD"<<endl;
