@@ -218,8 +218,21 @@ vector<vector<vec*>>* cluster::repeat(vec* nvect,vector<vec>* clustersvec,int me
 			}
 		else if(method==1)
 			{
-			Lhashtables* lhtables=(Lhashtables*) ss;
-			cluster_neighbours=lhtables->ANN_lsh(nvect,clustersvec,no_of_vectors);
+            int EFLAG=1;
+            while(EFLAG)
+                {
+                EFLAG=0;
+			 Lhashtables* lhtables=(Lhashtables*) ss;
+			 cluster_neighbours=lhtables->ANN_lsh(nvect,clustersvec,no_of_vectors);
+                for (int ci = 0; ci < clustersvec->size(); ++ci)
+                    {
+                    if (cluster_neighbours->at(ci).size()<1)
+                        {
+                        cout<<"theres an empty cluster repeating ANN with no "<<ci<<endl;
+                        EFLAG=1;
+                        }
+                    }
+                }
 			}
 		else if (method==2)
 			{

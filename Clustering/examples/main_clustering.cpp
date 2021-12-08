@@ -108,6 +108,11 @@ long double MeanNCurves(vector<vec*> nvects,vec*  cvec)
 
     vector<vector<double>>* prev=new vector<vector<double>>;
 
+    if(nvects.size()<1)
+    	{
+    	cout<<"ERROR nvects is empty"<<endl;
+    	return 1;
+    	}
     for (int i = 0; i < nvects.size(); ++i)
         {
         prev->push_back(nvects[i]->coord);
@@ -147,10 +152,11 @@ long double MeanNCurves(vector<vec*> nvects,vec*  cvec)
     	}
     cout<<endl;*/
 
-    long double Avg_diff=dfd(prev->at(0),cvec->coord,prev->at(0).size(),cvec->coord.size());
+    long double Avg_diff=dfd(prev->at(0),cvec->coord,prev->at(0).size(),cvec->coord.size());cout<<"Avg diff "<<Avg_diff<<endl;
+    Avg_diff/=cvec->coord.size();
 
     cout<<"Avg_diff alright"<<endl;
-    int size=3000;
+    int size=prev->at(0).size();
     cvec->coord.clear();
     for (int i = 0; i < size; ++i)
         {
@@ -313,6 +319,12 @@ int main(int argc, char *argv[]){
     vector<vec>* clustersvec;
     clustersvec=clus.Kmeanplus(nvectors);
 
+    cout<<"clusters"<<endl;
+    for (int i = 0; i < clustersvec->size(); ++i)
+    	{
+    	cout<<"cluster "<<i<<"with no_of_coordinates "<<clustersvec->at(i).coord.size()<<endl;
+    	}
+   	cout<<endl<<endl;
     vector<vector<vec*>>* cluster_neighbours;
 
     if( assigment_flag==0){//ama einai classic kaleite h repeat gia lloyds
