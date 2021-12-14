@@ -249,6 +249,7 @@ vector<vector<vec*>>* cluster::repeat(vec* nvect,vector<vec>* clustersvec,int me
             else if(metric=="LSH_Frechet_Discrete"){
                 cout<<"Mphka N curves"<<endl;
                 sum_diff+=MeanNCurves(cluster_neighbours->at(ci),&(clustersvec->at(ci)));
+                cout<<"ghhka N curves"<<endl;
             }
 
 			}

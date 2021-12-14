@@ -25,7 +25,28 @@ using namespace std::chrono;
 
 string metric = "euclidean_distance";
 
+int Mean_filter(vector<double> coord,int triads)
+    {
+        int temp_no_coord=coord.size()-1;
+        for (int j = 1; j < temp_no_coord; ++j)
+            {
+            double a=coord[j-1];
+            double b=coord[j];
+            double c=coord[j+1];
 
+            if(abs(a-b)<=FILTER_E && abs(b-c)<=FILTER_E)
+                {
+                coord.erase(coord.begin() + j);
+                temp_no_coord--;
+
+                if(!triads)
+                    j--;
+                }
+
+            }
+        
+    return 0;
+    }
 vector<double>* MeanCurve(vector<double> nvec,vector<double> qvec,int mv,int mq)
     {
     //dfd table
@@ -98,6 +119,15 @@ vector<double>* MeanCurve(vector<double> nvec,vector<double> qvec,int mv,int mq)
         {
         double cord=nvec[get<0>(traversal[i])] + qvec[get<1>(traversal[i])];cord/=2;
         mvec_ptr->push_back(cord);
+        if(mvec_ptr->size()>=MAX_MEAN)
+        	{
+        	int old_size=mvec_ptr->size();
+        	cout<<"Mean_filter old size "<<mvec_ptr->size();
+        	Mean_filter(*mvec_ptr,0);
+        	cout<<" new size "<<mvec_ptr->size()<<endl;
+        	if(old_size<=mvec_ptr->size())
+        		return mvec_ptr;
+        	}
         }
 
     return mvec_ptr;

@@ -238,9 +238,22 @@ void Lhashtables::Hashfun_init(void)
 }
 
 
+
 int h_function(vector<double> p,vector<double> v,double t){
     double in_prod;
+
     in_prod=inner_product(p.begin(),p.end(),v.begin(),0);
+    /*
+    if(p.size()!=v.size())
+        {
+        double in_prod_new=inner_product(v.begin(),v.end(),p.begin(),0);
+
+        if(in_prod!=in_prod_new)
+            {
+            cout<<"p size="<<p.size()<<" v size="<<v.size()<<" inner_product with p first  ="<<in_prod<<" inner_product with v first  ="<<in_prod_new<<endl;
+            in_prod=in_prod_new;
+            }
+        }*/
     in_prod+=t;
     double sum=in_prod/W;
     int h=floor(sum);
@@ -419,14 +432,14 @@ vector<vector<vec*>>* Lhashtables::ANN_lsh(vec* nvect,vector<vec>* clustersvec,i
     int h_return;
     int h[cluster_num][k];
     
-    cout<<"Aaaa1";
+    //cout<<"Aaaa1";
     for (int ci = 0; ci < cluster_num; ++ci)//ipologizume ola ta hashvalues
         {
         for (int li = 0; li < L; li++)
             {
                 if(metric=="LSH_Frechet_Discrete"){
                     for(int ci=0;ci<cluster_num;ci++){
-                        cout<<"Aaaa1";
+                        //cout<<"Aaaa1";
                         snapped_paded_nvectors.push_back(snapping(&(clustersvec->at(ci)),clustersvec->at(ci).coord.size(),1,delta,td1[li],td2[li]));
                      }               
                 }
