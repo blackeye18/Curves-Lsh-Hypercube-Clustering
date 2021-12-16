@@ -36,7 +36,7 @@ extern double delta;
 
 double FILTER_E=2;
 
-void stand_dev(vec* nvects,int no_of_vectors,int no_of_coordinates)
+void stand_dev(vec* nvects,int no_of_vectors,int no_of_coordinates)//sinartisi gia ipologismo tis timis e gia to filtering me tin xrisi mesis apoklisis
 	{
 	double c_sum=0;
 	for (int i = 0; i < no_of_vectors; ++i)
@@ -46,21 +46,21 @@ void stand_dev(vec* nvects,int no_of_vectors,int no_of_coordinates)
 			{
 			n_sum+=nvects[i].coord[j];
 			}
-		double n_avg=n_sum/no_of_coordinates;
+		double n_avg=n_sum/no_of_coordinates;//mesi timi coordinates gia to sigkekrimeno vector
 
 		double d_sum=0;
 		for (int j = 0; j < no_of_coordinates; ++j)
 			{
-			double temp=nvects[i].coord[j]- n_avg;
-			d_sum+=abs(temp);
+			double temp=nvects[i].coord[j]- n_avg;//apoklisi gia ka8e coordinate
+			d_sum+=abs(temp);//sum olwn ton timwn tis apoklisis
 			}
-		c_sum+=(d_sum/no_of_coordinates);
+		c_sum+=(d_sum/no_of_coordinates);//prosthetume tin mesi apoklisi ka8e vector
 		}
-	FILTER_E=PERC_E*c_sum/no_of_vectors;cout<<"FILTER_E "<<FILTER_E<<endl;
+	FILTER_E=PERC_E*c_sum/no_of_vectors;cout<<"FILTER_E "<<FILTER_E<<endl;//to e 8a parei san  timi ena pososto tis mesis timis twn meswn apoklisewn twn vector
 	}
 
 int filtering(vec* nvectors,int no_of_coordinates,int no_of_vectors,int triads)
-    {
+    {//sel 14,15 tu curves.pdf
 
     for (int i = 0; i < no_of_vectors; ++i)
         {
@@ -71,12 +71,15 @@ int filtering(vec* nvectors,int no_of_coordinates,int no_of_vectors,int triads)
             double b=nvectors[i].coord[j];
             double c=nvectors[i].coord[j+1];
 
+            /*Rule: for any consecutive points a, b, c, if |a − b| ≤ FILTER_E and |b − c| ≤ FILTER_Ethen
+            remove b. Continue with the resulting sequence.*/
+
             if(abs(a-b)<=FILTER_E && abs(b-c)<=FILTER_E)
                 {
                 nvectors[i].coord.erase(nvectors[i].coord.begin() + j);
                 temp_no_coord--;
 
-                if(!triads)
+                if(!triads)//an triads=1 agnoei ena simeio an figei to b aliws an triads=0 den to agnwei 
                     j--;
                 }
 
@@ -85,11 +88,9 @@ int filtering(vec* nvectors,int no_of_coordinates,int no_of_vectors,int triads)
     return 0;
     }
 
-int snapping_cont(vec* nvectors,int no_of_vectors,double delta)
+int snapping_cont(vec* nvectors,int no_of_vectors,double delta,vector<double> td1)
     {
-    unsigned seed=std::chrono::steady_clock::now().time_since_epoch().count();
-    default_random_engine e(seed);
- 	std::uniform_real_distribution<double>  distrTd(0.0,delta);
+    //sel 21 tu curves.pdf project each vertex..
 
     int same_counter=0;
     double prev=0;
@@ -100,7 +101,8 @@ int snapping_cont(vec* nvectors,int no_of_vectors,double delta)
         int no_of_coord=nvectors[i].coord.size();
         for(int j=0;j<no_of_coord;j++)
             {
-            nvectors[i].coord[j]=(floor(((nvectors[i].coord[j]+distrTd(e))/delta))*delta);
+
+            nvectors[i].coord[j]=(floor(((nvectors[i].coord[j]+td1[j]/*t*/)/delta))*delta);//tipos sel 21 
             }
         }
 
@@ -108,7 +110,7 @@ int snapping_cont(vec* nvectors,int no_of_vectors,double delta)
     }
 
 int padding_cont(vec* nvectors,int no_of_vectors,int no_of_coordinates,double delta)
-    {
+    {//kanonikopoisi megethwn twn kampilon
      for(int i=0;i<no_of_vectors;i++)
         {//kanw adistoixish me meres 
 
@@ -123,12 +125,16 @@ int padding_cont(vec* nvectors,int no_of_vectors,int no_of_coordinates,double de
 
 int mini_maxi_cont(vec* nvectors,int no_of_vectors,double delta)
     {
+    //sel 21 tu curves.pdf
     for(int i=0;i<no_of_vectors;i++)
         {//kanw adistoixish me meres 
 
         int no_of_coord=nvectors[i].coord.size();
         for(int j=1;j<no_of_coord-1;j++)
             {
+            //FILTER_E
+            //removing
+            //from π˜ = v1, . . . , v` any vi s.t. vi ∈ [min{vi−1, vi+1}, max{vi−1, vi+1}]
             double mini=min(nvectors[i].coord[j-1],nvectors[i].coord[j+1]);
             if(mini<nvectors[i].coord[j])
                 {
@@ -141,10 +147,10 @@ int mini_maxi_cont(vec* nvectors,int no_of_vectors,double delta)
     return 0;
     }
 
-int key_cont(vec* nvectors,int no_of_vectors,int no_of_coordinates,double delta)
-    {
+int key_cont(vec* nvectors,int no_of_vectors,int no_of_coordinates,double delta,vector<double> td1)
+    {//sinartisi pu kalei omadopiei tis sinartiseis pu xreiazonte gia to Frechet Continuous
     filtering(nvectors,no_of_coordinates,no_of_vectors,0);
-    snapping_cont(nvectors,no_of_vectors,delta);
+    snapping_cont(nvectors,no_of_vectors,delta,td1);
     mini_maxi_cont(nvectors,no_of_vectors,delta);
     padding_cont(nvectors,no_of_vectors,no_of_coordinates,delta);
     return 0;

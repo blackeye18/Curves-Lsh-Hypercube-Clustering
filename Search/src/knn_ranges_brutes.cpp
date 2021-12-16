@@ -198,7 +198,7 @@ vector<dist_vec>* Lhashtables::NN_search(vec* nvector,int N)//synarthsh gia to k
         snapped_paded_nvectors=new vec[1];
         snapped_paded_nvectors[0]=*nvector;
 
-        key_cont(snapped_paded_nvectors,1,nvector->coord.size(),delta);
+        key_cont(snapped_paded_nvectors,1,nvector->coord.size(),delta,this->td1[0]);
         }
 
     for (int li = 0; li < L; li++)

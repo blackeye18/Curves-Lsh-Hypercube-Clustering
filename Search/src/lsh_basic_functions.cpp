@@ -231,7 +231,7 @@ int Lhashtables:: lsh_continue(int no_of_ht,int no_of_vectors, vec* nvectors){//
             snapped_paded_nvectors[k]=nvectors[k];
         }
 
-        key_cont(snapped_paded_nvectors,no_of_vectors,nvectors[0].coord.size(),delta);//kalw tis synarthseis gia na vrw to key
+        key_cont(snapped_paded_nvectors,no_of_vectors,nvectors[0].coord.size(),delta,this->td1[no_of_ht]);//kalw tis synarthseis gia na vrw to key
 
         }
     for(int i=0;i<no_of_vectors;i++){
