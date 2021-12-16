@@ -170,24 +170,24 @@ vec* snapping(vec* nvectors,int no_of_coordinates,int no_of_vectors,double delta
     int first_flag=0;
     vector<vector<vector<double>>> temp2;
     temp2.resize(no_of_vectors,vector<vector<double> >(no_of_coordinates));////resize analoga 
-    for(int i=0;i<no_of_vectors;i++){//kanw adistoixish me meres 
-        first_flag=0;
+    for(int i=0;i<no_of_vectors;i++){//gia kathe dianisma
+        first_flag=0;//krataw oti eimai sthn prwth epanalipsh
 
-        for(int j=0;j<no_of_coordinates;j++){
-            if(first_flag==0){
+        for(int j=0;j<no_of_coordinates;j++){//gia kathe coord
+            if(first_flag==0){//an eimai sthn prwth epanalhpsh aplws ektelw ton typo kai ton eisxwrw sto neo vector
                 temp2[i][j].push_back(floor(((temp[i][j][0]-td1[j])/delta)+1/2)*delta +td1[j]);
                 temp2[i][j].push_back(floor(((temp[i][j][1]-td2[j])/delta)+1/2)*delta + td2[j]);
-                prev1=temp2[i][j][0];
+                prev1=temp2[i][j][0];//epishs krataw gia na kanw sygkrish me to epomeno etsi wste an den einai idio na mhn to krathsw
                 prev2=temp2[i][j][1];
                 first_flag=1;
             }else{
                 double temphold1,temphold2;
-                temphold1=(floor((temp[i][j][0]/delta)+1/2));
+                temphold1=(floor((temp[i][j][0]/delta)+1/2));//ypologizw tis times
                 temphold2=(floor((temp[i][j][1]/delta)+1/2));
-                if(temphold1==prev1 && temphold2==prev2){
+                if(temphold1==prev1 && temphold2==prev2){//ama einai idia me ta prohgoumenta den ta kratw kai kanw padding pio katw
                     same_counter++;
                 }else{
-                    temp2[i][j].push_back(temphold1);
+                    temp2[i][j].push_back(temphold1);//ama den einai idia ta eisxwrw sto neo vector
                     temp2[i][j].push_back(temphold2);
                     prev1=temphold1;
                     prev2=temphold2;
@@ -200,19 +200,19 @@ vec* snapping(vec* nvectors,int no_of_coordinates,int no_of_vectors,double delta
     //cout<<temp2[0][1].size()<<endl;
     vec* newnvectors;
     newnvectors = new vec[no_of_vectors];//desmevoume xwro gia ta vectors
-    for(int i=0;i<no_of_vectors;i++){
+    for(int i=0;i<no_of_vectors;i++){//adigrafoume ta onomata
         newnvectors[i].name=nvectors[i].name;
     }
     for(int i=0;i<no_of_vectors;i++){
         for(int j=0;j<no_of_coordinates;j++){
-            for(int k=0;k<temp2[i][j].size();k++){
+            for(int k=0;k<temp2[i][j].size();k++){//vazoume tis nees times
                 newnvectors[i].coord.push_back(temp2[i][j][k]);
 
             }
         }
     }
     for(int i=0;i<no_of_vectors;i++){
-        int tempint=newnvectors[i].coord.size();
+        int tempint=newnvectors[i].coord.size();//gia opoia den kratisame kanoume padding
         while(tempint!=no_of_coordinates*2){
             newnvectors[i].coord.push_back(M_big_num);
             newnvectors[i].coord.push_back(M_big_num);
