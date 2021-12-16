@@ -54,7 +54,7 @@ node* hashtable::search_nd(long hvalue)//epistrefei thn swsth thesh tou hastbabl
 
 
 long double dfd(vector<double> nvec,vector<double> qvec,int mv,int mq)
-    {
+    {//pseudokwdikas sel 9 curves.pdf
 
     vector<vector<long double>> C;
     C.resize(mv,vector<long double>(mq));

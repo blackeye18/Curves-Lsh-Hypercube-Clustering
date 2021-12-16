@@ -35,6 +35,6 @@ True Nearest neighbor: 23
 distanceApproximate: 413.229
 distanceTrue: 413.229
 
-tApproximateAverage: 3.82637
-tTrueAverage: 3.82368
+tApproximateAverage: 3.88763
+tTrueAverage: 3.95267
 MAF: 1
