@@ -33,6 +33,30 @@ string metric = "euclidean_distance";
 
 double delta;
 
+double FILTER_E=2;
+
+void stand_dev(vec* nvects,int no_of_vectors,int no_of_coordinates)
+	{
+	double c_sum=0;
+	for (int i = 0; i < no_of_vectors; ++i)
+		{
+		double n_sum=0;
+		for (int j = 0; j < no_of_coordinates; ++j)
+			{
+			n_sum+=nvects[i].coord[j];
+			}
+		double n_avg=n_sum/no_of_coordinates;
+
+		double d_sum=0;
+		for (int j = 0; j < no_of_coordinates; ++j)
+			{
+			double temp=nvects[i].coord[j]- n_avg;
+			d_sum+=abs(temp);
+			}
+		c_sum+=(d_sum/no_of_coordinates);
+		}
+	FILTER_E=PERC_E*c_sum/no_of_vectors;cout<<"FILTER_E "<<FILTER_E<<endl;
+	}
 
 int filtering(vec* nvectors,int no_of_coordinates,int no_of_vectors,int triads)
     {
@@ -62,6 +86,9 @@ int filtering(vec* nvectors,int no_of_coordinates,int no_of_vectors,int triads)
 
 int snapping_cont(vec* nvectors,int no_of_vectors,double delta)
     {
+    unsigned seed=std::chrono::steady_clock::now().time_since_epoch().count();
+    default_random_engine e(seed);
+ 	std::uniform_real_distribution<double>  distrTd(0.0,delta);
 
     int same_counter=0;
     double prev=0;
@@ -72,7 +99,7 @@ int snapping_cont(vec* nvectors,int no_of_vectors,double delta)
         int no_of_coord=nvectors[i].coord.size();
         for(int j=0;j<no_of_coord;j++)
             {
-            nvectors[i].coord[j]=(floor((nvectors[i].coord[j]/delta)+1/2)*delta);
+            nvectors[i].coord[j]=(floor(((nvectors[i].coord[j]+distrTd(e))/delta))*delta);
             }
         }
 
@@ -283,6 +310,8 @@ int main(int argc, char *argv[]){
                 if(nvectors==NULL)
                     return -1;
                 printf("Input:: no_of_vectors: %d, no_of_coordinates: %d\n",no_of_vectors,no_of_coordinates);
+                if(metric=="LSH_Frechet_Continuous")
+                	stand_dev(nvectors,no_of_vectors,no_of_coordinates);
                 /*
                 if(metricfr_flag==2){
                     preprocessing_cont(nvectors,no_of_vectors,no_of_coordinates,delta);
