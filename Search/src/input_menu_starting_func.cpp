@@ -26,6 +26,7 @@ using namespace std::chrono;
 #include "curve.hpp"
 #include "frechet.hpp"
 #include "simplification.hpp"
+#include "discrete_cont.hpp"
 extern string metric;
 extern double delta;
 //elegxoume an to # twn arguments einai swsto

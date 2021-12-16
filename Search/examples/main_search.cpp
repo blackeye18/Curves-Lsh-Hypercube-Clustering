@@ -83,8 +83,6 @@ int main(int argc, char *argv[]){
     }
 
 
-    //Kwdikas gia Ai 
-    //if(alg_flag==1 || alg_flag==2){
         if(alg_flag==1)
             lsh_or_hypercube="LSH_Vector";//string gia thn ektypwsh sto output file
         else if(alg_flag==2)
@@ -131,9 +129,9 @@ int main(int argc, char *argv[]){
                     else if(alg_flag==3)
                         {
                         if(metricfr_flag==1)
-                            lht=new Lhashtables(L,2*no_of_coordinates,k);//synarthsh arxikopoihshs//EDW
+                            lht=new Lhashtables(L,2*no_of_coordinates,k);//diplasiasmos twn coord logw twn hmerwn sto a2
                         else if(metricfr_flag==2)
-                            lht=new Lhashtables(1,no_of_coordinates,k);//synarthsh arxikopoihshs//EDW
+                            lht=new Lhashtables(1,no_of_coordinates,k);//1 mono ht gia to a3
                         }
                     lht->lsh_start(no_of_vectors,nvectors);//gemizoume ta ht 
                 }else{

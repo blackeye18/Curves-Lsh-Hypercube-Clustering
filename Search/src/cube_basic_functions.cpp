@@ -28,6 +28,7 @@ using namespace std::chrono;
 #include "curve.hpp"
 #include "frechet.hpp"
 #include "simplification.hpp"
+#include "discrete_cont.hpp"
 
 extern string metric;
 unsigned int hammingDistance(unsigned int n1, unsigned int n2)//https://www.geeksforgeeks.org/hamming-distance-between-two-integers/
