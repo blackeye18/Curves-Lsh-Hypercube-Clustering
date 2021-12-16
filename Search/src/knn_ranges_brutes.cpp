@@ -20,6 +20,14 @@ using namespace std::chrono;
 #include "cube_basic_functions.hpp"
 #include "lsh_basic_functions.hpp"
 #include "knn_ranges_brutes.hpp"
+#include "config.hpp"
+#include "types.hpp"
+#include "point.hpp"
+#include "interval.hpp"
+#include "curve.hpp"
+#include "frechet.hpp"
+#include "simplification.hpp"
+namespace fc = Frechet::Continuous;
 extern string metric;
 extern double delta;
 
@@ -107,9 +115,32 @@ vector<dist_vec>* brute_calculate(vec* qvector,vec* nvectors,int no_of_vectors,i
             Q.push(dist_vec(dist,&(nvectors[i])));
             //cout<<"END"<<endl;
         }else if(metric=="LSH_Frechet_Continuous"){
+            //cout<<"brute_calculate"<<endl;
+            int qsize=qvector[pos].coord.size();
+            //cout<<"qsize"<<qsize<<endl;
+            int nsize=nvectors[i].coord.size();
+            //cout<<"nsize"<<nsize<<endl;
+            Point qpoint(qsize);
+            Point npoint(nsize);
+            for(int k=0;k<qsize;k++)
+                qpoint.set(k,qvector[pos].coord[k]);
+            for(int k=0;k<nsize;k++)
+                npoint.set(k,nvectors[i].coord[k]);
+            const Point constqpoint=qpoint;
+            const Point constnpoint=npoint;
+            Points qpoints(qsize,constqpoint);
+            Points npoints(nsize,constnpoint);
+            const Points constqpoints=qpoints;
+            const Points constnpoints=npoints;
+            const Curve qcurve(constqpoints,"Query");
+            const Curve ncurve(constnpoints,"Input");
+            fc::Distance cont_dist;
+            cont_dist=fc::distance(qcurve,ncurve);
+            dist=cont_dist.value;
+            //cout<<"dist"<<dist<<endl;
                         //cout<<"LSH_Frechet_Continuous no ready yet so we are using DFD"<<endl;
-                        dist=dfd(qvector[pos].coord,nvectors[i].coord,no_of_coordinates,no_of_coordinates);
-                        Q.push(dist_vec(dist,&(nvectors[i])));
+            //dist=dfd(qvector[pos].coord,nvectors[i].coord,no_of_coordinates,no_of_coordinates);
+            Q.push(dist_vec(dist,&(nvectors[i])));
         }else{
          cout<<"No function for metric:"<<metric<<endl;
          return NULL;
@@ -166,7 +197,7 @@ vector<dist_vec>* Lhashtables::NN_search(vec* nvector,int N)//synarthsh gia to k
         snapped_paded_nvectors=new vec[1];
         snapped_paded_nvectors[0]=*nvector;
 
-        key_cont(nvector,1,nvector->coord.size(),delta);
+        key_cont(snapped_paded_nvectors,1,nvector->coord.size(),delta);
         }
 
     for (int li = 0; li < L; li++)
@@ -202,8 +233,31 @@ vector<dist_vec>* Lhashtables::NN_search(vec* nvector,int N)//synarthsh gia to k
                         long double dist=dfd(nvector->coord,currnode->vect->coord,nvector->coord.size(),currnode->vect->coord.size());
                         Q.push(dist_vec(dist,currnode->vect));
                     }else if(metric=="LSH_Frechet_Continuous"){
+                        //cout<<"NN search"<<endl;
+                        int qsize=currnode->vect->coord.size();
+                        //cout<<"qsize"<<qsize<<endl;
+                        int nsize=nvector->coord.size();
+                        //cout<<"nsize"<<nsize<<endl;
+                        Point qpoint(qsize);
+                        Point npoint(nsize);
+                        for(int k=0;k<qsize;k++)
+                            qpoint.set(k,currnode->vect->coord[k]);
+                        for(int k=0;k<nsize;k++)
+                            npoint.set(k,nvector->coord[k]);
+                        const Point constqpoint=qpoint;
+                        const Point constnpoint=npoint;
+                        Points qpoints(qsize,constqpoint);
+                        Points npoints(nsize,constnpoint);
+                        const Points constqpoints=qpoints;
+                        const Points constnpoints=npoints;
+                        const Curve qcurve(constqpoints,"Query");
+                        const Curve ncurve(constnpoints,"Input");
+                        fc::Distance cont_dist;
+                        cont_dist=fc::distance(qcurve,ncurve);
+                        long double dist=cont_dist.value;
+                        //cout<<"dist"<<dist<<endl;
                         //cout<<"LSH_Frechet_Continuous no ready yet so we are using DFD"<<endl;
-                        long double dist=dfd(nvector->coord,currnode->vect->coord,nvector->coord.size(),currnode->vect->coord.size());
+                        //long double dist=dfd(nvector->coord,currnode->vect->coord,nvector->coord.size(),currnode->vect->coord.size());
                         Q.push(dist_vec(dist,currnode->vect));
                     }else{
                         cout<<"No function for metric:"<<metric<<endl;
@@ -238,8 +292,31 @@ vector<dist_vec>* Lhashtables::NN_search(vec* nvector,int N)//synarthsh gia to k
                         long double dist=dfd(nvector->coord,currnode->vect->coord,nvector->coord.size(),currnode->vect->coord.size());
                         Q.push(dist_vec(dist,currnode->vect));
                     }else if(metric=="LSH_Frechet_Continuous"){
+                        //cout<<"NN search2"<<endl;
+                        int qsize=currnode->vect->coord.size();
+                        //cout<<"qsize"<<qsize<<endl;
+                        int nsize=nvector->coord.size();
+                        //cout<<"nsize"<<nsize<<endl;
+                        Point qpoint(qsize);
+                        Point npoint(nsize);
+                        for(int k=0;k<qsize;k++)
+                            qpoint.set(k,currnode->vect->coord[k]);
+                        for(int k=0;k<nsize;k++)
+                            npoint.set(k,nvector->coord[k]);
+                        const Point constqpoint=qpoint;
+                        const Point constnpoint=npoint;
+                        Points qpoints(qsize,constqpoint);
+                        Points npoints(nsize,constnpoint);
+                        const Points constqpoints=qpoints;
+                        const Points constnpoints=npoints;
+                        const Curve qcurve(constqpoints,"Query");
+                        const Curve ncurve(constnpoints,"Input");
+                        fc::Distance cont_dist;
+                        cont_dist=fc::distance(qcurve,ncurve);
+                        long double dist=cont_dist.value;
+                        //cout<<"dist"<<dist<<endl;
                         //cout<<"LSH_Frechet_Continuous no ready yet so we are using DFD"<<endl;
-                        long double dist=dfd(nvector->coord,currnode->vect->coord,nvector->coord.size(),currnode->vect->coord.size());
+                        //long double dist=dfd(nvector->coord,currnode->vect->coord,nvector->coord.size(),currnode->vect->coord.size());
                         Q.push(dist_vec(dist,currnode->vect));
                     }else{
                         cout<<"No function for metric:"<<metric<<endl;

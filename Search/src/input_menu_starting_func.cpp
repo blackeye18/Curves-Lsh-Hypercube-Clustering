@@ -19,6 +19,13 @@ using namespace std::chrono;
 #include "cube_basic_functions.hpp"
 #include "lsh_basic_functions.hpp"
 #include "knn_ranges_brutes.hpp"
+#include "config.hpp"
+#include "types.hpp"
+#include "point.hpp"
+#include "interval.hpp"
+#include "curve.hpp"
+#include "frechet.hpp"
+#include "simplification.hpp"
 extern string metric;
 extern double delta;
 //elegxoume an to # twn arguments einai swsto

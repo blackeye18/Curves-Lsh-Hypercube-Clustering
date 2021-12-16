@@ -20,6 +20,13 @@ using namespace std::chrono;
 #include "cube_basic_functions.hpp"
 #include "lsh_basic_functions.hpp"
 #include "knn_ranges_brutes.hpp"
+#include "config.hpp"
+#include "types.hpp"
+#include "point.hpp"
+#include "interval.hpp"
+#include "curve.hpp"
+#include "frechet.hpp"
+#include "simplification.hpp"
 
 extern string metric;
 extern double delta;
@@ -219,7 +226,10 @@ int Lhashtables:: lsh_continue(int no_of_ht,int no_of_vectors, vec* nvectors){//
     else if(metric=="LSH_Frechet_Continuous")
         {
         snapped_paded_nvectors=new vec[no_of_vectors];
-        snapped_paded_nvectors=nvectors;
+        //snapped_paded_nvectors=nvectors;
+        for(int k=0;k<no_of_vectors;k++){
+            snapped_paded_nvectors[k]=nvectors[k];
+        }
 
         key_cont(snapped_paded_nvectors,no_of_vectors,nvectors[0].coord.size(),delta);
 

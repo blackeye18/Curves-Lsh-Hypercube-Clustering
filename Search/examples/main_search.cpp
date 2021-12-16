@@ -20,6 +20,13 @@ using namespace std::chrono;
 #include "cube_basic_functions.hpp"
 #include "lsh_basic_functions.hpp"
 #include "knn_ranges_brutes.hpp"
+#include "config.hpp"
+#include "types.hpp"
+#include "point.hpp"
+#include "interval.hpp"
+#include "curve.hpp"
+#include "frechet.hpp"
+#include "simplification.hpp"
 
 //string 
 string metric = "euclidean_distance";
@@ -212,6 +219,7 @@ int main(int argc, char *argv[]){
     char input_file[256],query_file[256],output_file[256],metricfr[256],algorithm[256];
     vec* nvectors;
     vec* qvectors;
+    //vec* testing_nvectors;
     int no_of_vectors,no_of_coordinates;
     int queries_no_of_vectors,queries_no_of_coordinates;
     Lhashtables *lht=NULL;
@@ -271,6 +279,7 @@ int main(int argc, char *argv[]){
             //an to flag einai 2 exoume mono kainourio query file
             if(flag==0 || flag==1){//ama exoume kainourio input file
                 nvectors=open_and_create_vectors(input_file,&no_of_coordinates,&no_of_vectors);//diavazoume to arxeio kai to apothikevvoume
+                //testing_nvectors=open_and_create_vectors(input_file,&no_of_coordinates,&no_of_vectors);
                 if(nvectors==NULL)
                     return -1;
                 printf("Input:: no_of_vectors: %d, no_of_coordinates: %d\n",no_of_vectors,no_of_coordinates);
@@ -305,7 +314,7 @@ int main(int argc, char *argv[]){
                         if(metricfr_flag==1)
                             lht=new Lhashtables(L,2*no_of_coordinates,k);//synarthsh arxikopoihshs//EDW
                         else if(metricfr_flag==2)
-                            lht=new Lhashtables(L,no_of_coordinates,k);//synarthsh arxikopoihshs//EDW
+                            lht=new Lhashtables(1,no_of_coordinates,k);//synarthsh arxikopoihshs//EDW
                         }
                     lht->lsh_start(no_of_vectors,nvectors);//gemizoume ta ht 
                 }else{
@@ -321,9 +330,10 @@ int main(int argc, char *argv[]){
             double time_per_query_lsh[queries_no_of_vectors];
             for(int i=0;i<queries_no_of_vectors;i++)//apothikevoume ton xrono poy xreiastike gia na dhmiourgithoun oi domes gia to lsh
                 time_per_query_lsh[i]=time1;
-
+            
             cout<<"Now using KNN"<<endl;
             vector<vector<dist_vec>*>* dsvec2;//kai prostetoume ton xrono pou xreiastike h knn gia kathe query antistoixa
+            
             if(alg_flag==1 || alg_flag==3)
                 dsvec2=lht->find_k_nearest(qvectors,N,queries_no_of_vectors,time_per_query_lsh);//synarthsh gia to knn
             else

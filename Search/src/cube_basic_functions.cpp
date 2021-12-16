@@ -21,6 +21,13 @@ using namespace std::chrono;
 #include "cube_basic_functions.hpp"
 #include "lsh_basic_functions.hpp"
 #include "knn_ranges_brutes.hpp"
+#include "config.hpp"
+#include "types.hpp"
+#include "point.hpp"
+#include "interval.hpp"
+#include "curve.hpp"
+#include "frechet.hpp"
+#include "simplification.hpp"
 
 extern string metric;
 unsigned int hammingDistance(unsigned int n1, unsigned int n2)//https://www.geeksforgeeks.org/hamming-distance-between-two-integers/
