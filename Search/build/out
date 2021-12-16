@@ -1,184 +1,40 @@
 Query: 1
-Algorithm: Hypercube
-Approximate Nearest neighbor: 1
-True Nearest neighbor: 1
-distanceApproximate: 0
-distanceTrue: 0
-Query: 2
-Algorithm: Hypercube
-Approximate Nearest neighbor: 2
-True Nearest neighbor: 2
-distanceApproximate: 0
-distanceTrue: 0
-Query: 3
-Algorithm: Hypercube
-Approximate Nearest neighbor: 3
-True Nearest neighbor: 3
-distanceApproximate: 0
-distanceTrue: 0
-Query: 4
-Algorithm: Hypercube
-Approximate Nearest neighbor: 4
-True Nearest neighbor: 4
-distanceApproximate: 0
-distanceTrue: 0
-Query: 5
-Algorithm: Hypercube
-Approximate Nearest neighbor: 5
-True Nearest neighbor: 5
-distanceApproximate: 0
-distanceTrue: 0
-Query: 6
-Algorithm: Hypercube
-Approximate Nearest neighbor: 6
-True Nearest neighbor: 6
-distanceApproximate: 0
-distanceTrue: 0
-Query: 7
-Algorithm: Hypercube
-Approximate Nearest neighbor: 7
-True Nearest neighbor: 7
-distanceApproximate: 0
-distanceTrue: 0
-Query: 8
-Algorithm: Hypercube
-Approximate Nearest neighbor: 8
-True Nearest neighbor: 8
-distanceApproximate: 0
-distanceTrue: 0
-Query: 9
-Algorithm: Hypercube
-Approximate Nearest neighbor: 9
-True Nearest neighbor: 9
-distanceApproximate: 0
-distanceTrue: 0
-Query: 10
-Algorithm: Hypercube
-Approximate Nearest neighbor: 10
-True Nearest neighbor: 10
-distanceApproximate: 0
-distanceTrue: 0
-Query: 11
-Algorithm: Hypercube
-Approximate Nearest neighbor: 9
-True Nearest neighbor: 11
-distanceApproximate: 140.656
-distanceTrue: 0
-Query: 12
-Algorithm: Hypercube
-Approximate Nearest neighbor: 10
-True Nearest neighbor: 12
-distanceApproximate: 171.099
-distanceTrue: 0
-Query: 13
-Algorithm: Hypercube
-Approximate Nearest neighbor: 5
-True Nearest neighbor: 13
-distanceApproximate: 145.045
-distanceTrue: 0
-Query: 14
-Algorithm: Hypercube
-Approximate Nearest neighbor: 6
-True Nearest neighbor: 14
-distanceApproximate: 125.551
-distanceTrue: 0
-Query: 15
-Algorithm: Hypercube
-Approximate Nearest neighbor: 2
-True Nearest neighbor: 15
-distanceApproximate: 129.973
-distanceTrue: 0
-Query: 16
-Algorithm: Hypercube
-Approximate Nearest neighbor: 9
-True Nearest neighbor: 16
-distanceApproximate: 343.085
-distanceTrue: 0
-Query: 17
-Algorithm: Hypercube
-Approximate Nearest neighbor: 3
-True Nearest neighbor: 17
-distanceApproximate: 296.677
-distanceTrue: 0
-Query: 18
-Algorithm: Hypercube
-Approximate Nearest neighbor: 6
-True Nearest neighbor: 18
-distanceApproximate: 319.321
-distanceTrue: 0
-Query: 19
-Algorithm: Hypercube
-Approximate Nearest neighbor: 9
-True Nearest neighbor: 19
-distanceApproximate: 139.56
-distanceTrue: 0
-Query: 20
-Algorithm: Hypercube
-Approximate Nearest neighbor: 10
-True Nearest neighbor: 20
-distanceApproximate: 178.955
-distanceTrue: 0
-Query: 21
-Algorithm: Hypercube
-Approximate Nearest neighbor: 9
-True Nearest neighbor: 21
-distanceApproximate: 112.801
-distanceTrue: 0
-Query: 22
-Algorithm: Hypercube
-Approximate Nearest neighbor: 10
-True Nearest neighbor: 22
-distanceApproximate: 102.708
-distanceTrue: 0
-Query: 23
-Algorithm: Hypercube
-Approximate Nearest neighbor: 8
+Algorithm: LSH_Frechet_Continuous
+Approximate Nearest neighbor: 23
 True Nearest neighbor: 23
-distanceApproximate: 587.514
-distanceTrue: 0
-Query: 24
-Algorithm: Hypercube
-Approximate Nearest neighbor: 5
-True Nearest neighbor: 24
-distanceApproximate: 340.982
-distanceTrue: 0
-Query: 25
-Algorithm: Hypercube
-Approximate Nearest neighbor: 7
-True Nearest neighbor: 25
-distanceApproximate: 622.26
-distanceTrue: 0
-Query: 26
-Algorithm: Hypercube
-Approximate Nearest neighbor: 8
-True Nearest neighbor: 26
-distanceApproximate: 623.258
-distanceTrue: 0
-Query: 27
-Algorithm: Hypercube
-Approximate Nearest neighbor: 8
+distanceApproximate: 361.678
+distanceTrue: 361.678
+Query: 2
+Algorithm: LSH_Frechet_Continuous
+Approximate Nearest neighbor: 23
+True Nearest neighbor: 23
+distanceApproximate: 325.289
+distanceTrue: 325.289
+Query: 3
+Algorithm: LSH_Frechet_Continuous
+Approximate Nearest neighbor: 13
+True Nearest neighbor: 13
+distanceApproximate: 291.412
+distanceTrue: 291.412
+Query: 4
+Algorithm: LSH_Frechet_Continuous
+Approximate Nearest neighbor: 27
 True Nearest neighbor: 27
-distanceApproximate: 606.61
-distanceTrue: 0
-Query: 28
-Algorithm: Hypercube
-Approximate Nearest neighbor: 9
-True Nearest neighbor: 28
-distanceApproximate: 361.05
-distanceTrue: 0
-Query: 29
-Algorithm: Hypercube
-Approximate Nearest neighbor: 6
-True Nearest neighbor: 29
-distanceApproximate: 337.016
-distanceTrue: 0
-Query: 30
-Algorithm: Hypercube
-Approximate Nearest neighbor: 9
-True Nearest neighbor: 30
-distanceApproximate: 80.5605
-distanceTrue: 0
+distanceApproximate: 336.021
+distanceTrue: 336.021
+Query: 5
+Algorithm: LSH_Frechet_Continuous
+Approximate Nearest neighbor: 21
+True Nearest neighbor: 21
+distanceApproximate: 357.277
+distanceTrue: 357.277
+Query: 6
+Algorithm: LSH_Frechet_Continuous
+Approximate Nearest neighbor: 23
+True Nearest neighbor: 23
+distanceApproximate: 413.229
+distanceTrue: 413.229
 
-tApproximateAverage: 0.0129501
-tTrueAverage: 0.0048098
-MAF: 0
+tApproximateAverage: 3.06516
+tTrueAverage: 3.06248
+MAF: 1
