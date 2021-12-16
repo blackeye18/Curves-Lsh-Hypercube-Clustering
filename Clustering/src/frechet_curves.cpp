@@ -29,7 +29,7 @@ extern string metric;
 
 double FILTER_E=2;
 
-void stand_dev(vec* nvects,int no_of_vectors,int no_of_coordinates)
+void stand_dev(vec* nvects,int no_of_vectors,int no_of_coordinates)//sxolia sto search
 	{
 	double c_sum=0;
 	for (int i = 0; i < no_of_vectors; ++i)
@@ -65,7 +65,7 @@ int Mean_duplicates(vector<double>* coord)
     return 0;
 	}
 
-int Mean_filter(vector<double>* coord,int triads)
+int Mean_filter(vector<double>* coord,int triads)//sxolia sto search
     {
         int temp_no_coord=coord->size()-1;
         for (int j = 1; j < temp_no_coord; ++j)
@@ -87,9 +87,9 @@ int Mean_filter(vector<double>* coord,int triads)
         
     return 0;
     }
-vector<double>* MeanCurve(vector<double> nvec,vector<double> qvec,int mv,int mq)
+vector<double>* MeanCurve(vector<double> nvec,vector<double> qvec,int mv,int mq)//mesi kampili dio kampilwn
     {
-    //dfd table
+    // ftiaxnume ton dfd table
     vector<vector<long double>> C;
     C.resize(mv,vector<long double>(mq));
 
@@ -153,27 +153,26 @@ vector<double>* MeanCurve(vector<double> nvec,vector<double> qvec,int mv,int mq)
             }
 
         }
+
     vector<double>* mvec_ptr=new vector<double>;
 
     for (int i = 0; i < traversal.size(); ++i)
         {
-        double cord=nvec[get<0>(traversal[i])] + qvec[get<1>(traversal[i])];cord/=2;
+        double cord=nvec[get<0>(traversal[i])] + qvec[get<1>(traversal[i])];cord/=2;//MDFC sel 29 tu curves.pdf
         mvec_ptr->push_back(cord);
-       	//Mean_filter(mvec_ptr,730);
-        if(mvec_ptr->size()>=MAX_MEAN)
+
+        if(mvec_ptr->size()>=MAX_MEAN)//an exei ftasei ton megisto arithmo
         	{
-        	Mean_filter(mvec_ptr,0);
-        	if(mvec_ptr->size()>=MAX_MEAN)
+        	Mean_filter(mvec_ptr,0);//tin filtrarume
+        	if(mvec_ptr->size()>=MAX_MEAN)//an e3akoluthei na ipervenei ton megisto arithmo
         		{
         		cout<<"reached max clustersvec size"<<endl;
         		break;
         		}
         	}
         }
-    Mean_filter(mvec_ptr,0);
-    //cout<<" size "<<mvec_ptr->size()<<endl;
-    //Mean_duplicates(mvec_ptr);cout<<" size after Mean_duplicates "<<mvec_ptr->size()<<endl;
-    //Mean_filter(mvec_ptr,0); //cout<<" size after Mean_filter "<<mvec_ptr->size()<<endl;
+    Mean_filter(mvec_ptr,0);//filtrarisma gia gia meiwsh megethus
+
     return mvec_ptr;
     }
 
@@ -196,7 +195,7 @@ long double MeanNCurves(vector<vec*> nvects,vec*  cvec)
     default_random_engine e(seed);
     shuffle(begin(*prev), end(*prev), e);   
 
-    while(prev->size()>1)
+    while(prev->size()>1)//algorithmos sel 33 tu curves.pdf tropopoimenos me vectors pu leitourgoun san dentro
         {
         vector<vector<double>>* curr=new vector<vector<double>>;//xrisimopoiume 2 vectors anti binary tree logo tis apousias tu apto stl kai poliplokotitas xwrou
 
@@ -219,15 +218,8 @@ long double MeanNCurves(vector<vec*> nvects,vec*  cvec)
         prev=curr;
         }
 
-    //cout<<"old clustersvec with size "<< cvec->coord.size()<<" and new "<<prev->at(0).size()<<endl;
-   /* for (int i = 0; i < cvec->coord.size(); ++i)
-    	{
-    	cout<<cvec->coord[i]<<" ";
-    	}
-    cout<<endl;*/
 
-    long double Avg_diff=dfd(prev->at(0),cvec->coord,prev->at(0).size(),cvec->coord.size());//cout<<"Avg diff "<<Avg_diff<<endl;
-    //Avg_diff/=cvec->coord.size();
+    long double Avg_diff=dfd(prev->at(0),cvec->coord,prev->at(0).size(),cvec->coord.size());//apostasi me to proigumeno clustersvec
 
     int size=prev->at(0).size();//cout<<"cluster size "<<size<<endl;
     cvec->coord.clear();
@@ -242,14 +234,7 @@ long double MeanNCurves(vector<vec*> nvects,vec*  cvec)
 
     prev->at(0).empty();
     prev->empty();delete prev;
-
-    //cout<<"new clustersvec with size "<< cvec->coord.size()<<endl;
-   /* for (int i = 0; i < cvec->coord.size(); ++i)
-    	{
-    	cout<<cvec->coord[i]<<" ";
-    	}
-    cout<<endl;*/
-    //cout<<"alright MeanNCurves"<<endl;
+    
     return Avg_diff;
     }
 
