@@ -21,6 +21,7 @@ using namespace std::chrono;
 #include "lsh_basic_functions.hpp"
 #include "cube_basic_functions.hpp"
 #include "cluster_main_functions_silhouette.hpp"
+#include "frechet_curves.hpp"
 //#include "knn_ranges_brutes.hpp"
 
 extern string metric;

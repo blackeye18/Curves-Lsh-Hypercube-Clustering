@@ -22,6 +22,7 @@ using namespace std::chrono;
 #include "lsh_basic_functions.hpp"
 #include "cube_basic_functions.hpp"
 #include "cluster_main_functions_silhouette.hpp"
+#include "frechet_curves.hpp"
 //#include "knn_ranges_brutes.hpp"
 extern string metric;
 
@@ -255,12 +256,12 @@ vector<vector<vec*>>* cluster::repeat(vec* nvect,vector<vec>* clustersvec,int me
 			}
 			
 		diff=sum_diff/clustersvec->size();//ipologizoume tin diafora
-        cout<<endl<<"_____________________________________________________"<<endl<<endl;
-        cout<<"it "<<iteration<<" diff "<<diff<<endl;
-        cout<<endl<<"_____________________________________________________"<<endl;
+        //cout<<endl<<"_____________________________________________________"<<endl<<endl;
+        //cout<<"it "<<iteration<<" diff "<<diff<<endl;
+        //cout<<endl<<"_____________________________________________________"<<endl;
 		}
 	while(diff>=PERCISION && iteration<MAXIT);//oso i diafora ine megaliteri tu percision kai den exume ftasei ton megisto ari8mo epanalipsewn
-     cout<<"diff "<<diff<<" iteration "<<iteration<<endl;
+     //cout<<"diff "<<diff<<" iteration "<<iteration<<endl;
 	return cluster_neighbours;
 	}
 	

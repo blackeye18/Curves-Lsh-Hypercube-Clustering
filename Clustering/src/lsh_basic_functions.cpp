@@ -14,7 +14,7 @@
 
 
 
-//gia oti den yparxei sxolio yparxoun sta arxeia tou lsh kai tou hypercube
+
 using namespace std;
 using namespace std::chrono;
 
@@ -23,6 +23,7 @@ using namespace std::chrono;
 #include "lsh_basic_functions.hpp"
 #include "cube_basic_functions.hpp"
 #include "cluster_main_functions_silhouette.hpp"
+#include "frechet_curves.hpp"
 //#include "knn_ranges_brutes.hpp"
 
 extern string metric;
@@ -71,7 +72,7 @@ long double dfd(vector<double> nvec,vector<double> qvec,int mv,int mq)
 
 long double vect_dist(vector<double> vecA,vector<double> vecB,int d)
 {
-    cout<<"using vect_dist"<<endl;
+    //cout<<"using vect_dist"<<endl;
     long double sum=0;
     for (int i = 0; i < d; ++i)
         {
@@ -401,7 +402,7 @@ vector<vector<vec*>>* Lhashtables::ANN_lsh(vec* nvect,vector<vec>* clustersvec,i
     //ipologizoume to radi= mindist meta3i 2 cluster /2
     int cluster_num=clustersvec->size();
     long double mindist=999999999999999;
-    cout<<"Asasdsadsafsa:"<<cluster_num<<endl;
+    //cout<<"Asasdsadsafsa:"<<cluster_num<<endl;
     vector<vec*> snapped_paded_nvectors;
     
     for (int ca = 0; ca < cluster_num-1; ++ca)
