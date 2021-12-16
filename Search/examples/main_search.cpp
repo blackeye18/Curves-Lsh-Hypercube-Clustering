@@ -312,11 +312,7 @@ int main(int argc, char *argv[]){
                 printf("Input:: no_of_vectors: %d, no_of_coordinates: %d\n",no_of_vectors,no_of_coordinates);
                 if(metric=="LSH_Frechet_Continuous")
                 	stand_dev(nvectors,no_of_vectors,no_of_coordinates);
-                /*
-                if(metricfr_flag==2){
-                    preprocessing_cont(nvectors,no_of_vectors,no_of_coordinates,delta);
-                    //no_of_coordinates=no_of_coordinates*2;
-                    }*/
+                
             }
            // cout<<"sdasdsds"<<endl;
 
@@ -325,10 +321,7 @@ int main(int argc, char *argv[]){
                 if(qvectors==NULL)
                     return -1;
                 printf("Queries:: queries_no_of_vectors: %d, queries_no_of_coordinates: %d\n",queries_no_of_vectors,queries_no_of_coordinates);
-                //if(alg_flag==3){
-                   // qvectors=snapping(qvectors,queries_no_of_coordinates,queries_no_of_vectors,delta);
-                   // queries_no_of_coordinates=queries_no_of_coordinates*2;
-               // }
+                
             }
 
             cout<<"Now using "<<algorithm<<endl;
@@ -361,7 +354,7 @@ int main(int argc, char *argv[]){
                 time_per_query_lsh[i]=time1;
             
             cout<<"Now using KNN"<<endl;
-            vector<vector<dist_vec>*>* dsvec2;//kai prostetoume ton xrono pou xreiastike h knn gia kathe query antistoixa
+            vector<vector<dist_vec>*>* dsvec2=NULL;//kai prostetoume ton xrono pou xreiastike h knn gia kathe query antistoixa
             
             if(alg_flag==1 || alg_flag==3)
                 dsvec2=lht->find_k_nearest(qvectors,N,queries_no_of_vectors,time_per_query_lsh);//synarthsh gia to knn
@@ -384,7 +377,7 @@ int main(int argc, char *argv[]){
 
 
             cout<<"Now using brute calculation"<<endl;//ypologizoume tous k nearest me brute force
-            vector<vector<dist_vec>*>* dsvec3;
+            vector<vector<dist_vec>*>* dsvec3=NULL;
             dsvec3=brute_calculate_all(qvectors,nvectors,no_of_vectors,no_of_coordinates,queries_no_of_vectors,N,time_per_query_brute);
             
            

@@ -284,7 +284,7 @@ int print_to_file(char output_file[256],string lsh_or_hypercube,vector<vector<di
     outfile.open(output_file);
     double total_time_per_query_lsh=0;
     double total_time_per_query_brute=0;
-    double maf;
+    double maf=0;
     int maf_first_flag=0;
 
     for(int i=0;i<queries_no_of_vectors;i++){//gia kathe query
@@ -292,8 +292,10 @@ int print_to_file(char output_file[256],string lsh_or_hypercube,vector<vector<di
         outfile<<qvectors[i].name;
         outfile<<endl;
         outfile<<"Algorithm: "<<lsh_or_hypercube<<endl;
-        vector<dist_vec>* dstemp2 =(*dsvec2)[i];
-        vector<dist_vec>* dstemp3 =(*dsvec3)[i];
+        vector<dist_vec>* dstemp2=NULL;
+        vector<dist_vec>* dstemp3=NULL;
+        dstemp2 =(*dsvec2)[i];
+        dstemp3 =(*dsvec3)[i];
         
         int size2=dstemp2->size();
 
