@@ -235,9 +235,10 @@ void print_to_file(vector<vec>* clustersvec,vector<vector<vec*>>* cluster_neighb
         outfile<<"}"<<endl;
     }
     outfile<<"clustering_time: "<<time1<<endl;
-    outfile<<"Silhouette: [";
+    
     double sum=0;
     if(silhouette_vec!=NULL){
+        outfile<<"Silhouette: [";
         
         for(int i=0;i<silhouette_vec->size();i++){
             sum+=(*silhouette_vec)[i];

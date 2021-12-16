@@ -62,39 +62,7 @@ int Mean_duplicates(vector<double>* coord)
         }
     return 0;
 	}
-/*
-int Mean_filter(vector<double>* coord,int ideal)
-    {
-    if(coord->size()<=ideal)
-  			return 0;
 
-    int tries =ceil(1.5*(coord->size()-ideal));
-
-    while(tries>0)
-    	{
-    	--tries;
-    	if(coord->size()<=ideal)
-  			break;
-
-  		unsigned seed=std::chrono::steady_clock::now().time_since_epoch().count();
-    	default_random_engine e(seed);
-  		uniform_int_distribution<int> distribution(1,coord->size()-2);
-
-  		int index=distribution(e);
-  		double a=coord->at(index-1);
-        double b=coord->at(index);
-        double c=coord->at(index+1);
-        
-
-        if(abs(a-b)<=FILTER_E && abs(b-c)<=FILTER_E)
-           {
-           coord->erase(coord->begin() + index);
-
-           }
-  		
-    	}
-    return 0;
-    }*/
 int Mean_filter(vector<double>* coord,int triads)
     {
         int temp_no_coord=coord->size()-1;
