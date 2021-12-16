@@ -117,27 +117,27 @@ vector<dist_vec>* brute_calculate(vec* qvector,vec* nvectors,int no_of_vectors,i
             //cout<<"END"<<endl;
         }else if(metric=="LSH_Frechet_Continuous"){
             //cout<<"brute_calculate"<<endl;
-            int qsize=qvector[pos].coord.size();
+            int qsize=qvector[pos].coord.size();//krataw to plithos twn coords
             //cout<<"qsize"<<qsize<<endl;
             int nsize=nvectors[i].coord.size();
             //cout<<"nsize"<<nsize<<endl;
-            Point qpoint(qsize);
+            Point qpoint(qsize);//dimiourgw point me adistoixo megethos
             Point npoint(nsize);
             for(int k=0;k<qsize;k++)
-                qpoint.set(k,qvector[pos].coord[k]);
+                qpoint.set(k,qvector[pos].coord[k]);//pernaw ta coordinates sto Point
             for(int k=0;k<nsize;k++)
                 npoint.set(k,nvectors[i].coord[k]);
-            const Point constqpoint=qpoint;
+            const Point constqpoint=qpoint;//to metarepw se const giati afto zhtaei o constructor ths Points
             const Point constnpoint=npoint;
-            Points qpoints(qsize,constqpoint);
+            Points qpoints(qsize,constqpoint);//dimiourgw Points me to analogo megethos
             Points npoints(nsize,constnpoint);
-            const Points constqpoints=qpoints;
+            const Points constqpoints=qpoints;//metatrepw se const
             const Points constnpoints=npoints;
-            const Curve qcurve(constqpoints,"Query");
+            const Curve qcurve(constqpoints,"Query");//dimiourgw to curve vash twn Points
             const Curve ncurve(constnpoints,"Input");
-            fc::Distance cont_dist;
-            cont_dist=fc::distance(qcurve,ncurve);
-            dist=cont_dist.value;
+            fc::Distance cont_dist;//dimiourgw mia metavliti typou distance, sthn opoia epistrefei to apotelesma h synarthsh
+            cont_dist=fc::distance(qcurve,ncurve);//kalw thn synarthsh pou ypologizei thn apostash
+            dist=cont_dist.value;//krataw to apotelesma pou me endiaferei
             //cout<<"dist"<<dist<<endl;
                         //cout<<"LSH_Frechet_Continuous no ready yet so we are using DFD"<<endl;
             //dist=dfd(qvector[pos].coord,nvectors[i].coord,no_of_coordinates,no_of_coordinates);
