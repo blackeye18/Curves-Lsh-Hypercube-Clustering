@@ -244,17 +244,7 @@ int h_function(vector<double> p,vector<double> v,double t){
     double in_prod;
 
     in_prod=inner_product(p.begin(),p.end(),v.begin(),0);
-    /*
-    if(p.size()!=v.size())
-        {
-        double in_prod_new=inner_product(v.begin(),v.end(),p.begin(),0);
 
-        if(in_prod!=in_prod_new)
-            {
-            cout<<"p size="<<p.size()<<" v size="<<v.size()<<" inner_product with p first  ="<<in_prod<<" inner_product with v first  ="<<in_prod_new<<endl;
-            in_prod=in_prod_new;
-            }
-        }*/
     in_prod+=t;
     double sum=in_prod/W;
     int h=floor(sum);
@@ -556,6 +546,17 @@ vector<vector<vec*>>* Lhashtables::ANN_lsh(vec* nvect,vector<vec>* clustersvec,i
             }
      //cout<<"how much lsh really found "<<ff<<endl;
     //cout<<"total_found "<<total_found<<endl;
+
+    if(metric=="LSH_Frechet_Discrete")
+        {
+        for(int ci=0;ci<snapped_paded_nvectors.size();ci++)
+            {
+            delete[] snapped_paded_nvectors[ci];
+            snapped_paded_nvectors[ci]=NULL;
+            }
+        snapped_paded_nvectors.empty();
+        }
+
     return cluster_neighbours;
     }
 
