@@ -7,7 +7,7 @@
 #define W 4//meta3i 0 kai 6
 #define BUCKET_RATIO 16
 #define M_big_num 33554432 //2^25 
-#define FILTER_E 15
+#define PERC_E 0.07
 //const string metric = "euclidean_distance";
 
 

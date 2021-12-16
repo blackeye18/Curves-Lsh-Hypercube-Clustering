@@ -1,64 +1,40 @@
-Query: aer
-Algorithm:  LSH_Frechet_Discrete
-Approximate Nearest neighbor: abt
-True Nearest neighbor: abt
-distanceApproximate: 9.315
-distanceTrue: 9.315
-Query: aeri
-Algorithm:  LSH_Frechet_Discrete
-Approximate Nearest neighbor: adc
-True Nearest neighbor: adc
-distanceApproximate: 15.696
-distanceTrue: 15.696
-Query: aes
-Algorithm:  LSH_Frechet_Discrete
-Approximate Nearest neighbor: acy
-True Nearest neighbor: acy
-distanceApproximate: 2.842
-distanceTrue: 2.842
-Query: aet
-Algorithm:  LSH_Frechet_Discrete
-Approximate Nearest neighbor: adbe
-True Nearest neighbor: adbe
-distanceApproximate: 18.41
-distanceTrue: 18.41
-Query: aeti
-Algorithm:  LSH_Frechet_Discrete
-Approximate Nearest neighbor: acst
-True Nearest neighbor: acst
-distanceApproximate: 1.587
-distanceTrue: 1.587
-Query: aey
-Algorithm:  LSH_Frechet_Discrete
-Approximate Nearest neighbor: aau
-True Nearest neighbor: aau
-distanceApproximate: 1.61
-distanceTrue: 1.61
-Query: aezs
-Algorithm:  LSH_Frechet_Discrete
-Approximate Nearest neighbor: advm
-True Nearest neighbor: acer
-distanceApproximate: 23.92
-distanceTrue: 16.4212
-Query: afam
-Algorithm:  LSH_Frechet_Discrete
-Approximate Nearest neighbor: adc
-True Nearest neighbor: aem
-distanceApproximate: 11.953
-distanceTrue: 8.084
-Query: afb
-Algorithm:  LSH_Frechet_Discrete
-Approximate Nearest neighbor: abe
-True Nearest neighbor: abe
-distanceApproximate: 2.0932
-distanceTrue: 2.0932
-Query: afc
-Algorithm:  LSH_Frechet_Discrete
-Approximate Nearest neighbor: aeh
-True Nearest neighbor: aeh
-distanceApproximate: 0.753
-distanceTrue: 0.753
+Query: 1
+Algorithm: LSH_Frechet_Continuous
+Approximate Nearest neighbor: 23
+True Nearest neighbor: 23
+distanceApproximate: 361.678
+distanceTrue: 361.678
+Query: 2
+Algorithm: LSH_Frechet_Continuous
+Approximate Nearest neighbor: 23
+True Nearest neighbor: 23
+distanceApproximate: 325.289
+distanceTrue: 325.289
+Query: 3
+Algorithm: LSH_Frechet_Continuous
+Approximate Nearest neighbor: 13
+True Nearest neighbor: 13
+distanceApproximate: 291.412
+distanceTrue: 291.412
+Query: 4
+Algorithm: LSH_Frechet_Continuous
+Approximate Nearest neighbor: 27
+True Nearest neighbor: 27
+distanceApproximate: 336.021
+distanceTrue: 336.021
+Query: 5
+Algorithm: LSH_Frechet_Continuous
+Approximate Nearest neighbor: 21
+True Nearest neighbor: 21
+distanceApproximate: 357.277
+distanceTrue: 357.277
+Query: 6
+Algorithm: LSH_Frechet_Continuous
+Approximate Nearest neighbor: 23
+True Nearest neighbor: 23
+distanceApproximate: 413.229
+distanceTrue: 413.229
 
-tApproximateAverage: 1.42758
-tTrueAverage: 1.60302
-MAF: 1.4786
+tApproximateAverage: 3.82032
+tTrueAverage: 3.82019
+MAF: 1
