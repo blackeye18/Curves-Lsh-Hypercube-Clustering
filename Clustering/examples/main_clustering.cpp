@@ -25,18 +25,88 @@ using namespace std::chrono;
 
 string metric = "euclidean_distance";
 
-int Mean_filter(vector<double> coord,int triads)
+double FILTER_E=2;
+
+void stand_dev(vec* nvects,int no_of_vectors,int no_of_coordinates)
+	{
+	double c_sum=0;
+	for (int i = 0; i < no_of_vectors; ++i)
+		{
+		double n_sum=0;
+		for (int j = 0; j < no_of_coordinates; ++j)
+			{
+			n_sum+=nvects[i].coord[j];
+			}
+		double n_avg=n_sum/no_of_coordinates;
+
+		double d_sum=0;
+		for (int j = 0; j < no_of_coordinates; ++j)
+			{
+			double temp=nvects[i].coord[j]- n_avg;
+			d_sum+=abs(temp);
+			}
+		c_sum+=(d_sum/no_of_coordinates);
+		}
+	FILTER_E=PERC_E*c_sum/no_of_vectors;cout<<"FILTER_E "<<FILTER_E<<endl;
+	}
+int Mean_duplicates(vector<double>* coord)
+	{
+	int temp_no_coord=coord->size();
+    for (int j = 1; j < temp_no_coord; ++j)
+        {
+        if(coord->at(j-1)==coord->at(j))
+                {
+                coord->erase(coord->begin() + j);
+                temp_no_coord--;
+            	}
+        }
+    return 0;
+	}
+/*
+int Mean_filter(vector<double>* coord,int ideal)
     {
-        int temp_no_coord=coord.size()-1;
+    if(coord->size()<=ideal)
+  			return 0;
+
+    int tries =ceil(1.5*(coord->size()-ideal));
+
+    while(tries>0)
+    	{
+    	--tries;
+    	if(coord->size()<=ideal)
+  			break;
+
+  		unsigned seed=std::chrono::steady_clock::now().time_since_epoch().count();
+    	default_random_engine e(seed);
+  		uniform_int_distribution<int> distribution(1,coord->size()-2);
+
+  		int index=distribution(e);
+  		double a=coord->at(index-1);
+        double b=coord->at(index);
+        double c=coord->at(index+1);
+        
+
+        if(abs(a-b)<=FILTER_E && abs(b-c)<=FILTER_E)
+           {
+           coord->erase(coord->begin() + index);
+
+           }
+  		
+    	}
+    return 0;
+    }*/
+int Mean_filter(vector<double>* coord,int triads)
+    {
+        int temp_no_coord=coord->size()-1;
         for (int j = 1; j < temp_no_coord; ++j)
             {
-            double a=coord[j-1];
-            double b=coord[j];
-            double c=coord[j+1];
+            double a=coord->at(j-1);
+            double b=coord->at(j);
+            double c=coord->at(j+1);
 
             if(abs(a-b)<=FILTER_E && abs(b-c)<=FILTER_E)
                 {
-                coord.erase(coord.begin() + j);
+                coord->erase(coord->begin() + j);
                 temp_no_coord--;
 
                 if(!triads)
@@ -119,17 +189,21 @@ vector<double>* MeanCurve(vector<double> nvec,vector<double> qvec,int mv,int mq)
         {
         double cord=nvec[get<0>(traversal[i])] + qvec[get<1>(traversal[i])];cord/=2;
         mvec_ptr->push_back(cord);
+       	//Mean_filter(mvec_ptr,730);
         if(mvec_ptr->size()>=MAX_MEAN)
         	{
-        	int old_size=mvec_ptr->size();
-        	cout<<"Mean_filter old size "<<mvec_ptr->size();
-        	Mean_filter(*mvec_ptr,0);
-        	cout<<" new size "<<mvec_ptr->size()<<endl;
-        	if(old_size<=mvec_ptr->size())
-        		return mvec_ptr;
+        	Mean_filter(mvec_ptr,0);
+        	if(mvec_ptr->size()>=MAX_MEAN)
+        		{
+        		cout<<"reached max clustersvec size"<<endl;
+        		break;
+        		}
         	}
         }
-
+    Mean_filter(mvec_ptr,0);
+    //cout<<" size "<<mvec_ptr->size()<<endl;
+    //Mean_duplicates(mvec_ptr);cout<<" size after Mean_duplicates "<<mvec_ptr->size()<<endl;
+    //Mean_filter(mvec_ptr,0); //cout<<" size after Mean_filter "<<mvec_ptr->size()<<endl;
     return mvec_ptr;
     }
 
@@ -175,18 +249,17 @@ long double MeanNCurves(vector<vec*> nvects,vec*  cvec)
         prev=curr;
         }
 
-    cout<<"old clustersvec with size "<< cvec->coord.size()<<" and new "<<prev->at(0).size()<<endl;
+    //cout<<"old clustersvec with size "<< cvec->coord.size()<<" and new "<<prev->at(0).size()<<endl;
    /* for (int i = 0; i < cvec->coord.size(); ++i)
     	{
     	cout<<cvec->coord[i]<<" ";
     	}
     cout<<endl;*/
 
-    long double Avg_diff=dfd(prev->at(0),cvec->coord,prev->at(0).size(),cvec->coord.size());cout<<"Avg diff "<<Avg_diff<<endl;
-    Avg_diff/=cvec->coord.size();
+    long double Avg_diff=dfd(prev->at(0),cvec->coord,prev->at(0).size(),cvec->coord.size());//cout<<"Avg diff "<<Avg_diff<<endl;
+    //Avg_diff/=cvec->coord.size();
 
-    cout<<"Avg_diff alright"<<endl;
-    int size=prev->at(0).size();
+    int size=prev->at(0).size();cout<<"cluster size "<<size<<endl;
     cvec->coord.clear();
     for (int i = 0; i < size; ++i)
         {
@@ -200,13 +273,13 @@ long double MeanNCurves(vector<vec*> nvects,vec*  cvec)
     prev->at(0).empty();
     prev->empty();delete prev;
 
-    cout<<"new clustersvec with size "<< cvec->coord.size()<<endl;
+    //cout<<"new clustersvec with size "<< cvec->coord.size()<<endl;
    /* for (int i = 0; i < cvec->coord.size(); ++i)
     	{
     	cout<<cvec->coord[i]<<" ";
     	}
     cout<<endl;*/
-    cout<<"alright MeanNCurves"<<endl;
+    //cout<<"alright MeanNCurves"<<endl;
     return Avg_diff;
     }
 
@@ -332,11 +405,15 @@ int main(int argc, char *argv[]){
         cout<<"Unknown assigment. Exiting."<<endl;
         return -1;
     }
-
+    metric="LSH_Frechet_Discrete";
 	nvectors=open_and_create_vectors(input_file,&no_of_coordinates,&no_of_vectors);//diavasma input vector 
 	if(nvectors==NULL)
 	    return -1;
 	printf("Input:: no_of_vectors: %d, no_of_coordinates: %d\n",no_of_vectors,no_of_coordinates);
+
+	if(metric=="LSH_Frechet_Discrete")
+		stand_dev(nvectors,no_of_vectors,no_of_coordinates);
+
 	//if(update_flag==1){
         //nvectors=snapping(nvectors,no_of_coordinates,no_of_vectors,delta);
         //no_of_coordinates=no_of_coordinates*2;
@@ -367,7 +444,9 @@ int main(int argc, char *argv[]){
         if (assigment_flag==1)
             lht=new Lhashtables(L,no_of_coordinates,k_lsh);
         else if(assigment_flag==3)
+        	{
             lht=new Lhashtables(L,2*no_of_coordinates,k_lsh);
+        	}
         cout<<"lsh_start"<<endl;
         lht->lsh_start(no_of_vectors,nvectors);
         cout<<"Repeat"<<endl;

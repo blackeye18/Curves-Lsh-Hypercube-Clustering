@@ -247,16 +247,20 @@ vector<vector<vec*>>* cluster::repeat(vec* nvect,vector<vec>* clustersvec,int me
             if(metric=="euclidean_distance")
 		      sum_diff+=Mean_coord(cluster_neighbours->at(ci),&(clustersvec->at(ci)),no_of_coordinates);
             else if(metric=="LSH_Frechet_Discrete"){
-                cout<<"Mphka N curves"<<endl;
+                //cout<<"Mphka N curves"<<endl;
                 sum_diff+=MeanNCurves(cluster_neighbours->at(ci),&(clustersvec->at(ci)));
-                cout<<"ghhka N curves"<<endl;
+                //cout<<"ghhka N curves"<<endl;
             }
 
 			}
 			
 		diff=sum_diff/clustersvec->size();//ipologizoume tin diafora
+        cout<<endl<<"_____________________________________________________"<<endl<<endl;
+        cout<<"it "<<iteration<<" diff "<<diff<<endl;
+        cout<<endl<<"_____________________________________________________"<<endl;
 		}
 	while(diff>=PERCISION && iteration<MAXIT);//oso i diafora ine megaliteri tu percision kai den exume ftasei ton megisto ari8mo epanalipsewn
+     cout<<"diff "<<diff<<" iteration "<<iteration<<endl;
 	return cluster_neighbours;
 	}
 	

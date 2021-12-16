@@ -3,14 +3,15 @@
 
 #define RLIMIT 1000
 #define PNUM 4294967291
-#define W 4//meta3i 0 kai 6
-#define BUCKET_RATIO 8
-#define PERCISION 0.01
-#define MAXIT 20
+#define W 6//meta3i 0 kai 6
+#define BUCKET_RATIO 1
+#define PERCISION 5
+#define MAXIT 10
 #define M_big_num 33554432 //2^25 
-#define FILTER_E 10
-#define MAX_MEAN 15000
+#define MAX_MEAN 100000
+#define PERC_E 0.07
 const double delta=1.2;
+
 //const string metric = "euclidean_distance";
 
 

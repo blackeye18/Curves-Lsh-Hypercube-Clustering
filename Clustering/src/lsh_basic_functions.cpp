@@ -71,6 +71,7 @@ long double dfd(vector<double> nvec,vector<double> qvec,int mv,int mq)
 
 long double vect_dist(vector<double> vecA,vector<double> vecB,int d)
 {
+    cout<<"using vect_dist"<<endl;
     long double sum=0;
     for (int i = 0; i < d; ++i)
         {
