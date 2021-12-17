@@ -116,28 +116,6 @@ vector<dist_vec>* brute_calculate(vec* qvector,vec* nvectors,int no_of_vectors,i
             Q.push(dist_vec(dist,&(nvectors[i])));
             //cout<<"END"<<endl;
         }else if(metric=="LSH_Frechet_Continuous"){
-            
-
-
-
-            // int qsize=qvector[pos].coord.size();//krataw to plithos twn coords
-           
-            // int nsize=nvectors[i].coord.size();
-           
-            // Point qpoint(qsize);//dimiourgw point me adistoixo megethos
-            // Point npoint(nsize);
-            // for(int k=0;k<qsize;k++)
-            //     qpoint.set(k,qvector[pos].coord[k]);//pernaw ta coordinates sto Point
-            // for(int k=0;k<nsize;k++)
-            //     npoint.set(k,nvectors[i].coord[k]);
-            // const Point constqpoint=qpoint;//to metarepw se const giati afto zhtaei o constructor ths Points
-            // const Point constnpoint=npoint;
-            // Points qpoints(qsize,constqpoint);//dimiourgw Points me to analogo megethos
-            // Points npoints(nsize,constnpoint);
-            // const Points constqpoints=qpoints;//metatrepw se const
-            // const Points constnpoints=npoints;
-            // const Curve qcurve(constqpoints,"Query");//dimiourgw to curve vash twn Points
-            // const Curve ncurve(constnpoints,"Input");
 
             int qsize=qvector[pos].coord.size();//krataw to plithos twn coords
            
@@ -147,11 +125,11 @@ vector<dist_vec>* brute_calculate(vec* qvector,vec* nvectors,int no_of_vectors,i
             Points npoints(1);
             for(int k=0;k<qsize;k++){
                 Point qpoint(1);
-                qpoint.set(0,qvector[pos].coord[k]);
-                qpoints.add(qpoint);
+                qpoint.set(0,qvector[pos].coord[k]);//pernaw kathe coord se point
+                qpoints.add(qpoint);//pernaw kathe point sta Points
             }
 
-            Curve qcurve(qpoints);
+            Curve qcurve(qpoints);//apo ta points ftiaxnw to curve
 
             for(int k=0;k<nsize;k++){
                 Point npoint(1);
@@ -259,24 +237,51 @@ vector<dist_vec>* Lhashtables::NN_search(vec* nvector,int N)//synarthsh gia to k
                         Q.push(dist_vec(dist,currnode->vect));
                     }else if(metric=="LSH_Frechet_Continuous"){
                         //cout<<"NN search"<<endl;
+                        // int qsize=currnode->vect->coord.size();
+                        // //cout<<"qsize"<<qsize<<endl;
+                        // int nsize=nvector->coord.size();
+                        // //cout<<"nsize"<<nsize<<endl;
+                        // Point qpoint(qsize);
+                        // Point npoint(nsize);
+                        // for(int k=0;k<qsize;k++)
+                        //     qpoint.set(k,currnode->vect->coord[k]);
+                        // for(int k=0;k<nsize;k++)
+                        //     npoint.set(k,nvector->coord[k]);
+                        // const Point constqpoint=qpoint;
+                        // const Point constnpoint=npoint;
+                        // Points qpoints(qsize,constqpoint);
+                        // Points npoints(nsize,constnpoint);
+                        // const Points constqpoints=qpoints;
+                        // const Points constnpoints=npoints;
+                        // const Curve qcurve(constqpoints,"Query");
+                        // const Curve ncurve(constnpoints,"Input");
+
+                        //int qsize=qvector[pos].coord.size();//krataw to plithos twn coords
+
                         int qsize=currnode->vect->coord.size();
-                        //cout<<"qsize"<<qsize<<endl;
+           
+                        //int nsize=nvectors[i].coord.size();
+
                         int nsize=nvector->coord.size();
-                        //cout<<"nsize"<<nsize<<endl;
-                        Point qpoint(qsize);
-                        Point npoint(nsize);
-                        for(int k=0;k<qsize;k++)
-                            qpoint.set(k,currnode->vect->coord[k]);
-                        for(int k=0;k<nsize;k++)
-                            npoint.set(k,nvector->coord[k]);
-                        const Point constqpoint=qpoint;
-                        const Point constnpoint=npoint;
-                        Points qpoints(qsize,constqpoint);
-                        Points npoints(nsize,constnpoint);
-                        const Points constqpoints=qpoints;
-                        const Points constnpoints=npoints;
-                        const Curve qcurve(constqpoints,"Query");
-                        const Curve ncurve(constnpoints,"Input");
+           
+                        Points qpoints(1);
+                        Points npoints(1);
+                        for(int k=0;k<qsize;k++){
+                            Point qpoint(1);
+                            qpoint.set(0,currnode->vect->coord[k]);//pernaw kathe coord se point
+                            qpoints.add(qpoint);//pernaw kathe point sta Points
+                        }
+
+                        Curve qcurve(qpoints);//apo ta points ftiaxnw to curve
+
+                        for(int k=0;k<nsize;k++){
+                            Point npoint(1);
+                            npoint.set(0,nvector->coord[k]);
+                            npoints.add(npoint);
+                        }
+                        Curve ncurve(npoints);
+
+
                         fc::Distance cont_dist;
                         cont_dist=fc::distance(qcurve,ncurve);
                         long double dist=cont_dist.value;
@@ -317,25 +322,48 @@ vector<dist_vec>* Lhashtables::NN_search(vec* nvector,int N)//synarthsh gia to k
                         long double dist=dfd(nvector->coord,currnode->vect->coord,nvector->coord.size(),currnode->vect->coord.size());
                         Q.push(dist_vec(dist,currnode->vect));
                     }else if(metric=="LSH_Frechet_Continuous"){
-                        //cout<<"NN search2"<<endl;
+                        // //cout<<"NN search2"<<endl;
+                        // int qsize=currnode->vect->coord.size();
+                        // //cout<<"qsize"<<qsize<<endl;
+                        // int nsize=nvector->coord.size();
+                        // //cout<<"nsize"<<nsize<<endl;
+                        // Point qpoint(qsize);
+                        // Point npoint(nsize);
+                        // for(int k=0;k<qsize;k++)
+                        //     qpoint.set(k,currnode->vect->coord[k]);
+                        // for(int k=0;k<nsize;k++)
+                        //     npoint.set(k,nvector->coord[k]);
+                        // const Point constqpoint=qpoint;
+                        // const Point constnpoint=npoint;
+                        // Points qpoints(qsize,constqpoint);
+                        // Points npoints(nsize,constnpoint);
+                        // const Points constqpoints=qpoints;
+                        // const Points constnpoints=npoints;
+                        // const Curve qcurve(constqpoints,"Query");
+                        // const Curve ncurve(constnpoints,"Input");
+
                         int qsize=currnode->vect->coord.size();
-                        //cout<<"qsize"<<qsize<<endl;
+           
+                        //int nsize=nvectors[i].coord.size();
+
                         int nsize=nvector->coord.size();
-                        //cout<<"nsize"<<nsize<<endl;
-                        Point qpoint(qsize);
-                        Point npoint(nsize);
-                        for(int k=0;k<qsize;k++)
-                            qpoint.set(k,currnode->vect->coord[k]);
-                        for(int k=0;k<nsize;k++)
-                            npoint.set(k,nvector->coord[k]);
-                        const Point constqpoint=qpoint;
-                        const Point constnpoint=npoint;
-                        Points qpoints(qsize,constqpoint);
-                        Points npoints(nsize,constnpoint);
-                        const Points constqpoints=qpoints;
-                        const Points constnpoints=npoints;
-                        const Curve qcurve(constqpoints,"Query");
-                        const Curve ncurve(constnpoints,"Input");
+           
+                        Points qpoints(1);
+                        Points npoints(1);
+                        for(int k=0;k<qsize;k++){
+                            Point qpoint(1);
+                            qpoint.set(0,currnode->vect->coord[k]);//pernaw kathe coord se point
+                            qpoints.add(qpoint);//pernaw kathe point sta Points
+                        }
+
+                        Curve qcurve(qpoints);//apo ta points ftiaxnw to curve
+
+                        for(int k=0;k<nsize;k++){
+                            Point npoint(1);
+                            npoint.set(0,nvector->coord[k]);
+                            npoints.add(npoint);
+                        }
+                        Curve ncurve(npoints);
                         fc::Distance cont_dist;
                         cont_dist=fc::distance(qcurve,ncurve);
                         long double dist=cont_dist.value;
@@ -432,7 +460,37 @@ vector<dist_vec>* Lhashtables::LRadius_search(vec* nvector,double R)// peripou i
                     if(dist<R)
                         Q.push(dist_vec(dist,currnode->vect));
                 }else if(metric=="LSH_Frechet_Continuous"){
-                    long double dist=dfd(nvector->coord,currnode->vect->coord,d,d);
+
+                        int qsize=currnode->vect->coord.size();
+           
+                        //int nsize=nvectors[i].coord.size();
+
+                        int nsize=nvector->coord.size();
+           
+                        Points qpoints(1);
+                        Points npoints(1);
+                        for(int k=0;k<qsize;k++){
+                            Point qpoint(1);
+                            qpoint.set(0,currnode->vect->coord[k]);//pernaw kathe coord se point
+                            qpoints.add(qpoint);//pernaw kathe point sta Points
+                        }
+
+                        Curve qcurve(qpoints);//apo ta points ftiaxnw to curve
+
+                        for(int k=0;k<nsize;k++){
+                            Point npoint(1);
+                            npoint.set(0,nvector->coord[k]);
+                            npoints.add(npoint);
+                        }
+                        Curve ncurve(npoints);
+                    //long double dist=dfd(nvector->coord,currnode->vect->coord,d,d);
+                        fc::Distance cont_dist;
+                        cont_dist=fc::distance(qcurve,ncurve);
+                        long double dist=cont_dist.value;
+                        //cout<<"dist"<<dist<<endl;
+                        //cout<<"LSH_Frechet_Continuous no ready yet so we are using DFD"<<endl;
+                        //long double dist=dfd(nvector->coord,currnode->vect->coord,nvector->coord.size(),currnode->vect->coord.size());
+                       // Q.push(dist_vec(dist,currnode->vect));
                     if(dist<R)
                         Q.push(dist_vec(dist,currnode->vect));
                 }else{
