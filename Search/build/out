@@ -1,10 +1,10 @@
 Query: aer
 Algorithm: LSH_Frechet_Continuous
-Approximate Nearest neighbor: abt
+Approximate Nearest neighbor: acc
 True Nearest neighbor: abt
-distanceApproximate: 9.315
+distanceApproximate: 10.6492
 distanceTrue: 9.315
 
-tApproximateAverage: 10.794
-tTrueAverage: 37.7112
-MAF: 1
+tApproximateAverage: 7.29931
+tTrueAverage: 35.3895
+MAF: 1.14323
