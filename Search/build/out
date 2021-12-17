@@ -1,64 +1,64 @@
 Query: aer
-Algorithm: Hypercube
-Approximate Nearest neighbor: abt
+Algorithm: LSH_Vector
+Approximate Nearest neighbor: abco
 True Nearest neighbor: abt
-distanceApproximate: 78.0146
+distanceApproximate: 182.129
 distanceTrue: 78.0146
 Query: aeri
-Algorithm: Hypercube
+Algorithm: LSH_Vector
 Approximate Nearest neighbor: abcb
 True Nearest neighbor: abcb
 distanceApproximate: 259.051
 distanceTrue: 259.051
 Query: aes
-Algorithm: Hypercube
-Approximate Nearest neighbor: abcd
+Algorithm: LSH_Vector
+Approximate Nearest neighbor: adx
 True Nearest neighbor: abdc
-distanceApproximate: 174.347
+distanceApproximate: 57.3451
 distanceTrue: 33.7924
 Query: aet
-Algorithm: Hypercube
-Approximate Nearest neighbor: abbv
+Algorithm: LSH_Vector
+Approximate Nearest neighbor: aapl
 True Nearest neighbor: aapl
-distanceApproximate: 1605.91
+distanceApproximate: 323.98
 distanceTrue: 323.98
 Query: aeti
-Algorithm: Hypercube
-Approximate Nearest neighbor: acrx
+Algorithm: LSH_Vector
+Approximate Nearest neighbor: adhd
 True Nearest neighbor: acst
-distanceApproximate: 36.0943
+distanceApproximate: 55.5623
 distanceTrue: 24.9236
 Query: aey
-Algorithm: Hypercube
-Approximate Nearest neighbor: abcd
+Algorithm: LSH_Vector
+Approximate Nearest neighbor: aau
 True Nearest neighbor: aau
-distanceApproximate: 78.7844
+distanceApproximate: 28.6686
 distanceTrue: 28.6686
 Query: aezs
-Algorithm: Hypercube
-Approximate Nearest neighbor: aac
+Algorithm: LSH_Vector
+Approximate Nearest neighbor: achv
 True Nearest neighbor: advm
-distanceApproximate: 421.51
+distanceApproximate: 393.629
 distanceTrue: 192.55
 Query: afam
-Algorithm: Hypercube
-Approximate Nearest neighbor: acm
+Algorithm: LSH_Vector
+Approximate Nearest neighbor: a
 True Nearest neighbor: abt
-distanceApproximate: 344.031
+distanceApproximate: 195.476
 distanceTrue: 166.735
 Query: afb
-Algorithm: Hypercube
-Approximate Nearest neighbor: abx
+Algorithm: LSH_Vector
+Approximate Nearest neighbor: adx
 True Nearest neighbor: adx
-distanceApproximate: 105.292
+distanceApproximate: 33.3724
 distanceTrue: 33.3724
 Query: afc
-Algorithm: Hypercube
-Approximate Nearest neighbor: abr_b
+Algorithm: LSH_Vector
+Approximate Nearest neighbor: aeh
 True Nearest neighbor: aeh
-distanceApproximate: 46.1587
+distanceApproximate: 10.9989
 distanceTrue: 10.9989
 
-tApproximateAverage: 0.00021054
-tTrueAverage: 0.0002518
-MAF: 5.15937
+tApproximateAverage: 0.00081076
+tTrueAverage: 0.0002134
+MAF: 2.33456

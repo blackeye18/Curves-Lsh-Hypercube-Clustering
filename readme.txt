@@ -43,6 +43,7 @@ GitHub Link: https://github.com/blackeye18/Curves-Lsh-Hypercube-Clustering
 
 Για το Search:
 ./search –i nasd_input.csv –q nasd_query.csv –k 3 -L 4 -M 10 -probes 10 -ο out -algorithm Frechet -metric discrete -delta 1.2
+./search –i nasd_input.csv –q nasd_query.csv –k 3 -L 4 -M 10 -probes 10 -ο out -algorithm LSH -delta 1.2
 ./search
 
 
