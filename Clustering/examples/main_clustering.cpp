@@ -61,10 +61,16 @@ int main(int argc, char *argv[]){
             return -1;
         }
     }
-    else if(strcmp(assigment,"LSH")==0)
+    else if(strcmp(assigment,"LSH")==0){
         assigment_flag=1;
-    else if(strcmp(assigment,"Hypercube")==0)
+        metric="euclidean_distance";
+            update_flag=2;
+    }
+    else if(strcmp(assigment,"Hypercube")==0){
+        metric="euclidean_distance";
+            update_flag=2;
         assigment_flag=2;
+    }
     else if(strcmp(assigment,"LSH_Frechet")==0){
         assigment_flag=3;
         metric="LSH_Frechet_Discrete";
@@ -74,7 +80,7 @@ int main(int argc, char *argv[]){
         cout<<"Unknown assigment. Exiting."<<endl;
         return -1;
     }
-    metric="LSH_Frechet_Discrete";
+    //metric="LSH_Frechet_Discrete";
 	nvectors=open_and_create_vectors(input_file,&no_of_coordinates,&no_of_vectors);//diavasma input vector 
 	if(nvectors==NULL)
 	    return -1;
@@ -87,7 +93,7 @@ int main(int argc, char *argv[]){
         //nvectors=snapping(nvectors,no_of_coordinates,no_of_vectors,delta);
         //no_of_coordinates=no_of_coordinates*2;
     //}
-    cout<<no_of_coordinates<<endl;
+    //cout<<no_of_coordinates<<endl;
     cout<<"Now using Kmeans++"<<endl;
     auto start1 = high_resolution_clock::now();//https://www.geeksforgeeks.org/measure-execution-time-function-cpp/
 
@@ -95,12 +101,12 @@ int main(int argc, char *argv[]){
     vector<vec>* clustersvec;
     clustersvec=clus.Kmeanplus(nvectors);
 
-    cout<<"clusters"<<endl;
-    for (int i = 0; i < clustersvec->size(); ++i)
-    	{
-    	cout<<"cluster "<<i<<"with no_of_coordinates "<<clustersvec->at(i).coord.size()<<endl;
-    	}
-   	cout<<endl<<endl;
+    // cout<<"clusters"<<endl;
+    // for (int i = 0; i < clustersvec->size(); ++i)
+    // 	{
+    // 	cout<<"cluster "<<i<<"with no_of_coordinates "<<clustersvec->at(i).coord.size()<<endl;
+    // 	}
+   	// cout<<endl<<endl;
     vector<vector<vec*>>* cluster_neighbours;
 
     if( assigment_flag==0){//ama einai classic kaleite h repeat gia lloyds
@@ -116,9 +122,9 @@ int main(int argc, char *argv[]){
         	{
             lht=new Lhashtables(L,2*no_of_coordinates,k_lsh);
         	}
-        cout<<"lsh_start"<<endl;
+        //cout<<"lsh_start"<<endl;
         lht->lsh_start(no_of_vectors,nvectors);
-        cout<<"Repeat"<<endl;
+        //cout<<"Repeat"<<endl;
         cluster_neighbours=clus.repeat(nvectors,clustersvec,1,(void*)lht);//1 gia lht
 
     }else if(assigment_flag==2){//ama einai me hypercube tote ftiaxnontai oi domes tou hypercube kai kaleite h repeat gia to hypercube

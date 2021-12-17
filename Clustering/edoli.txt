@@ -8,4 +8,4 @@
 
 ./cluster –i nasd_input.csv –c cluster.conf -o out -update MeanFrechet –assignment Classic -complete -silhouette
 
-valgrind ./cluster –i input_verytiny_id –c cluster.conf -o out -update MeanCurve –assignment LSH_Frechet -complete -silhouette
+valgrind ./cluster –i input_tiny_id –c cluster.conf -o out -update MeanCurve –assignment LSH_Frechet -complete -silhouette

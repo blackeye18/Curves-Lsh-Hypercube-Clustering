@@ -404,6 +404,7 @@ vector<vector<vec*>>* Lhashtables::ANN_lsh(vec* nvect,vector<vec>* clustersvec,i
     long double mindist=999999999999999;
     //cout<<"Asasdsadsafsa:"<<cluster_num<<endl;
     vector<vec*> snapped_paded_nvectors;
+    snapped_paded_nvectors.resize(0);
     
     for (int ca = 0; ca < cluster_num-1; ++ca)
         {
@@ -421,8 +422,16 @@ vector<vector<vec*>>* Lhashtables::ANN_lsh(vec* nvect,vector<vec>* clustersvec,i
 
     double radii=mindist/2;
     long int g_notablesize[cluster_num][this->L];
-    int h_return;
+    int h_return=0;
     int h[cluster_num][k];
+    for(int ci=0;ci<cluster_num;++ci){
+        for(int ki=0;ki<this->k;ki++){
+            h[ci][ki]=0;
+        }
+        for(int li=0;li<this->L;li++){
+            g_notablesize[ci][li]=0;
+        }
+    }
     
     //cout<<"Aaaa1";
     for (int ci = 0; ci < cluster_num; ++ci)//ipologizume ola ta hashvalues
@@ -508,8 +517,8 @@ vector<vector<vec*>>* Lhashtables::ANN_lsh(vec* nvect,vector<vec>* clustersvec,i
             if(nvect[i].clustered_flag==-1)//ean den exi mpei se kapio cluster
                 {
                 total_found++;
-                long double mdist;
-                int mci;
+                long double mdist=0;
+                int mci=0;
                 for (int ci = 0; ci < cluster_num; ++ci)//to vazume ston cluster pu exi tin mikroteri apostasi
                     {
 
@@ -525,7 +534,7 @@ vector<vector<vec*>>* Lhashtables::ANN_lsh(vec* nvect,vector<vec>* clustersvec,i
                         }
                     else
                         {
-                        long double dist;
+                        long double dist=0;
                         if(metric=="euclidean_distance")
                             dist=vect_dist(clustersvec->at(ci).coord,nvect[i].coord,d);
                         else if(metric=="LSH_Frechet_Discrete")
