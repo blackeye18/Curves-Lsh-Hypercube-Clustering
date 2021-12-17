@@ -45,7 +45,7 @@ int input_handler(int argc, char *argv[],int* k, int* L,int* probes,double* delt
     int scanfreturn=0;
     if(argsOK(argc,argv)){
         if(argc==21){//an exoun dothei oloi oi parametroi apo command line
-            printf("All parameters given from command line...\n");
+            printf("All parameters given from command line for Frechet...\n");
 
             strcpy((input_file),argv[2]);
             strcpy((query_file),argv[4]);
@@ -69,7 +69,7 @@ int input_handler(int argc, char *argv[],int* k, int* L,int* probes,double* delt
             //*(N)=atoi(argv[12]);
             //*(R)=atof(argv[14]);
         }else if(argc==19){//an exoun dothei kapoioi marametroi apo command line
-            printf("Almost all parameters given from command line... Using default for k, L, probes, M\n");
+            printf("All parameters given from command line for LSH or Hypercube...\n");
             strcpy((input_file),argv[2]);
             strcpy((query_file),argv[4]);
             strcpy((output_file),argv[14]);
@@ -127,19 +127,7 @@ int input_handler(int argc, char *argv[],int* k, int* L,int* probes,double* delt
         printf("Type the algorithm to use: ");
         scanfreturn=scanf("%s",(algorithm));
 
-        printf("Type the value of k or type d for default value(4) ");
-        scanfreturn=scanf("%s",temp);
-        if(strcmp(temp,"d")==0)
-            *(k)=4;
-        else{
-            if(isdigit(temp[0]))
-                *(k)=atoi(temp);
-            else{
-                printf("You did not enter a number or d! I will not tolerate this! Exiting...\n");//troll ama kapoios paei na dokimasei na krasarei thn efarmogh dinodas lathos input
-                return(1);
-            }
-        }
-        strcpy(temp,"");
+        
         if(strcmp(algorithm,"LSH")==0){
             printf("Type the value of L or type d for default value(5) ");
             scanfreturn=scanf("%s",temp);
@@ -150,6 +138,19 @@ int input_handler(int argc, char *argv[],int* k, int* L,int* probes,double* delt
                     *(L)=atoi(temp);
                 else{
                     printf("You did not enter a number or d! I will not tolerate this! Exiting...\n");
+                    return(1);
+                }
+            }
+            strcpy(temp,"");
+            printf("Type the value of k or type d for default value(4) ");
+            scanfreturn=scanf("%s",temp);
+            if(strcmp(temp,"d")==0)
+                *(k)=4;
+            else{
+                if(isdigit(temp[0]))
+                    *(k)=atoi(temp);
+                else{
+                    printf("You did not enter a number or d! I will not tolerate this! Exiting...\n");//troll ama kapoios paei na dokimasei na krasarei thn efarmogh dinodas lathos input
                     return(1);
                 }
             }
@@ -194,6 +195,32 @@ int input_handler(int argc, char *argv[],int* k, int* L,int* probes,double* delt
                 return(1);
             }
             
+            strcpy(temp,"");
+            printf("Type the value of L or type d for default value(5) ");
+            scanfreturn=scanf("%s",temp);
+            if(strcmp(temp,"d")==0)
+                *(L)=5;
+            else{
+                if(isdigit(temp[0]))
+                    *(L)=atoi(temp);
+                else{
+                    printf("You did not enter a number or d! I will not tolerate this! Exiting...\n");
+                    return(1);
+                }
+            }
+            strcpy(temp,"");
+            printf("Type the value of k or type d for default value(4) ");
+            scanfreturn=scanf("%s",temp);
+            if(strcmp(temp,"d")==0)
+                *(k)=4;
+            else{
+                if(isdigit(temp[0]))
+                    *(k)=atoi(temp);
+                else{
+                    printf("You did not enter a number or d! I will not tolerate this! Exiting...\n");//troll ama kapoios paei na dokimasei na krasarei thn efarmogh dinodas lathos input
+                    return(1);
+                }
+            }
             strcpy(temp,"");
             
         }else{

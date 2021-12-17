@@ -1,10 +1,64 @@
 Query: aer
-Algorithm: LSH_Frechet_Continuous
-Approximate Nearest neighbor: acc
+Algorithm: Hypercube
+Approximate Nearest neighbor: abt
 True Nearest neighbor: abt
-distanceApproximate: 10.6492
-distanceTrue: 9.315
+distanceApproximate: 78.0146
+distanceTrue: 78.0146
+Query: aeri
+Algorithm: Hypercube
+Approximate Nearest neighbor: abcb
+True Nearest neighbor: abcb
+distanceApproximate: 259.051
+distanceTrue: 259.051
+Query: aes
+Algorithm: Hypercube
+Approximate Nearest neighbor: abcd
+True Nearest neighbor: abdc
+distanceApproximate: 174.347
+distanceTrue: 33.7924
+Query: aet
+Algorithm: Hypercube
+Approximate Nearest neighbor: abbv
+True Nearest neighbor: aapl
+distanceApproximate: 1605.91
+distanceTrue: 323.98
+Query: aeti
+Algorithm: Hypercube
+Approximate Nearest neighbor: acrx
+True Nearest neighbor: acst
+distanceApproximate: 36.0943
+distanceTrue: 24.9236
+Query: aey
+Algorithm: Hypercube
+Approximate Nearest neighbor: abcd
+True Nearest neighbor: aau
+distanceApproximate: 78.7844
+distanceTrue: 28.6686
+Query: aezs
+Algorithm: Hypercube
+Approximate Nearest neighbor: aac
+True Nearest neighbor: advm
+distanceApproximate: 421.51
+distanceTrue: 192.55
+Query: afam
+Algorithm: Hypercube
+Approximate Nearest neighbor: acm
+True Nearest neighbor: abt
+distanceApproximate: 344.031
+distanceTrue: 166.735
+Query: afb
+Algorithm: Hypercube
+Approximate Nearest neighbor: abx
+True Nearest neighbor: adx
+distanceApproximate: 105.292
+distanceTrue: 33.3724
+Query: afc
+Algorithm: Hypercube
+Approximate Nearest neighbor: abr_b
+True Nearest neighbor: aeh
+distanceApproximate: 46.1587
+distanceTrue: 10.9989
 
-tApproximateAverage: 7.29931
-tTrueAverage: 35.3895
-MAF: 1.14323
+tApproximateAverage: 0.00021054
+tTrueAverage: 0.0002518
+MAF: 5.15937
