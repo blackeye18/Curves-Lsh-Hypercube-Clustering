@@ -116,25 +116,49 @@ vector<dist_vec>* brute_calculate(vec* qvector,vec* nvectors,int no_of_vectors,i
             Q.push(dist_vec(dist,&(nvectors[i])));
             //cout<<"END"<<endl;
         }else if(metric=="LSH_Frechet_Continuous"){
-            //cout<<"brute_calculate"<<endl;
+            
+
+
+
+            // int qsize=qvector[pos].coord.size();//krataw to plithos twn coords
+           
+            // int nsize=nvectors[i].coord.size();
+           
+            // Point qpoint(qsize);//dimiourgw point me adistoixo megethos
+            // Point npoint(nsize);
+            // for(int k=0;k<qsize;k++)
+            //     qpoint.set(k,qvector[pos].coord[k]);//pernaw ta coordinates sto Point
+            // for(int k=0;k<nsize;k++)
+            //     npoint.set(k,nvectors[i].coord[k]);
+            // const Point constqpoint=qpoint;//to metarepw se const giati afto zhtaei o constructor ths Points
+            // const Point constnpoint=npoint;
+            // Points qpoints(qsize,constqpoint);//dimiourgw Points me to analogo megethos
+            // Points npoints(nsize,constnpoint);
+            // const Points constqpoints=qpoints;//metatrepw se const
+            // const Points constnpoints=npoints;
+            // const Curve qcurve(constqpoints,"Query");//dimiourgw to curve vash twn Points
+            // const Curve ncurve(constnpoints,"Input");
+
             int qsize=qvector[pos].coord.size();//krataw to plithos twn coords
-            //cout<<"qsize"<<qsize<<endl;
+           
             int nsize=nvectors[i].coord.size();
-            //cout<<"nsize"<<nsize<<endl;
-            Point qpoint(qsize);//dimiourgw point me adistoixo megethos
-            Point npoint(nsize);
-            for(int k=0;k<qsize;k++)
-                qpoint.set(k,qvector[pos].coord[k]);//pernaw ta coordinates sto Point
-            for(int k=0;k<nsize;k++)
-                npoint.set(k,nvectors[i].coord[k]);
-            const Point constqpoint=qpoint;//to metarepw se const giati afto zhtaei o constructor ths Points
-            const Point constnpoint=npoint;
-            Points qpoints(qsize,constqpoint);//dimiourgw Points me to analogo megethos
-            Points npoints(nsize,constnpoint);
-            const Points constqpoints=qpoints;//metatrepw se const
-            const Points constnpoints=npoints;
-            const Curve qcurve(constqpoints,"Query");//dimiourgw to curve vash twn Points
-            const Curve ncurve(constnpoints,"Input");
+           
+            Points qpoints(1);
+            Points npoints(1);
+            for(int k=0;k<qsize;k++){
+                Point qpoint(1);
+                qpoint.set(0,qvector[pos].coord[k]);
+                qpoints.add(qpoint);
+            }
+
+            Curve qcurve(qpoints);
+
+            for(int k=0;k<nsize;k++){
+                Point npoint(1);
+                npoint.set(0,nvectors[i].coord[k]);
+                npoints.add(npoint);
+            }
+            Curve ncurve(npoints);
             fc::Distance cont_dist;//dimiourgw mia metavliti typou distance, sthn opoia epistrefei to apotelesma h synarthsh
             cont_dist=fc::distance(qcurve,ncurve);//kalw thn synarthsh pou ypologizei thn apostash
             dist=cont_dist.value;//krataw to apotelesma pou me endiaferei

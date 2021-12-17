@@ -240,7 +240,7 @@ long double MeanNCurves(vector<vec*> nvects,vec*  cvec)
 
 
 
-vec* snapping(vec* nvectors,int no_of_coordinates,int no_of_vectors,double delta,vector<double> td1,vector<double>td2){
+vec* snapping(vec* nvectors,int no_of_coordinates,int no_of_vectors,double delta,vector<double> td1,vector<double>td2){//sxolia sto search
     vector<vector<vector<double>>> temp;
     temp.resize(no_of_vectors,vector<vector<double> >(no_of_coordinates,vector<double>(2)));////resize analoga 
     for(int i=0;i<no_of_vectors;i++){//kanw adistoixish me meres 

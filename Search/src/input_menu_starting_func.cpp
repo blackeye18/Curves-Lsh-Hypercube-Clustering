@@ -42,6 +42,7 @@ int argsOK(int argc, char *argv[])
 //h synarthsh eixe graftei se c kathws sthn arxh ksekinisame to project se c kai oxi se c++
 int input_handler(int argc, char *argv[],int* k, int* L,int* probes,double* delta,int* M,char (&metricfr)[256],char (&input_file)[256], char (&query_file)[256], char (&output_file)[256],char (&algorithm)[256]){
     char temp[256];
+    int scanfreturn=0;
     if(argsOK(argc,argv)){
         if(argc==21){//an exoun dothei oloi oi parametroi apo command line
             printf("All parameters given from command line...\n");
@@ -116,18 +117,18 @@ int input_handler(int argc, char *argv[],int* k, int* L,int* probes,double* delt
         *(probes)=2;
         *(M)=10;
         printf("Type the path to the input_file: ");
-        scanf("%s",(input_file));
+        scanfreturn=scanf("%s",(input_file));
         //printf("\n");
         printf("Type the path to the query_file: ");
-        scanf("%s",(query_file));
+        scanfreturn=scanf("%s",(query_file));
         //printf("\n");
         printf("Type the path to the output_file: ");
-        scanf("%s",(output_file));
+        scanfreturn=scanf("%s",(output_file));
         printf("Type the algorithm to use: ");
-        scanf("%s",(algorithm));
+        scanfreturn=scanf("%s",(algorithm));
 
         printf("Type the value of k or type d for default value(4) ");
-        scanf("%s",temp);
+        scanfreturn=scanf("%s",temp);
         if(strcmp(temp,"d")==0)
             *(k)=4;
         else{
@@ -141,7 +142,7 @@ int input_handler(int argc, char *argv[],int* k, int* L,int* probes,double* delt
         strcpy(temp,"");
         if(strcmp(algorithm,"LSH")==0){
             printf("Type the value of L or type d for default value(5) ");
-            scanf("%s",temp);
+            scanfreturn=scanf("%s",temp);
             if(strcmp(temp,"d")==0)
                 *(L)=5;
             else{
@@ -155,7 +156,7 @@ int input_handler(int argc, char *argv[],int* k, int* L,int* probes,double* delt
             strcpy(temp,"");
         }else if(strcmp(algorithm,"Hypercube")==0){
             printf("Type the value of M or type d for default value(10) ");
-            scanf("%s",temp);
+            scanfreturn=scanf("%s",temp);
             if(strcmp(temp,"d")==0)
                 *(M)=10;
             else{
@@ -168,7 +169,7 @@ int input_handler(int argc, char *argv[],int* k, int* L,int* probes,double* delt
             }
             strcpy(temp,"");
             printf("Type the value of probes or type d for default value(2) ");
-            scanf("%s",temp);
+            scanfreturn=scanf("%s",temp);
             if(strcmp(temp,"d")==0)
                 *(probes)=5;
             else{
@@ -180,11 +181,11 @@ int input_handler(int argc, char *argv[],int* k, int* L,int* probes,double* delt
                 }
             }
             strcpy(temp,"");
-        }else if(strcmp(algorithm,"Frechet")){
+        }else if(strcmp(algorithm,"Frechet")==0){
             printf("Type the metric to use: ");
-            scanf("%s",(metricfr));
+            scanfreturn=scanf("%s",(metricfr));
             printf("Type the value of delta ");
-            scanf("%s",temp);
+            scanfreturn=scanf("%s",temp);
             
             if(isdigit(temp[0]))
                 *(delta)=atoi(temp);
@@ -348,10 +349,11 @@ int repeat_handler(vec* nvectors, vec* qvectors,char* input_file,char*query_file
     int input;
     char temp[256];
     char scanret[256];
+    int scanfreturn=0;
     while(1){
         strcpy(temp,"");
         strcpy(scanret,"");
-        scanf("%s",scanret);
+        scanfreturn=scanf("%s",scanret);
         if(isdigit(scanret[0]))
             input=stoi(scanret);//ama den einai arithmos
         else
@@ -362,15 +364,15 @@ int repeat_handler(vec* nvectors, vec* qvectors,char* input_file,char*query_file
         else if(input==1){//ama exoume kainourio input file kai query file zhtame ta onomata kai eleftherwnoume thn mnhmh twn paliwn domwn
             
             cout<<"Please enter input_file"<<endl;
-            scanf("%s",temp);
+            scanfreturn=scanf("%s",temp);
             strcpy(input_file,temp);
             cout<<"Please enter query_file"<<endl;
             strcpy(temp,"");
-            scanf("%s",temp);
+            scanfreturn=scanf("%s",temp);
             strcpy(query_file,temp);
             cout<<"Please enter output_file"<<endl;
             strcpy(temp,"");
-            scanf("%s",temp);
+            scanfreturn=scanf("%s",temp);
             strcpy(output_file,temp);
             delete [] nvectors;
             delete [] qvectors;
@@ -381,11 +383,11 @@ int repeat_handler(vec* nvectors, vec* qvectors,char* input_file,char*query_file
             return 0;
         }else if(input ==2){//ama exoume mono kainourio input file zhtame onoma kai eleftherwnoume thn mnhmh tou lsh kathw tha prepei na ksanaypologistei
             cout<<"Please enter input_file"<<endl;
-            scanf("%s",temp);
+            scanfreturn=scanf("%s",temp);
             strcpy(input_file,temp);
             cout<<"Please enter output_file"<<endl;
             strcpy(temp,"");
-            scanf("%s",temp);
+            scanfreturn=scanf("%s",temp);
             strcpy(output_file,temp);
             delete [] nvectors;
              if(alg_flag==1 || alg_flag==3)
@@ -395,11 +397,11 @@ int repeat_handler(vec* nvectors, vec* qvectors,char* input_file,char*query_file
             return 1;
         }else if(input==3){//ama exoume mono kainourio query file tote apeleftherwnoume thn mnhmh twn paliwn queries kai den diagramoume tis domes tou lsh afou einai oi idies afou exoume idio input file
             cout<<"Please enter query_file"<<endl;
-            scanf("%s",temp);
+            scanfreturn=scanf("%s",temp);
             strcpy(query_file,temp);
             cout<<"Please enter output_file"<<endl;
             strcpy(temp,"");
-            scanf("%s",temp);
+            scanfreturn=scanf("%s",temp);
             strcpy(output_file,temp);
             delete [] qvectors;
             return 2;
