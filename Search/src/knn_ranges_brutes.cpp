@@ -236,25 +236,7 @@ vector<dist_vec>* Lhashtables::NN_search(vec* nvector,int N)//synarthsh gia to k
                         long double dist=dfd(nvector->coord,currnode->vect->coord,nvector->coord.size(),currnode->vect->coord.size());
                         Q.push(dist_vec(dist,currnode->vect));
                     }else if(metric=="LSH_Frechet_Continuous"){
-                        //cout<<"NN search"<<endl;
-                        // int qsize=currnode->vect->coord.size();
-                        // //cout<<"qsize"<<qsize<<endl;
-                        // int nsize=nvector->coord.size();
-                        // //cout<<"nsize"<<nsize<<endl;
-                        // Point qpoint(qsize);
-                        // Point npoint(nsize);
-                        // for(int k=0;k<qsize;k++)
-                        //     qpoint.set(k,currnode->vect->coord[k]);
-                        // for(int k=0;k<nsize;k++)
-                        //     npoint.set(k,nvector->coord[k]);
-                        // const Point constqpoint=qpoint;
-                        // const Point constnpoint=npoint;
-                        // Points qpoints(qsize,constqpoint);
-                        // Points npoints(nsize,constnpoint);
-                        // const Points constqpoints=qpoints;
-                        // const Points constnpoints=npoints;
-                        // const Curve qcurve(constqpoints,"Query");
-                        // const Curve ncurve(constnpoints,"Input");
+                       
 
                         //int qsize=qvector[pos].coord.size();//krataw to plithos twn coords
 
@@ -322,26 +304,7 @@ vector<dist_vec>* Lhashtables::NN_search(vec* nvector,int N)//synarthsh gia to k
                         long double dist=dfd(nvector->coord,currnode->vect->coord,nvector->coord.size(),currnode->vect->coord.size());
                         Q.push(dist_vec(dist,currnode->vect));
                     }else if(metric=="LSH_Frechet_Continuous"){
-                        // //cout<<"NN search2"<<endl;
-                        // int qsize=currnode->vect->coord.size();
-                        // //cout<<"qsize"<<qsize<<endl;
-                        // int nsize=nvector->coord.size();
-                        // //cout<<"nsize"<<nsize<<endl;
-                        // Point qpoint(qsize);
-                        // Point npoint(nsize);
-                        // for(int k=0;k<qsize;k++)
-                        //     qpoint.set(k,currnode->vect->coord[k]);
-                        // for(int k=0;k<nsize;k++)
-                        //     npoint.set(k,nvector->coord[k]);
-                        // const Point constqpoint=qpoint;
-                        // const Point constnpoint=npoint;
-                        // Points qpoints(qsize,constqpoint);
-                        // Points npoints(nsize,constnpoint);
-                        // const Points constqpoints=qpoints;
-                        // const Points constnpoints=npoints;
-                        // const Curve qcurve(constqpoints,"Query");
-                        // const Curve ncurve(constnpoints,"Input");
-
+                        
                         int qsize=currnode->vect->coord.size();
            
                         //int nsize=nvectors[i].coord.size();
