@@ -224,7 +224,9 @@ vector<vector<vec*>>* cluster::repeat(vec* nvect,vector<vec>* clustersvec,int me
                 {
                 EFLAG=0;
 			 Lhashtables* lhtables=(Lhashtables*) ss;
+
 			 cluster_neighbours=lhtables->ANN_lsh(nvect,clustersvec,no_of_vectors);
+
                 for (int ci = 0; ci < clustersvec->size(); ++ci)
                     {
                     if (cluster_neighbours->at(ci).size()<1)
@@ -256,9 +258,9 @@ vector<vector<vec*>>* cluster::repeat(vec* nvect,vector<vec>* clustersvec,int me
 			}
 			
 		diff=sum_diff/clustersvec->size();//ipologizoume tin diafora
-        //cout<<endl<<"_____________________________________________________"<<endl<<endl;
-        //cout<<"it "<<iteration<<" diff "<<diff<<endl;
-        //cout<<endl<<"_____________________________________________________"<<endl;
+        cout<<endl<<"_____________________________________________________"<<endl;
+        cout<<"it "<<iteration<<" diff "<<diff<<endl;
+        cout<<"_____________________________________________________"<<endl;
 		}
 	while(diff>=PERCISION && iteration<MAXIT);//oso i diafora ine megaliteri tu percision kai den exume ftasei ton megisto ari8mo epanalipsewn
      //cout<<"diff "<<diff<<" iteration "<<iteration<<endl;

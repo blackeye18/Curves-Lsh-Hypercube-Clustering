@@ -124,6 +124,7 @@ int main(int argc, char *argv[]){
         	}
         //cout<<"lsh_start"<<endl;
         lht->lsh_start(no_of_vectors,nvectors);
+
         //cout<<"Repeat"<<endl;
         cluster_neighbours=clus.repeat(nvectors,clustersvec,1,(void*)lht);//1 gia lht
 

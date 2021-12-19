@@ -243,6 +243,10 @@ void Lhashtables::Hashfun_init(void)
 
 int h_function(vector<double> p,vector<double> v,double t){
     double in_prod;
+    if(p.empty())
+        cout<<"p is empty"<<endl;
+    else if(v.empty())
+        cout<<"v is empty"<<endl;
 
     in_prod=inner_product(p.begin(),p.end(),v.begin(),0);
 
@@ -403,8 +407,7 @@ vector<vector<vec*>>* Lhashtables::ANN_lsh(vec* nvect,vector<vec>* clustersvec,i
     int cluster_num=clustersvec->size();
     long double mindist=999999999999999;
     //cout<<"Asasdsadsafsa:"<<cluster_num<<endl;
-    vector<vec*> snapped_paded_nvectors;
-    snapped_paded_nvectors.resize(0);
+
     
     for (int ca = 0; ca < cluster_num-1; ++ca)
         {
@@ -432,40 +435,34 @@ vector<vector<vec*>>* Lhashtables::ANN_lsh(vec* nvect,vector<vec>* clustersvec,i
             g_notablesize[ci][li]=0;
         }
     }
-    
-    //cout<<"Aaaa1";
-    for (int ci = 0; ci < cluster_num; ++ci)//ipologizume ola ta hashvalues
+    vec* snapped_paded_nvector;
+    for (int li = 0; li < L; li++)
+    //ipologizume ola ta hashvalues
         {
-        for (int li = 0; li < L; li++)
-            {
-                if(metric=="LSH_Frechet_Discrete"){
-                    for(int ci=0;ci<cluster_num;ci++){
-                        //cout<<"Aaaa1";
-                        snapped_paded_nvectors.push_back(snapping(&(clustersvec->at(ci)),clustersvec->at(ci).coord.size(),1,delta,td1[li],td2[li]));
-                     }               
-                }
+
+        for (int ci = 0; ci < cluster_num; ++ci)
+            {   
+                if(metric=="LSH_Frechet_Discrete")
+                    {
+                    snapped_paded_nvector=snapping(&(clustersvec->at(ci)),clustersvec->at(ci).coord.size(),1,delta,td1[li],td2[li]);
+                     }     
+        
+ 
             for(int ki=0;ki<this->k;ki++)
                 {
                 if(metric=="LSH_Frechet_Discrete")
-                    h_return=h_function(snapped_paded_nvectors.at(ci)->coord,this->v[li][ki],this->t[li][ki]);
+                    h_return=h_function(snapped_paded_nvector[0].coord,this->v[li][ki],this->t[li][ki]);
                 else if(metric=="euclidean_distance")
                     h_return=h_function(clustersvec->at(ci).coord,this->v[li][ki],this->t[li][ki]);
                 h[ci][ki]=h_return;
               
                 }
-       
             g_notablesize[ci][li]=g_function(h[ci],this->r[li],this->k);
-
-
-            //EDW THELEI DELETE TO SNAPPED
+            if(metric=="LSH_Frechet_Discrete")
+                delete [] snapped_paded_nvector;
             
-            // if(metric=="LSH_Frechet_Discrete")
-            //     for(int i=0;i<snapped_paded_nvectors.size();i++){
-            //         vec * temp=snapped_paded_nvectors[i];
-            //         delete temp;
-
-            //     }
             }
+
         }
 
     int iteration=0;
@@ -510,7 +507,7 @@ vector<vector<vec*>>* Lhashtables::ANN_lsh(vec* nvect,vector<vec>* clustersvec,i
 
     delete curr_clust_vec;
         int ff=0;
-       // cout<<"entering brute with total_found "<<total_found<<endl;
+       //cout<<"entering brute with total_found "<<total_found<<" from total "<<no_of_vectors<<endl;
         //brute calculate
         for (int i = 0; i < no_of_vectors; ++i)
             {
@@ -557,15 +554,6 @@ vector<vector<vec*>>* Lhashtables::ANN_lsh(vec* nvect,vector<vec>* clustersvec,i
      //cout<<"how much lsh really found "<<ff<<endl;
     //cout<<"total_found "<<total_found<<endl;
 
-    if(metric=="LSH_Frechet_Discrete")
-        {
-        for(int ci=0;ci<snapped_paded_nvectors.size();ci++)
-            {
-            delete[] snapped_paded_nvectors[ci];
-            snapped_paded_nvectors[ci]=NULL;
-            }
-        snapped_paded_nvectors.empty();
-        }
 
     return cluster_neighbours;
     }
