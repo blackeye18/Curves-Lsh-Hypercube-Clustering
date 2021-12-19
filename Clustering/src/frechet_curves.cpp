@@ -285,7 +285,7 @@ vec* snapping(vec* nvectors,int no_of_coordinates,int no_of_vectors,double delta
     }
     //cout<<same_counter<<endl;
     //cout<<temp2[0][1].size()<<endl;
-    vec* newnvectors;
+    vec* newnvectors=NULL;
     newnvectors = new vec[no_of_vectors];//desmevoume xwro gia ta vectors
     for(int i=0;i<no_of_vectors;i++){
         newnvectors[i].name=nvectors[i].name;

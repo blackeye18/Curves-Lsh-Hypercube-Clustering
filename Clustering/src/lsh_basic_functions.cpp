@@ -413,7 +413,7 @@ vector<vector<vec*>>* Lhashtables::ANN_lsh(vec* nvect,vector<vec>* clustersvec,i
         {
         for (int cb = ca+1 ; cb <cluster_num;  ++cb)
             {
-            long double dist;
+            long double dist=0;
             if(metric=="euclidean_distance")
                 dist=vect_dist(clustersvec->at(ca).coord,clustersvec->at(cb).coord,d);
             else if (metric=="LSH_Frechet_Discrete")
@@ -435,7 +435,7 @@ vector<vector<vec*>>* Lhashtables::ANN_lsh(vec* nvect,vector<vec>* clustersvec,i
             g_notablesize[ci][li]=0;
         }
     }
-    vec* snapped_paded_nvector;
+    vec* snapped_paded_nvector=NULL;
     for (int li = 0; li < L; li++)
     //ipologizume ola ta hashvalues
         {
