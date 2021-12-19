@@ -1,64 +1,64 @@
 Query: aer
-Algorithm: LSH_Vector
-Approximate Nearest neighbor: abco
+Algorithm:  LSH_Frechet_Discrete
+Approximate Nearest neighbor: adm
 True Nearest neighbor: abt
-distanceApproximate: 182.129
-distanceTrue: 78.0146
+distanceApproximate: 12.4
+distanceTrue: 9.315
 Query: aeri
-Algorithm: LSH_Vector
-Approximate Nearest neighbor: abcb
-True Nearest neighbor: abcb
-distanceApproximate: 259.051
-distanceTrue: 259.051
+Algorithm:  LSH_Frechet_Discrete
+Approximate Nearest neighbor: adc
+True Nearest neighbor: adc
+distanceApproximate: 15.696
+distanceTrue: 15.696
 Query: aes
-Algorithm: LSH_Vector
-Approximate Nearest neighbor: adx
-True Nearest neighbor: abdc
-distanceApproximate: 57.3451
-distanceTrue: 33.7924
+Algorithm:  LSH_Frechet_Discrete
+Approximate Nearest neighbor: acre
+True Nearest neighbor: acy
+distanceApproximate: 3.014
+distanceTrue: 2.842
 Query: aet
-Algorithm: LSH_Vector
+Algorithm:  LSH_Frechet_Discrete
 Approximate Nearest neighbor: aapl
-True Nearest neighbor: aapl
-distanceApproximate: 323.98
-distanceTrue: 323.98
+True Nearest neighbor: adbe
+distanceApproximate: 19.84
+distanceTrue: 18.41
 Query: aeti
-Algorithm: LSH_Vector
-Approximate Nearest neighbor: adhd
+Algorithm:  LSH_Frechet_Discrete
+Approximate Nearest neighbor: aame
 True Nearest neighbor: acst
-distanceApproximate: 55.5623
-distanceTrue: 24.9236
+distanceApproximate: 2.2669
+distanceTrue: 1.587
 Query: aey
-Algorithm: LSH_Vector
+Algorithm:  LSH_Frechet_Discrete
 Approximate Nearest neighbor: aau
 True Nearest neighbor: aau
-distanceApproximate: 28.6686
-distanceTrue: 28.6686
+distanceApproximate: 1.61
+distanceTrue: 1.61
 Query: aezs
-Algorithm: LSH_Vector
-Approximate Nearest neighbor: achv
-True Nearest neighbor: advm
-distanceApproximate: 393.629
-distanceTrue: 192.55
+Algorithm:  LSH_Frechet_Discrete
+Approximate Nearest neighbor: acer
+True Nearest neighbor: acer
+distanceApproximate: 16.4212
+distanceTrue: 16.4212
 Query: afam
-Algorithm: LSH_Vector
-Approximate Nearest neighbor: a
-True Nearest neighbor: abt
-distanceApproximate: 195.476
-distanceTrue: 166.735
+Algorithm:  LSH_Frechet_Discrete
+Approximate Nearest neighbor: acc
+True Nearest neighbor: aem
+distanceApproximate: 10.812
+distanceTrue: 8.084
 Query: afb
-Algorithm: LSH_Vector
+Algorithm:  LSH_Frechet_Discrete
 Approximate Nearest neighbor: adx
-True Nearest neighbor: adx
-distanceApproximate: 33.3724
-distanceTrue: 33.3724
+True Nearest neighbor: abe
+distanceApproximate: 2.18
+distanceTrue: 2.0932
 Query: afc
-Algorithm: LSH_Vector
+Algorithm:  LSH_Frechet_Discrete
 Approximate Nearest neighbor: aeh
 True Nearest neighbor: aeh
-distanceApproximate: 10.9989
-distanceTrue: 10.9989
+distanceApproximate: 0.753
+distanceTrue: 0.753
 
-tApproximateAverage: 0.00081076
-tTrueAverage: 0.0002134
-MAF: 2.33456
+tApproximateAverage: 0.24456
+tTrueAverage: 0.394213
+MAF: 1.42842

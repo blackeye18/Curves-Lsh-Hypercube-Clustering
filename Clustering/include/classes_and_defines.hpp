@@ -2,7 +2,8 @@
 #define __classes_and_defines__
 
 #define RLIMIT 1000
-#define PNUM 4294967291
+//#define PNUM 4294967291
+#define PNUM 2147483645
 #define W 4//meta3i 0 kai 6
 #define BUCKET_RATIO 16
 #define PERCISION 5
