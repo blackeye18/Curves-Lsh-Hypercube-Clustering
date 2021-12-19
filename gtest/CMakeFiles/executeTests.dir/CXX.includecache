@@ -1,0 +1,46 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/gigi/Desktop/Curves-Lsh-Hypercube-Clustering-master/Clustering/gtest/gtest.cpp
+iostream
+-
+gtest/gtest.h
+-
+program.cpp
+/home/gigi/Desktop/Curves-Lsh-Hypercube-Clustering-master/Clustering/gtest/program.cpp
+
+/home/gigi/Desktop/Curves-Lsh-Hypercube-Clustering-master/Clustering/gtest/program.cpp
+iostream
+-
+cstring
+-
+vector
+-
+cctype
+-
+fstream
+-
+sstream
+-
+random
+-
+chrono
+-
+map
+-
+cassert
+-
+chrono
+-
+queue
+-
+algorithm
+-
+random
+-
+
