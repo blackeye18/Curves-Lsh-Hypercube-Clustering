@@ -75,6 +75,27 @@ int Mean_filter(vector<double>* coord,int triads)//sxolia sto search
         //cout<<"FINISHED CALCULATION"<<endl;
     return C[mv-1][mq-1];
     }
+
+
+    long double vect_dist(vector<double> vecA,vector<double> vecB,int d)
+{
+    //cout<<"using vect_dist"<<endl;
+    long double sum=0;
+    for (int i = 0; i < d; ++i)
+        {
+        long double temp=abs(vecA[i]-vecB[i]);
+        sum+=temp*temp;
+        }
+    return sqrt(sum);
+}
+
+long int euclidean_remainder(long int a,long int b)
+{
+  assert(b != 0);
+  long int r = a % b;
+  return r >= 0 ? r : r + abs(b);
+}
+
 /*
 int main(int argc, char const *argv[])
 	{
