@@ -262,7 +262,7 @@ vector<vector<vec*>>* cluster::repeat(vec* nvect,vector<vec>* clustersvec,int me
         cout<<"it "<<iteration<<" diff "<<diff<<endl;
         cout<<"_____________________________________________________"<<endl;
 		}
-	while(diff>=PERCISION && iteration<MAXIT);//oso i diafora ine megaliteri tu percision kai den exume ftasei ton megisto ari8mo epanalipsewn
+	while(diff>=(PERCISION+0.1*iteration) && iteration<MAXIT);//oso i diafora ine megaliteri tu percision kai den exume ftasei ton megisto ari8mo epanalipsewn
      //cout<<"diff "<<diff<<" iteration "<<iteration<<endl;
 	return cluster_neighbours;
 	}

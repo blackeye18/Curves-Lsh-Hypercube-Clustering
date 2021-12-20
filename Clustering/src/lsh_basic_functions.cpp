@@ -493,11 +493,11 @@ vector<vector<vec*>>* Lhashtables::ANN_lsh(vec* nvect,vector<vec>* clustersvec,i
             vectors_found+=curr_clust_vec->at(ci).size();
         	}
         vectors_per_it=vectors_found- total_found;
-        total_found+=vectors_found;
+        total_found=vectors_found;
         iteration++;
         radii*=2;//diplasiazume to radii
         }
-    while(vectors_per_it>=cluster_num/2);
+    while(vectors_per_it>2*cluster_num);
 
 
     vectors_found=0;
@@ -515,7 +515,7 @@ vector<vector<vec*>>* Lhashtables::ANN_lsh(vec* nvect,vector<vec>* clustersvec,i
     delete curr_clust_vec;
 
         int ff=0;
-       //cout<<"entering brute with total_found "<<total_found<<" from total "<<no_of_vectors<<endl;
+       cout<<"entering brute with total_found "<<total_found<<" vectors_found "<<vectors_found<<" from total "<<no_of_vectors<<endl;
         //brute calculate
         for (int i = 0; i < no_of_vectors; ++i)
             {
