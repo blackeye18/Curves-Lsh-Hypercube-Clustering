@@ -249,6 +249,7 @@ void print_to_file(vector<vec>* clustersvec,vector<vector<vec*>>* cluster_neighb
             outfile<<(*silhouette_vec)[i]<<",";
         }
         outfile<<sum<<"]";
+        cout<<"Total silhouette:"<<sum<<endl;
     }
     if(complete_flag==1){
         outfile<<endl;

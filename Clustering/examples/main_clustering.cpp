@@ -148,10 +148,10 @@ int main(int argc, char *argv[]){
     if(silhouette_flag==1){
         cout<<"Now using silhouette"<<endl;//ypologismos toy silhouette
         silhouette_vec =clus.silhouette(cluster_neighbours,clustersvec,nvectors);
-        for (int i = 0; i < silhouette_vec->size(); ++i)
-            {
-            cout<<"silhouette for cluster: "<<i<<" : "<<(*silhouette_vec)[i]<<endl;
-            }
+        //for (int i = 0; i < silhouette_vec->size(); ++i)
+            //{
+           // cout<<"silhouette for cluster: "<<i<<" : "<<(*silhouette_vec)[i]<<endl;
+            //}
     }
 
 

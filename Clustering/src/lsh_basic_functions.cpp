@@ -515,7 +515,7 @@ vector<vector<vec*>>* Lhashtables::ANN_lsh(vec* nvect,vector<vec>* clustersvec,i
     delete curr_clust_vec;
 
         int ff=0;
-       cout<<"entering brute with total_found "<<total_found<<" vectors_found "<<vectors_found<<" from total "<<no_of_vectors<<endl;
+       //cout<<"entering brute with total_found "<<total_found<<" vectors_found "<<vectors_found<<" from total "<<no_of_vectors<<endl;
         //brute calculate
         for (int i = 0; i < no_of_vectors; ++i)
             {

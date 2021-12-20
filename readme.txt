@@ -51,6 +51,7 @@ GitHub Link: https://github.com/blackeye18/Curves-Lsh-Hypercube-Clustering
 ./cluster –i nasd_input.csv –c cluster.conf -o out -update MeanFrechet –assignment Classic -complete -silhouette
 ./cluster –i nasd_input.csv –c cluster.conf -o out -update MeanFrechet –assignment Classic
 
+Για τα unit tests χρησιμοποιήσαμε την βιβλιοθήκη της google.
 
 
 
