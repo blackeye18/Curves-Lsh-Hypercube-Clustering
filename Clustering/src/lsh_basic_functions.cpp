@@ -338,7 +338,7 @@ int Lhashtables::Cluster_LRadius(vec* cvector,long int g_notablesize[],double ra
                 {
                 
                 int clustered_flag=currnode->vect->clustered_flag;
-                if(clustered_flag==-1||clustered_flag==iteration)//ean den mpike 3ana se cluster i exi mpi se allo cluster se auto to iteration
+                if(clustered_flag==-1||clustered_flag!=clust_num)//ean den mpike 3ana se cluster i exi mpi se allo cluster se auto to iteration
                 {
                     long double dist;
                     if(metric=="euclidean_distance")
@@ -357,37 +357,37 @@ int Lhashtables::Cluster_LRadius(vec* cvector,long int g_notablesize[],double ra
                     if(dist<radius)
                         {
                         int push_flag=1;
-                        if(clustered_flag==iteration)//ean ine se allo cluster
-                        {
+                        if(clustered_flag!=-1)//ean ine se allo cluster
+                        	{
                             push_flag=-1;
                             int found=0;
-                            for (int ci = 0; ci < clust_num; ++ci)
-                                {
-                                for (int vi = 0; vi < (*curr_clust_vec)[ci].size(); ++vi)
+                            int other_cluster=clustered_flag;
+                                for (int vi = 0; vi < curr_clust_vec->at(other_cluster).size(); ++vi)
                                     {
-                                    if((*curr_clust_vec)[ci][vi].vect==currnode->vect)//vriskume pu ine
+                                    if(curr_clust_vec->at(other_cluster)[vi].vect==currnode->vect)//vriskume pu ine
                                         {
                                         found=1;
-                                        if((*curr_clust_vec)[ci][vi].dist<=dist)//elegxume ean exi  mikroteri apostasi sto allo cluster
+                                        if(curr_clust_vec->at(other_cluster)[vi].dist<=dist)//elegxume ean exi  mikroteri apostasi sto allo cluster
                                             {
                                             push_flag=0;//tote den tha to valume sto twrino cluster
                                             }
                                         else
                                             {
                                             push_flag=1;//tha to valume sto twrino cluster
-                                            (*curr_clust_vec)[ci].erase((*curr_clust_vec)[ci].begin() + vi);//to svinume apto allo cluster
+                                            curr_clust_vec->at(other_cluster).erase(curr_clust_vec->at(other_cluster).begin() + vi);//to svinume apto allo cluster
                                             }
-                                            break;
+                                        break;
                                         }
                                     }
-                                if(found){break;}
-                                }
+
                             }
                         if(push_flag==1)//to vazume sto twrino cluster
-                        {
-                            currnode->vect->clustered_flag=iteration;
-                            (*curr_clust_vec)[clust_num].push_back(dist_vec(dist,currnode->vect));
-                        }
+                        	{
+                            currnode->vect->clustered_flag=clust_num;
+                            curr_clust_vec->at(clust_num).push_back(dist_vec(dist,currnode->vect));
+                        	}
+                        else if(push_flag!=0)
+                        	cout<<"push_flag !=0 !=1 ="<<push_flag<<endl;
                     }
                 }
                 }
@@ -419,7 +419,7 @@ vector<vector<vec*>>* Lhashtables::ANN_lsh(vec* nvect,vector<vec>* clustersvec,i
             else if (metric=="LSH_Frechet_Discrete")
                 dist=dfd(clustersvec->at(ca).coord,clustersvec->at(cb).coord,clustersvec->at(ca).coord.size(),clustersvec->at(cb).coord.size());
             if(dist<=mindist)
-                mindist==dist;
+                mindist=dist;
             }
         }
 
@@ -473,6 +473,7 @@ vector<vector<vec*>>* Lhashtables::ANN_lsh(vec* nvect,vector<vec>* clustersvec,i
 
     vector<vector<dist_vec>> *curr_clust_vec=new vector<vector<dist_vec>>;//pinakas gia ka8e iteration pu krataei kai distance
     curr_clust_vec->resize(cluster_num,vector<dist_vec>());
+    int vectors_per_it=0;
     int vectors_found=0;
 
     do
@@ -489,23 +490,30 @@ vector<vector<vec*>>* Lhashtables::ANN_lsh(vec* nvect,vector<vec>* clustersvec,i
         vectors_found=0;
         for (int ci = 0; ci < cluster_num; ++ci)
             {
-
-            for (int vi = 0; vi < (*curr_clust_vec)[ci].size(); ++vi)
-                {
-                vectors_found++;
-                (*cluster_neighbours)[ci].push_back((*curr_clust_vec)[ci][vi].vect);//vazume ta vec ston pinaka me ola ta vec ana cluster
-                }
-
-            (*curr_clust_vec)[ci].clear();//ka8arizoume ton proswrino pinaka 
-            }
-
+            vectors_found+=curr_clust_vec->at(ci).size();
+        	}
+        vectors_per_it=vectors_found- total_found;
         total_found+=vectors_found;
         iteration++;
         radii*=2;//diplasiazume to radii
         }
-    while(vectors_found>=cluster_num/2);
+    while(vectors_per_it>=cluster_num/2);
 
+
+    vectors_found=0;
+    for (int ci = 0; ci < cluster_num; ++ci)
+            {
+
+            for (int vi = 0; vi < curr_clust_vec->at(ci).size(); ++vi)
+                {
+                vectors_found++;
+                (*cluster_neighbours)[ci].push_back(curr_clust_vec->at(ci)[vi].vect);//vazume ta vec ston pinaka me ola ta vec ana cluster
+                }
+
+            (*curr_clust_vec)[ci].clear();//ka8arizoume ton proswrino pinaka 
+            }
     delete curr_clust_vec;
+
         int ff=0;
        //cout<<"entering brute with total_found "<<total_found<<" from total "<<no_of_vectors<<endl;
         //brute calculate

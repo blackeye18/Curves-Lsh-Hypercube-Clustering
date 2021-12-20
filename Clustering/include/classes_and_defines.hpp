@@ -5,9 +5,9 @@
 //#define PNUM 4294967291
 #define PNUM 2147483645
 #define W 4//meta3i 0 kai 6
-#define BUCKET_RATIO 16
+#define BUCKET_RATIO 4
 #define PERCISION 5
-#define MAXIT 20
+#define MAXIT 30
 #define M_big_num 33554432 //2^25 
 #define MAX_MEAN 100000
 #define PERC_E 0.17
