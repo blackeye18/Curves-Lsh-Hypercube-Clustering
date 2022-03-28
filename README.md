@@ -2,6 +2,7 @@
 DIT 2nd Project 2021-22
 
 Georgios Georgiou - Γεώργιος Γεωργίου - sdi1800220 - 1115201800220
+
 Panagiotis Mavrommatis - Παναγιώτης Μαυρομμάτης - sdi1800115 - 1115201800115
 
 Τιτλος: Nearest neighour using LSH with curves and Clustering using kmeans++ with either Lloyds or LSH for curves.
